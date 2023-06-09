@@ -20,7 +20,7 @@ import com.fbs.airline.repository.PassengerRepository;
 import com.fbs.airline.repository.ScheduleRepository;
 
 @RestController
-public class FBSController {
+public class AirlineController {
 
 	@Autowired
 	AirlineRepository airlineRepository;

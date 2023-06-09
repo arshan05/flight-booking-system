@@ -16,5 +16,6 @@ public class Airport {
     private String id;
 	private Location location;
 	private String airportName;
+	private String code;
 	private List<Flight> flights;
 }

@@ -6,4 +6,6 @@ import com.fbs.customer.model.BookingDetails;
 
 public interface BookingDetailsRepository extends MongoRepository<BookingDetails, String> {
 
+	BookingDetails findByPNRAndPassenger_Email(String pnr, String email);
+
 }

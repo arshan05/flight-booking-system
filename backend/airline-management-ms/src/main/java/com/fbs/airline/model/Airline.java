@@ -14,8 +14,9 @@ import lombok.Data;
 public class Airline {
 	@Id
     private String id;
-	
+	private String code;
 	private String airlineName;
+	
 	private List<String> flightsIds;
 	
 	

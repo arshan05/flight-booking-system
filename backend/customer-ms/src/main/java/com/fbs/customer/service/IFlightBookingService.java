@@ -10,6 +10,6 @@ import com.fbs.customer.model.Schedule;
 
 public interface IFlightBookingService {
 	List<Schedule> getFlightDetails(String start, String destination, Date date);
-	void bookFlight(Flight flight, Passenger user);
+	void bookFlight(Schedule schedule, Passenger user);
 	BookingDetails getBookingDetails(String pnr, String email);
 }

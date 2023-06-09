@@ -6,9 +6,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Document(collection = "bookingDetails")
 public class BookingDetails {
 	
@@ -17,8 +19,8 @@ public class BookingDetails {
 	
 	@DBRef
 	private Passenger passenger;
-	private String startLocation;
-	private String endLocation;
+	private Location startLocation;
+	private Location endLocation;
 	private Date boardingDate;
 	private String PNR;
 }

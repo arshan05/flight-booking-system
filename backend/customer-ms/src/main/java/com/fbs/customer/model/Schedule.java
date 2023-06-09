@@ -23,4 +23,5 @@ public class Schedule {
 	private Date startTime;
 	private Date endTime;
 	private Status scheduleStatus;
+	
 }

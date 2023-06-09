@@ -21,7 +21,7 @@ public class CustomScheduleRepository {
     private MongoTemplate mongoTemplate;
 
 
-    public List<Schedule> findByBoarding(String boardingLocation, String destinationLocation,Date startTime) {
+    public List<Schedule> findFlightSchedules(String boardingLocation, String destinationLocation,Date startTime) {
     	
     	System.out.println(boardingLocation);
         LookupOperation boardingLookupOperation = LookupOperation.newLookup()
