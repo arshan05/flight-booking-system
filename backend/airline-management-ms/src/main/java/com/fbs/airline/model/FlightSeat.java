@@ -9,6 +9,10 @@ public class FlightSeat extends Seat{
 	public FlightSeat(Seat seat) {
 		super(seat.getSeatNumber(), seat.getClassName());
 	}
+	public FlightSeat(String seatNumber, String className) {
+		super(seatNumber, className);
+	}
+	
 	
 	
 }
