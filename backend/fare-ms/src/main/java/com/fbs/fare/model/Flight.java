@@ -1,4 +1,4 @@
-package com.fbs.airline.model;
+package com.fbs.fare.model;
 
 
 import java.util.ArrayList;
