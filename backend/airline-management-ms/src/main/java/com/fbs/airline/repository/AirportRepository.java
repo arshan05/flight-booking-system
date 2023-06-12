@@ -5,4 +5,6 @@ import com.fbs.airline.model.Airport;
 
 public interface AirportRepository extends MongoRepository<Airport, String>{
 
+	boolean existsByAirportName(String airportName);
+
 }

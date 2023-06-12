@@ -6,4 +6,6 @@ import com.fbs.airline.model.Flight;
 
 public interface FlightRepository extends MongoRepository<Flight, String>{
 
+	boolean existsByFlightNumber(String flightNumber);
+
 }

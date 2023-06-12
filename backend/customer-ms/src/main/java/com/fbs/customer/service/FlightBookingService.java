@@ -58,7 +58,7 @@ public class FlightBookingService implements IFlightBookingService{
 		
 	}
 
-	private String generatePNR(Flight flight, Schedule schedule) {
+	public String generatePNR(Flight flight, Schedule schedule) {
 		// TODO Auto-generated method stub
 		StringBuilder sb = new StringBuilder();
 		sb.append(flight.getAirlineCompany().getCode());

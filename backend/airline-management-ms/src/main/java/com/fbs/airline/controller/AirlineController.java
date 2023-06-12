@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fbs.airline.exception.AirlineException;
+import com.fbs.airline.exception.AirportException;
 import com.fbs.airline.model.Airline;
 import com.fbs.airline.model.Airport;
 import com.fbs.airline.model.Flight;
@@ -21,31 +23,17 @@ import com.fbs.airline.repository.AirportRepository;
 import com.fbs.airline.repository.FlightRepository;
 import com.fbs.airline.repository.PassengerRepository;
 import com.fbs.airline.repository.ScheduleRepository;
+import com.fbs.airline.service.AirlineService;
 
 @RestController
 public class AirlineController {
 
 	@Autowired
-	AirlineRepository airlineRepository;
-
-	@Autowired
-	FlightRepository flightRepository;
-	
-	@Autowired
-	AirportRepository airportRepository;
-	
-	@Autowired
-	ScheduleRepository scheduleRepository;
-	
-	@Autowired
-	PassengerRepository passengerRepository;
-	
-	@Autowired
-	FareProxy fareProxy;
+	AirlineService airlineService;
 
 	@PostMapping("/addAirline")
-	public void addAirline(@RequestBody Airline airline) {
-		airlineRepository.save(airline);
+	public void addAirline(@RequestBody Airline airline) throws AirlineException {
+		airlineService.addAirline(airline);
 	}
 
 	@PostMapping("/addFlight")
@@ -72,8 +60,8 @@ public class AirlineController {
 	}
 	
 	@PostMapping("/addAirport")
-	public void addAirport(@RequestBody Airport airport) {
-		airportRepository.save(airport);
+	public void addAirport(@RequestBody Airport airport) throws AirportException {
+		airlineService.addAirport(airport);
 	}
 	
 	@PostMapping("/addSchedule")
