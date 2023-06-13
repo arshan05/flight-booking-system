@@ -7,6 +7,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -17,6 +19,7 @@ public class Schedule {
 	@Id
     private String id;
 	@DBRef
+	@JsonIgnoreProperties("schedules")
 	private Flight flight;
 	@DBRef
 	private Airport boarding;
