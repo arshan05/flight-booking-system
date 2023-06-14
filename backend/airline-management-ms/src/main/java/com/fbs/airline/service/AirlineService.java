@@ -2,6 +2,8 @@ package com.fbs.airline.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +37,9 @@ public class AirlineService implements IAirlineService {
 	@Autowired
 	FareProxy fareProxy;
 
+		
+	Logger logger = LoggerFactory.getLogger(Airline.class);
+	
 	@Override
 	public List<Airline> getAllAirlines() throws AirlineException {
 		List<Airline> airlines = airlineRepository.findAll();
@@ -42,6 +47,7 @@ public class AirlineService implements IAirlineService {
 		if (airlines.isEmpty()) {
 			throw new AirlineException("Error: No Airlines Found");
 		} else {
+			logger.info("************************************");
 			return airlines;
 		}
 

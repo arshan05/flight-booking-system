@@ -5,13 +5,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fbs.customer.model.Airline;
-import com.fbs.customer.model.Airport;
-import com.fbs.customer.model.Flight;
 import com.fbs.customer.model.Schedule;
 import com.fbs.customer.repository.AirlineRepository;
 import com.fbs.customer.repository.AirportRepository;

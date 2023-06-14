@@ -3,6 +3,7 @@ package com.fbs.airline.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,26 +23,29 @@ public class AirlineController {
 	@Autowired
 	AirlineService airlineService;
 
-	//Airlines
-	
+	// Airlines
+
 	@PostMapping("/addAirline")
-	public void addAirline(@RequestBody Airline airline) throws AirlineException {		
-		airlineService.addAirline(airline);
+	public ResponseEntity<Airline> addAirline(@RequestBody Airline airline) throws AirlineException {
+		Airline newlyAddedAirline = airlineService.addAirline(airline);
+		return ResponseEntity.ok(newlyAddedAirline);
+
 	}
-	
+
 	@GetMapping("/getAllAirlines")
-	public List<Airline> getAllAirlines() throws AirlineException{
-		return airlineService.getAllAirlines();
+	public ResponseEntity<List<Airline>> getAllAirlines() throws AirlineException {
+		return ResponseEntity.ok(airlineService.getAllAirlines());
 	}
 
 	@DeleteMapping("/deleteAirline")
-	public boolean deleteAirine(@RequestBody Airline airline) throws AirlineException {
-		return airlineService.deleteAirline(airline);
+	public ResponseEntity<String> deleteAirine(@RequestBody Airline airline) throws AirlineException {
+		airlineService.deleteAirline(airline);
+		return ResponseEntity.ok("Successfully Deleted");
 	}
-	
+
 	@PutMapping("/updateAirline")
-	public Airline updateAirline(@RequestBody Airline airline) throws AirlineException {
-		return airlineService.updateAirline(airline);
+	public ResponseEntity<Airline>  updateAirline(@RequestBody Airline airline) throws AirlineException {
+		return ResponseEntity.ok(airlineService.updateAirline(airline));
 	}
-	
+
 }

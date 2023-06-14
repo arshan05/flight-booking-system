@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import com.fbs.customer.model.BookingDetails;
-import com.fbs.customer.model.Flight;
 import com.fbs.customer.model.Passenger;
 import com.fbs.customer.model.Schedule;
 
