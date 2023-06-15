@@ -1,5 +1,4 @@
-package com.fbs.customer.model;
-
+package com.fbs.auth.model;
 import java.util.Date;
 import java.util.List;
 

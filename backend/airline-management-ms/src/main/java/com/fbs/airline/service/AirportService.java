@@ -2,6 +2,8 @@ package com.fbs.airline.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,12 +37,18 @@ public class AirportService implements IAirportService {
 	@Autowired
 	FareProxy fareProxy;
 
+	Logger logger = LoggerFactory.getLogger(getClass());
+	
 	@Override
 	public Airport addAirport(Airport airport) throws AirportException {
 		if (airportRepository.existsByAirportName(airport.getAirportName())) {
-			throw new AirportException("Error: Airline by this name already exists");
+			String message = "Error: Airline by this name already exists";
+			logger.error(message);
+			throw new AirportException(message);
 		} else {
-			return airportRepository.save(airport);
+			Airport addedAirport = airportRepository.save(airport);
+			logger.info("airport added successfully");
+			return addedAirport;
 		}
 	}
 
@@ -49,8 +57,11 @@ public class AirportService implements IAirportService {
 		List<Airport> airports = airportRepository.findAll();
 
 		if (airports.size() == 0) {
-			throw new AirportException("Error: No Airlines Found");
+			String message = "Error: No Airlines Found";
+			logger.error(message);
+			throw new AirportException(message);
 		} else {
+			logger.info("Airports retreived successfully " + airports.size() + " items found");
 			return airports;
 		}
 	}
@@ -58,18 +69,25 @@ public class AirportService implements IAirportService {
 	@Override
 	public Airport updateAirport(Airport airport) throws AirportException {
 		if (!airportRepository.existsById(airport.getId())) {
-			throw new AirportException("Error: Airport doesn't exist");
+			String message = "Error: Airport doesn't exist";
+			logger.error(message);
+			throw new AirportException(message);
 		} else {
-			return airportRepository.save(airport);
+			Airport updated = airportRepository.save(airport);
+			logger.info("airport updated successfully");
+			return updated;
 		}
 	}
 
 	@Override
 	public boolean deleteAirport(Airport airport) throws AirportException {
 		if (!airportRepository.existsById(airport.getId())) {
-			throw new AirportException("Error: Airport doesn't exist");
+			String message = "Error: Airport doesn't exist";
+			logger.error(message);
+			throw new AirportException(message);
 		} else {
 			airportRepository.deleteById(airport.getId());
+			logger.info("airport deleted successfully");
 			return !airportRepository.existsById(airport.getId());
 		}
 	}

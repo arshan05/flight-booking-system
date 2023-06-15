@@ -1,4 +1,4 @@
-package com.fbs.customer.model;
+package com.fbs.gateway.model;
 
 import java.util.List;
 
@@ -23,7 +23,6 @@ public class Airline {
 	@DBRef(lazy = true)
 	@JsonIgnoreProperties("airlineCompany")
 	private List<Flight> flights;
-	
 	
 	
 }

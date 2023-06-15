@@ -3,6 +3,8 @@ package com.fbs.airline.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,10 +39,14 @@ public class FlightService implements IFlightService {
 	@Autowired
 	FareProxy fareProxy;
 
+	Logger logger = LoggerFactory.getLogger(getClass());	
+	
 	@Override
 	public Flight addFlight(Flight flight) throws FlightException {
 		if (flightRepository.existsByFlightNumber(flight.getFlightNumber())) {
-			throw new FlightException("Error: Flight by this number already exists");
+			String message = "Error: Flight by this number already exists";
+			logger.error(message);
+			throw new FlightException(message);
 		} else {
 			flight = fareProxy.setFlightSeat(flight);
 			
@@ -58,7 +64,7 @@ public class FlightService implements IFlightService {
 					airlineRepository.save(airline);
 				}
 			}
-			
+			logger.info("flight added successfully");
 			return flight;
 		}
 	}
@@ -68,8 +74,11 @@ public class FlightService implements IFlightService {
 		List<Flight> flights = flightRepository.findAll();
 
 		if (flights.size() == 0) {
-			throw new FlightException("Error: No Flights Found");
+			String message = "Error: No Flights Found";
+			logger.error(message);
+			throw new FlightException(message);
 		} else {
+			logger.info("flights retreived successfully " + flights.size() + " items found");
 			return flights;
 		}
 	}
@@ -77,18 +86,25 @@ public class FlightService implements IFlightService {
 	@Override
 	public Flight updateFlight(Flight flight) throws FlightException {
 		if (!flightRepository.existsById(flight.getId())) {
-			throw new FlightException("Error: Flight doesn't exist");
+			String message = "Error: Flight doesn't exist";
+			logger.error(message);
+			throw new FlightException(message);
 		} else {
-			return flightRepository.save(flight);
+			Flight updated = flightRepository.save(flight);
+			logger.info("flight updated successfully");
+			return updated;
 		}
 	}
 
 	@Override
 	public boolean deleteFlight(Flight flight) throws FlightException {
 		if (!flightRepository.existsById(flight.getId())) {
-			throw new FlightException("Error: Flight doesn't exist");
+			String message = "Error: Flight doesn't exist";
+			logger.error(message);
+			throw new FlightException(message);
 		} else {
 			flightRepository.deleteById(flight.getId());
+			logger.info("flight deleted successfully");
 			return !flightRepository.existsById(flight.getId());
 		}
 	}

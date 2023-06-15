@@ -2,10 +2,12 @@ package com.fbs.auth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan("com.fbs.auth")
+@EnableFeignClients("com.fbs.auth")
 public class AuthMsApplication {
 
 	public static void main(String[] args) {

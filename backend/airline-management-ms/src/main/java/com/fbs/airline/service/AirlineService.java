@@ -47,7 +47,7 @@ public class AirlineService implements IAirlineService {
 		if (airlines.isEmpty()) {
 			throw new AirlineException("Error: No Airlines Found");
 		} else {
-			logger.info("************************************");
+			logger.info("Airlines retreived successfully " + airlines.size() + " items found");
 			return airlines;
 		}
 
@@ -58,7 +58,9 @@ public class AirlineService implements IAirlineService {
 		if (airlineRepository.existsByAirlineName(airline.getAirlineName())) {
 			throw new AirlineException("Error: Airline by this name already exists");
 		} else {
-			return airlineRepository.save(airline);
+			Airline addedAirline = airlineRepository.save(airline);
+			logger.info("airline added successfully");
+			return addedAirline;
 		}
 
 	}
@@ -68,7 +70,9 @@ public class AirlineService implements IAirlineService {
 		if (!airlineRepository.existsById(airline.getId())) {
 			throw new AirlineException("Error: Airline doesn't exist");
 		} else {
-			return airlineRepository.save(airline);
+			Airline updated = airlineRepository.save(airline);
+			logger.info("airline updated successfully");
+			return updated;
 		}
 	}
 
@@ -78,6 +82,7 @@ public class AirlineService implements IAirlineService {
 			throw new AirlineException("Error: Airline doesn't exist");
 		} else {
 			airlineRepository.deleteById(airline.getId());
+			logger.info("airline deleted successfully");
 			return !airlineRepository.existsById(airline.getId());
 		}
 	}

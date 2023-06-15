@@ -1,4 +1,5 @@
-package com.fbs.airline.model;
+package com.fbs.gateway.model;
+
 import java.util.Date;
 
 import org.springframework.data.mongodb.core.mapping.DBRef;

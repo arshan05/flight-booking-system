@@ -1,4 +1,4 @@
-package com.fbs.customer.model;
+package com.fbs.auth.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,5 +35,4 @@ public class Flight {
 	
 	
 }
-
 

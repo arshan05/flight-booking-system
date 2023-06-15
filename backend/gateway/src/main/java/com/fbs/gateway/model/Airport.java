@@ -1,5 +1,4 @@
-package com.fbs.airline.model;
-
+package com.fbs.gateway.model;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
