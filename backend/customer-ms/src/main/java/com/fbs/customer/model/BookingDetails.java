@@ -22,5 +22,6 @@ public class BookingDetails {
 	private Location startLocation;
 	private Location endLocation;
 	private Date boardingDate;
+	private String seatNumber;
 	private String PNR;
 }

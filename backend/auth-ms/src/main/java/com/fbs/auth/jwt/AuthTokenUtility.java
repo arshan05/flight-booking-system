@@ -45,6 +45,15 @@ public class AuthTokenUtility {
 			return null;
 		}
 	}
+	
+	public String getJwtFromCookies(Cookie cookie) {
+		if (cookie != null) {
+			return cookie.getValue();
+		}
+		else {
+			return null;
+		}
+	}
 
 	public ResponseCookie generateJwtCookie(UserDetailsImpl userPrincipal) {
 	    String jwt = generateTokenFromUsername(userPrincipal.getUsername());

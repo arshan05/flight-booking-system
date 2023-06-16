@@ -74,13 +74,13 @@ public class FlightBookingService implements IFlightBookingService {
 		bookingDetails.setBoardingDate(startTime);
 		String PNR = generatePNR(flight, schedule);
 		bookingDetails.setPNR(PNR);
+		bookingDetails.setSeatNumber(seatNumber);
 
 		System.out.println(bookingDetails);
 
 //		bookingDetailsRepository.save(bookingDetails);
-		// TODO SEND EMAIL
 		String messageBody = "Dear " + passenger.getName() + " /n You have booked seat from " + startLocation.getPlace()
-				+ " to " + endLocation.getPlace() + " is successful/n PNR number:" + PNR;
+				+ " to " + endLocation.getPlace() + " is successful/n PNR number: " + PNR;
 		EmailRequest emailRequest = new EmailRequest(passenger.getEmail(), "Booking Successful", messageBody);
 //		emailProxy.sendEmail(emailRequest);
 	}
@@ -112,6 +112,13 @@ public class FlightBookingService implements IFlightBookingService {
 				.filter(seat -> seat.getSeatStatus().equals(SeatStatus.OPEN)).collect(Collectors.toList());
 
 		return flightSeats;
+	}
+
+	@Override
+	public void cancelTicket(BookingDetails bookingDetails) {
+		// TODO Auto-generated method stub
+		bookingDetails.getSeatNumber();
+		
 	}
 
 }

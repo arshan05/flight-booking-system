@@ -3,16 +3,21 @@ package com.fbs.airline.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.fbs.airline.exception.ScheduleException;
 import com.fbs.airline.model.Schedule;
+import com.fbs.airline.service.AuthService;
 import com.fbs.airline.service.ScheduleService;
 
 @RestController
@@ -20,29 +25,75 @@ import com.fbs.airline.service.ScheduleService;
 public class ScheduleController {
 
 	@Autowired
-	ScheduleService scheduleService;
+	ScheduleService ScheduleService;
 
-	
-	//Schedules
-	
+	@Autowired
+	AuthService authService;
+
+	// Schedules
+
 	@PostMapping("/addSchedule")
-	public Schedule addSchedule(@RequestBody Schedule schedule) throws ScheduleException {
-		return scheduleService.addSchedule(schedule);
+	public ResponseEntity<Schedule> addSchedule(@RequestHeader("cookie") String cookie, @RequestBody Schedule schedule)
+			throws ScheduleException {
+		try {
+			if (authService.isSessionValid(cookie)) {
+				Schedule newlyAddedSchedule = ScheduleService.addSchedule(schedule);
+				return ResponseEntity.ok(newlyAddedSchedule);
+			}
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		} catch (
+
+		Exception e) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		}
+
 	}
-	
+
 	@GetMapping("/getAllSchedules")
-	public List<Schedule> getAllSchedules() throws ScheduleException{
-		return scheduleService.getAllSchedules();
+	public ResponseEntity<List<Schedule>> getAllSchedules(@RequestHeader("cookie") String cookie)
+			throws ScheduleException {
+		try {
+			if (authService.isSessionValid(cookie)) {
+				return ResponseEntity.ok(ScheduleService.getAllSchedules());
+			}
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		} catch (Exception e) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		}
+
 	}
 
 	@DeleteMapping("/deleteSchedule")
-	public boolean deleteSchedule(@RequestBody Schedule schedule) throws ScheduleException {
-		return scheduleService.deleteSchedule(schedule);
+	public ResponseEntity<String> deleteAirine(@RequestHeader("cookie") String cookie, @RequestBody Schedule schedule)
+			throws ScheduleException {
+		try {
+			if (authService.isSessionValid(cookie)) {
+				ScheduleService.deleteSchedule(schedule);
+				return ResponseEntity.ok("Successfully Deleted");
+			}
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		} catch (
+
+		Exception e) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		}
+
 	}
-	
+
 	@PutMapping("/updateSchedule")
-	public Schedule updateSchedule(@RequestBody Schedule schedule) throws ScheduleException {
-		return scheduleService.updateSchedule(schedule);
+	public ResponseEntity<Schedule> updateSchedule(@RequestHeader("cookie") String cookie, @RequestBody Schedule schedule)
+			throws ScheduleException {
+		try {
+			if (authService.isSessionValid(cookie)) {
+				return ResponseEntity.ok(ScheduleService.updateSchedule(schedule));
+			}
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		} catch (
+
+		Exception e) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		}
+
 	}
 	
 	
