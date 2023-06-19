@@ -13,6 +13,7 @@ class AirlineTest {
 		Flight flight1 = new Flight();
 		flight1.setId("1");
 		flight1.setFlightNumber("FL001");
+		
 
 		// Create a list of Flights
 		List<Flight> flights = new ArrayList<>();

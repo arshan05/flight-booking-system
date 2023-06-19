@@ -75,6 +75,7 @@ public class FlightBookingService implements IFlightBookingService {
 		String PNR = generatePNR(flight, schedule);
 		bookingDetails.setPNR(PNR);
 		bookingDetails.setSeatNumber(seatNumber);
+		bookingDetails.setCheckedIn(false);
 
 		System.out.println(bookingDetails);
 

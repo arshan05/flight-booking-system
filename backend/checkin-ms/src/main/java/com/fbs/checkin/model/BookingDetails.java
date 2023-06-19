@@ -1,4 +1,5 @@
-package com.fbs.customer.model;
+package com.fbs.checkin.model;
+
 import java.util.Date;
 
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -22,7 +23,6 @@ public class BookingDetails {
 	private Location startLocation;
 	private Location endLocation;
 	private Date boardingDate;
-	private String seatNumber;
-	private String PNR;
 	private boolean isCheckedIn;
+	private String PNR;
 }

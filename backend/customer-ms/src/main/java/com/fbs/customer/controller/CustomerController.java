@@ -16,11 +16,6 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fbs.customer.model.FlightSeat;
 import com.fbs.customer.model.Passenger;
 import com.fbs.customer.model.Schedule;
-import com.fbs.customer.repository.AirlineRepository;
-import com.fbs.customer.repository.AirportRepository;
-import com.fbs.customer.repository.FlightRepository;
-import com.fbs.customer.repository.PassengerRepository;
-import com.fbs.customer.repository.ScheduleRepository;
 import com.fbs.customer.request.BookFlightRequest;
 import com.fbs.customer.request.FlightDetailsRequest;
 import com.fbs.customer.service.AuthService;
@@ -29,21 +24,6 @@ import com.fbs.customer.service.FlightBookingService;
 @RestController
 @RequestMapping("/api/consumer")
 public class CustomerController {
-
-	@Autowired
-	AirlineRepository airlineRepository;
-
-	@Autowired
-	FlightRepository flightRepository;
-
-	@Autowired
-	AirportRepository airportRepository;
-
-	@Autowired
-	ScheduleRepository scheduleRepository;
-
-	@Autowired
-	PassengerRepository passengerRepository;
 
 	@Autowired
 	FlightBookingService flightBookingService;
