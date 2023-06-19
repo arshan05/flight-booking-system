@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,8 @@ import com.fbs.airline.exception.AirlineException;
 import com.fbs.airline.model.Airline;
 import com.fbs.airline.service.AirlineService;
 import com.fbs.airline.service.AuthService;
+
+import jakarta.servlet.http.Cookie;
 
 @RestController
 @RequestMapping("/api/airline")
@@ -36,7 +39,9 @@ public class AirlineController {
 	public ResponseEntity<Airline> addAirline(@RequestHeader("cookie") String cookie, @RequestBody Airline airline)
 			throws AirlineException {
 		try {
+			
 			if (authService.isSessionValid(cookie)) {
+				
 				Airline newlyAddedAirline = airlineService.addAirline(airline);
 				return ResponseEntity.ok(newlyAddedAirline);
 			}
@@ -53,6 +58,7 @@ public class AirlineController {
 	public ResponseEntity<List<Airline>> getAllAirlines(@RequestHeader("cookie") String cookie)
 			throws AirlineException {
 		try {
+			System.out.println("cookie==============================="+cookie);
 			if (authService.isSessionValid(cookie)) {
 				return ResponseEntity.ok(airlineService.getAllAirlines());
 			}

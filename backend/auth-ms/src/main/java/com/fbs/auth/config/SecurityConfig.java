@@ -38,6 +38,7 @@ public class SecurityConfig {
 		http.cors().disable().csrf().disable()
 		.exceptionHandling().authenticationEntryPoint(entryPoint).and()
 		.authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll()
+		.requestMatchers("/swagger-ui/**").permitAll()
 		.requestMatchers("/api/airline/**").hasAnyRole("ADMIN")
 	
 

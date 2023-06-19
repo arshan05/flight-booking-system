@@ -92,7 +92,14 @@ public class AuthController {
 	@GetMapping("/validate")
 	public ResponseEntity<AuthenticationResponse> validate(@RequestHeader("cookie") String cookie) {
 		int startIndex = cookie.indexOf("=") + 1;
-		String token = cookie.substring(startIndex);
+		int endIndex = cookie.indexOf(";");
+		String token;
+		if(endIndex != -1)
+		 token = cookie.substring(startIndex,endIndex);
+		else
+			token = cookie.substring(startIndex);
+		
+		System.out.println("token " + token);
 		AuthenticationResponse response = new AuthenticationResponse();
 		try {
 			if (token == null) {
