@@ -1,6 +1,5 @@
-package com.fbs.airline.service;
+	package com.fbs.airline.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fbs.airline.exception.ScheduleException;
-import com.fbs.airline.model.Flight;
 import com.fbs.airline.model.Schedule;
 import com.fbs.airline.proxy.FareProxy;
 import com.fbs.airline.repository.AirlineRepository;
@@ -85,7 +83,7 @@ public class ScheduleService implements IScheduleService {
 			logger.error(message);
 			throw new ScheduleException(message);
 		} else {
-			logger.info("schedules retreived successfully " + schedules.size() + " items found");
+			logger.info("schedules retreived successfully. {} items found",  schedules.size());
 			return schedules;
 		}
 	}

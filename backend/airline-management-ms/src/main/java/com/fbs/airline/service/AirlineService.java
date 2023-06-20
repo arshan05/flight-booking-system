@@ -38,7 +38,7 @@ public class AirlineService implements IAirlineService {
 	FareProxy fareProxy;
 
 		
-	Logger logger = LoggerFactory.getLogger(Airline.class);
+	Logger logger = LoggerFactory.getLogger(AirlineService.class);
 	
 	@Override
 	public List<Airline> getAllAirlines() throws AirlineException {
@@ -47,7 +47,7 @@ public class AirlineService implements IAirlineService {
 		if (airlines.isEmpty()) {
 			throw new AirlineException("Error: No Airlines Found");
 		} else {
-			logger.info("Airlines retreived successfully " + airlines.size() + " items found");
+			logger.info("Airlines retrieved successfully. {} items found", airlines.size());
 			return airlines;
 		}
 

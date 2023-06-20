@@ -73,12 +73,13 @@ public class FlightService implements IFlightService {
 	public List<Flight> getAllFlights() throws FlightException {
 		List<Flight> flights = flightRepository.findAll();
 
-		if (flights.size() == 0) {
+		if (flights.isEmpty()) {
 			String message = "Error: No Flights Found";
 			logger.error(message);
 			throw new FlightException(message);
 		} else {
-			logger.info("flights retreived successfully " + flights.size() + " items found");
+			logger.info("Airlines retrieved successfully. {} items found", flights.size());
+
 			return flights;
 		}
 	}

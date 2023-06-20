@@ -3,7 +3,6 @@ package com.fbs.airline.repository;
 import java.util.Date;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
 
 import com.fbs.airline.model.Schedule;
 

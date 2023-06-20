@@ -24,8 +24,10 @@ import com.fbs.airline.service.FlightService;
 @RequestMapping("/api/flight")
 public class FlightController {
 
+	private static final String YOU_ARE_UNAUTHORIZED = "You are Unauthorized!...";
+
 	@Autowired
-	FlightService FlightService;
+	FlightService flightService;
 
 	@Autowired
 	AuthService authService;
@@ -37,14 +39,14 @@ public class FlightController {
 			throws FlightException {
 		try {
 			if (authService.isSessionValid(cookie)) {
-				Flight newlyAddedFlight = FlightService.addFlight(flight);
+				Flight newlyAddedFlight = flightService.addFlight(flight);
 				return ResponseEntity.ok(newlyAddedFlight);
 			}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		} catch (
 
 		Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		}
 
 	}
@@ -54,11 +56,11 @@ public class FlightController {
 			throws FlightException {
 		try {
 			if (authService.isSessionValid(cookie)) {
-				return ResponseEntity.ok(FlightService.getAllFlights());
+				return ResponseEntity.ok(flightService.getAllFlights());
 			}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		} catch (Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		}
 
 	}
@@ -68,14 +70,14 @@ public class FlightController {
 			throws FlightException {
 		try {
 			if (authService.isSessionValid(cookie)) {
-				FlightService.deleteFlight(flight);
+				flightService.deleteFlight(flight);
 				return ResponseEntity.ok("Successfully Deleted");
 			}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		} catch (
 
 		Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		}
 
 	}
@@ -85,13 +87,13 @@ public class FlightController {
 			throws FlightException {
 		try {
 			if (authService.isSessionValid(cookie)) {
-				return ResponseEntity.ok(FlightService.updateFlight(flight));
+				return ResponseEntity.ok(flightService.updateFlight(flight));
 			}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		} catch (
 
 		Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		}
 
 	}

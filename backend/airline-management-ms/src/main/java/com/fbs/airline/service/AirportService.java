@@ -56,12 +56,12 @@ public class AirportService implements IAirportService {
 	public List<Airport> getAllAirports() throws AirportException {
 		List<Airport> airports = airportRepository.findAll();
 
-		if (airports.size() == 0) {
+		if (airports.isEmpty()) {
 			String message = "Error: No Airlines Found";
 			logger.error(message);
 			throw new AirportException(message);
 		} else {
-			logger.info("Airports retreived successfully " + airports.size() + " items found");
+			logger.info("Airlines retrieved successfully. {} items found", airports.size());
 			return airports;
 		}
 	}

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.fbs.airline.exception.AuthenticationResponseNullException;
 import com.fbs.airline.model.AuthenticationResponse;
 import com.fbs.airline.proxy.AuthProxy;
 
@@ -16,12 +17,13 @@ public class AuthService {
 
 		ResponseEntity<AuthenticationResponse> authenticationResponse = authProxy.validate(cookie);
 		if (authenticationResponse == null) {
-			throw new RuntimeException("Auth reponse returned as  NULL");
+			throw new AuthenticationResponseNullException("Auth reponse returned as  NULL");
 		}
-
-		for (String role : authenticationResponse.getBody().getRole()) {
-			if (role.equalsIgnoreCase("ADMIN"))
-				return true;
+		else {
+			for (String role : authenticationResponse.getBody().getRole()) {
+				if (role.equalsIgnoreCase("ADMIN"))
+					return true;
+			}
 		}
 
 		return false;

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,11 +20,11 @@ import com.fbs.airline.model.Airline;
 import com.fbs.airline.service.AirlineService;
 import com.fbs.airline.service.AuthService;
 
-import jakarta.servlet.http.Cookie;
-
 @RestController
 @RequestMapping("/api/airline")
 public class AirlineController {
+
+	private static final String YOU_ARE_UNAUTHORIZED = "You are Unauthorized!...";
 
 	@Autowired
 	AirlineService airlineService;
@@ -38,6 +37,7 @@ public class AirlineController {
 	@PostMapping("/addAirline")
 	public ResponseEntity<Airline> addAirline(@RequestHeader("cookie") String cookie, @RequestBody Airline airline)
 			throws AirlineException {
+		
 		try {
 			
 			if (authService.isSessionValid(cookie)) {
@@ -45,11 +45,11 @@ public class AirlineController {
 				Airline newlyAddedAirline = airlineService.addAirline(airline);
 				return ResponseEntity.ok(newlyAddedAirline);
 			}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		} catch (
 
 		Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		}
 
 	}
@@ -58,13 +58,12 @@ public class AirlineController {
 	public ResponseEntity<List<Airline>> getAllAirlines(@RequestHeader("cookie") String cookie)
 			throws AirlineException {
 		try {
-			System.out.println("cookie==============================="+cookie);
 			if (authService.isSessionValid(cookie)) {
 				return ResponseEntity.ok(airlineService.getAllAirlines());
 			}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		} catch (Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		}
 
 	}
@@ -77,11 +76,11 @@ public class AirlineController {
 				airlineService.deleteAirline(airline);
 				return ResponseEntity.ok("Successfully Deleted");
 			}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		} catch (
 
 		Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		}
 
 	}
@@ -93,11 +92,11 @@ public class AirlineController {
 			if (authService.isSessionValid(cookie)) {
 				return ResponseEntity.ok(airlineService.updateAirline(airline));
 			}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		} catch (
 
 		Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		}
 
 	}

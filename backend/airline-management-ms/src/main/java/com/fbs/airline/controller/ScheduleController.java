@@ -24,8 +24,10 @@ import com.fbs.airline.service.ScheduleService;
 @RequestMapping("/api/schedule")
 public class ScheduleController {
 
+	private static final String YOU_ARE_UNAUTHORIZED = "You are Unauthorized!...";
+
 	@Autowired
-	ScheduleService ScheduleService;
+	ScheduleService scheduleService;
 
 	@Autowired
 	AuthService authService;
@@ -37,14 +39,14 @@ public class ScheduleController {
 			throws ScheduleException {
 		try {
 			if (authService.isSessionValid(cookie)) {
-				Schedule newlyAddedSchedule = ScheduleService.addSchedule(schedule);
+				Schedule newlyAddedSchedule = scheduleService.addSchedule(schedule);
 				return ResponseEntity.ok(newlyAddedSchedule);
 			}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		} catch (
 
 		Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		}
 
 	}
@@ -54,11 +56,11 @@ public class ScheduleController {
 			throws ScheduleException {
 		try {
 			if (authService.isSessionValid(cookie)) {
-				return ResponseEntity.ok(ScheduleService.getAllSchedules());
+				return ResponseEntity.ok(scheduleService.getAllSchedules());
 			}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		} catch (Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		}
 
 	}
@@ -68,14 +70,14 @@ public class ScheduleController {
 			throws ScheduleException {
 		try {
 			if (authService.isSessionValid(cookie)) {
-				ScheduleService.deleteSchedule(schedule);
+				scheduleService.deleteSchedule(schedule);
 				return ResponseEntity.ok("Successfully Deleted");
 			}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		} catch (
 
 		Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		}
 
 	}
@@ -85,13 +87,13 @@ public class ScheduleController {
 			throws ScheduleException {
 		try {
 			if (authService.isSessionValid(cookie)) {
-				return ResponseEntity.ok(ScheduleService.updateSchedule(schedule));
+				return ResponseEntity.ok(scheduleService.updateSchedule(schedule));
 			}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		} catch (
 
 		Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		}
 
 	}

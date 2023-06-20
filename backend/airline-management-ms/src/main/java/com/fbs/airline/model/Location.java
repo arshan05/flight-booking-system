@@ -7,6 +7,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class Location {
 	private String place;
-	private String State;
+	private String state;
 	private String country;
 }
