@@ -41,11 +41,13 @@ public class AirlineController {
 		try {
 			
 			if (authService.isSessionValid(cookie)) {
-				
+				System.out.println("o=========k");
 				Airline newlyAddedAirline = airlineService.addAirline(airline);
 				return ResponseEntity.ok(newlyAddedAirline);
 			}
+			else {
 			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
+			}
 		} catch (
 
 		Exception e) {

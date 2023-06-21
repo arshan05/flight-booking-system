@@ -91,6 +91,7 @@ public class AuthController {
 
 	@GetMapping("/validate")
 	public ResponseEntity<AuthenticationResponse> validate(@RequestHeader("cookie") String cookie) {
+		System.out.println(cookie);
 		int startIndex = cookie.indexOf("=") + 1;
 		int endIndex = cookie.indexOf(";");
 		String token;
@@ -118,6 +119,7 @@ public class AuthController {
 					response.setName(username);
 					response.setRole(roles);
 					response.setValid(true);
+					
 				} else {
 					response.setValid(false);
 					return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
@@ -127,6 +129,7 @@ public class AuthController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(response);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 
 	}

@@ -9,14 +9,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "airlines")
 public class Airline {
+
 	@Id
     private String id;
 	private String code;
@@ -25,6 +30,13 @@ public class Airline {
 	@DBRef(lazy = true)
 	@JsonIgnoreProperties("airlineCompany")
 	private List<Flight> flights;
+
+	public Airline(String id, String code, String airlineName) {
+		super();
+		this.id = id;
+		this.code = code;
+		this.airlineName = airlineName;
+	}
 	
 	
 }
