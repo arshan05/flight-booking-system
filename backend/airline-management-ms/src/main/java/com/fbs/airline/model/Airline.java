@@ -30,13 +30,5 @@ public class Airline {
 	@DBRef(lazy = true)
 	@JsonIgnoreProperties("airlineCompany")
 	private List<Flight> flights;
-
-	public Airline(String id, String code, String airlineName) {
-		super();
-		this.id = id;
-		this.code = code;
-		this.airlineName = airlineName;
-	}
-	
 	
 }

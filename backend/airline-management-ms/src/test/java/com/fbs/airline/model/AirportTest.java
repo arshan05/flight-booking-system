@@ -10,10 +10,8 @@ class AirportTest {
 
     @Test
     void testConstructorAndGetters() {
-        // Create a sample airport
     	Airport airport = new Airport("1", null, "BLR", "Kempegowda International Airport",null);
 
-        // Verify the values are set correctly
         assertEquals("1", airport.getId());
         assertEquals("BLR", airport.getCode());
         assertNull(airport.getLocation());
