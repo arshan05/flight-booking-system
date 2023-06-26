@@ -6,5 +6,6 @@ import com.fbs.airline.model.Airline;
 public interface AirlineRepository extends MongoRepository<Airline, String>{
 
 	boolean existsByAirlineName(String airlineName);
+	void deleteById(String id);
 
 }

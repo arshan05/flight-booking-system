@@ -1,5 +1,7 @@
-	package com.fbs.airline.service;
+package com.fbs.airline.service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fbs.airline.exception.ScheduleException;
+import com.fbs.airline.model.Flight;
 import com.fbs.airline.model.Schedule;
 import com.fbs.airline.proxy.FareProxy;
 import com.fbs.airline.repository.AirlineRepository;
@@ -42,34 +45,32 @@ public class ScheduleService implements IScheduleService {
 	@Override
 	public Schedule addSchedule(Schedule schedule) throws ScheduleException {
 		// TODO : here change it to exists between startTime and endTime of a flight
-		System.out.println("========================");
-		System.out.println(schedule);
-		if (scheduleRepository.existsByStartTimeBetweenOrEndTimeBetween(schedule.getStartTime() , schedule.getEndTime(), schedule.getStartTime() , schedule.getEndTime())) {
+		Flight flight = flightRepository.findById(schedule.getFlight().getId()).orElse(null);
+
+		if (isFlightScheduledBetween(flight, schedule.getStartTime(), schedule.getEndTime())) {
 			String message = "Error: Flight is already scheduled during this period";
 			logger.error(message);
 			throw new ScheduleException(message);
 		} else {
-//			schedule = fareProxy.setFareForEachSeat(schedule);
-//			scheduleRepository.save(schedule);
-//			
-//			Flight flight = flightRepository.findById(schedule.getFlight().getId()).orElse(null);
-//			
-//			if (flight!=null) {
-//				if(flight.getSchedules() == null) {
-//					List<Schedule> schedules= new ArrayList<>();
-//					schedules.add(schedule);
-//					flight.setSchedules(schedules);
-//					flightRepository.save(flight);
-//				}
-//				else {
-//					flight.getSchedules().add(schedule);
-//					flightRepository.save(flight);
-//				}
-//			}
-//			
-//			flight.getSchedules().add(schedule);
-//			flightRepository.save(flight);
-//			logger.info("schedule added successfully");
+			schedule = fareProxy.setFareForEachSeat(schedule);
+			scheduleRepository.save(schedule);
+
+			if (flight != null) {
+				List<Schedule> schedulesinFlight = flight.getSchedules();
+				if (schedulesinFlight == null) {
+					List<Schedule> schedules = new ArrayList<>();
+					schedules.add(schedule);
+					flight.setSchedules(schedules);
+					flightRepository.save(flight);
+				} else {
+					flight.getSchedules().add(schedule);
+					flightRepository.save(flight);
+				}
+			}
+
+			flight.getSchedules().add(schedule);
+			flightRepository.save(flight);
+			logger.info("schedule added successfully");
 			return schedule;
 		}
 	}
@@ -83,7 +84,7 @@ public class ScheduleService implements IScheduleService {
 			logger.error(message);
 			throw new ScheduleException(message);
 		} else {
-			logger.info("schedules retreived successfully. {} items found",  schedules.size());
+			logger.info("schedules retreived successfully. {} items found", schedules.size());
 			return schedules;
 		}
 	}
@@ -95,7 +96,7 @@ public class ScheduleService implements IScheduleService {
 			logger.error(message);
 			throw new ScheduleException(message);
 		} else {
-			
+
 			Schedule updatedSchedule = scheduleRepository.save(schedule);
 			logger.info("schdedule updated successfully");
 			return updatedSchedule;
@@ -113,6 +114,31 @@ public class ScheduleService implements IScheduleService {
 			logger.info("schdedule deleted successfully");
 			return !scheduleRepository.existsById(schedule.getId());
 		}
+	}
+
+	public boolean isFlightScheduledBetween(Flight flight, Date startTime, Date endTime) {
+		for (Schedule schedule : flight.getSchedules()) {
+			Date scheduleStartTime = schedule.getStartTime();
+			Date scheduleEndTime = schedule.getEndTime();
+
+			if (scheduleStartTime.equals(startTime) || scheduleEndTime.equals(endTime)) {
+				return true;
+			}
+
+			if (scheduleStartTime.after(startTime) && scheduleEndTime.before(endTime)) {
+				return true;
+			}
+
+			if (scheduleStartTime.before(startTime) && scheduleEndTime.after(startTime)) {
+				return true;
+			}
+
+			if (scheduleStartTime.before(endTime) && scheduleEndTime.after(endTime)) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }

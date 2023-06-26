@@ -78,7 +78,7 @@ public class FlightService implements IFlightService {
 			logger.error(message);
 			throw new FlightException(message);
 		} else {
-			logger.info("Airlines retrieved successfully. {} items found", flights.size());
+			logger.info("Flights retrieved successfully. {} items found", flights.size());
 
 			return flights;
 		}
@@ -106,7 +106,7 @@ public class FlightService implements IFlightService {
 		} else {
 			flightRepository.deleteById(flight.getId());
 			logger.info("flight deleted successfully");
-			return !flightRepository.existsById(flight.getId());
+			return true;
 		}
 	}
 

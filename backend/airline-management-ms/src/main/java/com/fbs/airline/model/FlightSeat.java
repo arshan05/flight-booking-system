@@ -1,16 +1,25 @@
 package com.fbs.airline.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
 public class FlightSeat extends Seat {
 	private int price;
 	private SeatStatus seatStatus;
+	
+	public FlightSeat(String seatNumber, String className, int price, SeatStatus status) {
+		super(seatNumber,className);
+		this.price = price;
+		this.seatStatus = status;
+	}
 
 }

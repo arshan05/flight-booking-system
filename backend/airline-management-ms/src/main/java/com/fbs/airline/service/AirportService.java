@@ -42,7 +42,7 @@ public class AirportService implements IAirportService {
 	@Override
 	public Airport addAirport(Airport airport) throws AirportException {
 		if (airportRepository.existsByAirportName(airport.getAirportName())) {
-			String message = "Error: Airline by this name already exists";
+			String message = "Error: Airport by this name already exists";
 			logger.error(message);
 			throw new AirportException(message);
 		} else {
@@ -57,11 +57,11 @@ public class AirportService implements IAirportService {
 		List<Airport> airports = airportRepository.findAll();
 
 		if (airports.isEmpty()) {
-			String message = "Error: No Airlines Found";
+			String message = "Error: No Airports Found";
 			logger.error(message);
 			throw new AirportException(message);
 		} else {
-			logger.info("Airlines retrieved successfully. {} items found", airports.size());
+			logger.info("Airports retrieved successfully. {} items found", airports.size());
 			return airports;
 		}
 	}
@@ -88,7 +88,7 @@ public class AirportService implements IAirportService {
 		} else {
 			airportRepository.deleteById(airport.getId());
 			logger.info("airport deleted successfully");
-			return !airportRepository.existsById(airport.getId());
+			return true;
 		}
 	}
 

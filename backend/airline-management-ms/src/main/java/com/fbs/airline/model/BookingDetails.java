@@ -1,4 +1,5 @@
 package com.fbs.airline.model;
+
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
@@ -21,7 +22,6 @@ public class BookingDetails {
 	
 	@Id
 	private String id;
-	
 	@DBRef
 	private Flight flight;
 	
@@ -30,5 +30,7 @@ public class BookingDetails {
 	private Location startLocation;
 	private Location endLocation;
 	private Date boardingDate;
+	private String seatNumber;
 	private String PNR;
+	private boolean isCheckedIn;
 }

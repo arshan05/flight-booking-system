@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import com.fbs.airline.service.ScheduleService;
 
 @RestController
 @RequestMapping("/api/schedule")
+//@CrossOrigin("http://localhost:3000/")
 public class ScheduleController {
 
 	private static final String YOU_ARE_UNAUTHORIZED = "You are Unauthorized!...";
@@ -64,6 +66,13 @@ public class ScheduleController {
 		}
 
 	}
+	
+//	@GetMapping("/getAllSchedules")
+//	public ResponseEntity<List<Schedule>> getAllSchedules()
+//			throws ScheduleException {
+//		return ResponseEntity.ok(scheduleService.getAllSchedules());	
+//
+//	}
 
 	@DeleteMapping("/deleteSchedule")
 	public ResponseEntity<String> deleteAirine(@RequestHeader("cookie") String cookie, @RequestBody Schedule schedule)
@@ -96,6 +105,11 @@ public class ScheduleController {
 			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		}
 
+	}
+	
+	@GetMapping("/hello")
+	public String hello() {
+		return "hello";
 	}
 	
 	

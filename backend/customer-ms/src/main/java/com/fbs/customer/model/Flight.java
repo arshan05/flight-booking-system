@@ -10,10 +10,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
+@NoArgsConstructor
 @Document(collection = "flights")
 public class Flight {
 	@Id
@@ -35,5 +41,4 @@ public class Flight {
 	
 	
 }
-
 

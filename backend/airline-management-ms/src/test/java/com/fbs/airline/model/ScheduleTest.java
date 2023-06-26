@@ -10,15 +10,6 @@ import org.junit.jupiter.api.Test;
 
 class ScheduleTest {
 
-//	private String id;
-//	private Flight flight;
-//	private Airport boarding;
-//	private Airport destination;
-//	private Date startTime;
-//	private Date endTime;
-//	private Status scheduleStatus;
-//	private List<FlightSeat> fare;
-//	private int baseFare;
 
 	@Test
 	void testConstructorAndGetters() {
