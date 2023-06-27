@@ -1,4 +1,6 @@
+import { useState } from "react";
 import ScheduleService from "../service/ScheduleService";
+import ConsumerService from "../service/ConsumerService.js";
 
 const myStyle = {
   backgroundColor: "#f5f5f5",
@@ -10,7 +12,28 @@ const myStyle = {
 };
 
 const Home = () => {
-  ScheduleService.getAllSchedules();
+  // ScheduleService.getAllSchedules();
+
+  const [fromField, setFromField] = useState('');
+  const [toField, setToField] = useState('');
+  const [dateField, setDateField] = useState('');
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const flightDetails = {
+      'start': fromField,
+      'destination': toField,
+      'date': dateField
+    }; 
+
+  //   const flightDetailsRequest  = {
+  //     "start":"Bengaluru", 
+  //     "destination":"New Delhi", 
+  //     "date":"2023-06-07"
+  // }
+    console.log(flightDetails);
+    ConsumerService.getFlights(flightDetails);
+  }
 
   return (
     <div style={{
@@ -26,7 +49,7 @@ const Home = () => {
       <div className="card m-5 p-3 col-lg-6 col-sm-10 bg-opacity-50" style={myStyle}>
         <h5 className="card-title">Flight Details</h5>
         <div className="card-body">
-          <form>
+          <form onSubmit={submitHandler}>
             <div className="mb-3 d-flex flex-row justify-content-around">
               <div>
                 <label htmlFor="fromAddress" className="form-label">
@@ -36,6 +59,7 @@ const Home = () => {
                   type="text"
                   className="form-control"
                   id="fromAddress"
+                  onChange={ (event) => {setFromField(event.target.value)}}
                   placeholder="Enter from address"
                   required
                 />
@@ -48,6 +72,7 @@ const Home = () => {
                   type="text"
                   className="form-control"
                   id="toAddress"
+                  onChange={ (event) => {setToField(event.target.value)}}
                   placeholder="Enter to address"
                   required
                 />
@@ -60,6 +85,7 @@ const Home = () => {
                   type="date"
                   className="form-control"
                   id="datePicker"
+                  onChange={ (event) => {setDateField(event.target.value)}}
                   required
                 />
               </div>
