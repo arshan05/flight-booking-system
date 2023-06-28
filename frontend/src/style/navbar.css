@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+
+.title-font {
+    color: #142c54;
+    font-size: 32px;
+    font-family: 'Cookie', cursive;
+    font-weight: bold;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: #142c54;
+}
+.nav-link.active > span{
+    font-weight: 500;
+    color: #142c54;
+}
