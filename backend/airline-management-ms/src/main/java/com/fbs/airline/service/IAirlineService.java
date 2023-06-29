@@ -10,4 +10,5 @@ public interface IAirlineService {
 	Airline addAirline(Airline airline) throws AirlineException;
 	Airline updateAirline(Airline airline) throws AirlineException;
 	boolean deleteAirline(Airline airline) throws AirlineException;
+	Airline getbyId(String id) throws AirlineException;
 }

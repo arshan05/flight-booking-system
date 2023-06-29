@@ -4,6 +4,7 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Configuration
 public class MyGatewayRoute {
@@ -26,6 +27,7 @@ public class MyGatewayRoute {
 				
 				.route(r->r.path("/api/auth/**")
 						.uri("http://localhost:9098"))
+				
 				.build();
 				
 	}

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.fbs.customer.model.EmailRequest;
 
-@FeignClient(name = "email", url = "http://localhost:9093/")
+@FeignClient(name = "email", url = "http://localhost:9095/")
 public interface EmailProxy{
 	
 	 @PostMapping("/sendEmail")

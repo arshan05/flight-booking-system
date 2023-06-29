@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.fbs.airline.exception.AirlineException;
 import com.fbs.airline.model.Airline;
+import com.fbs.airline.model.LoggerRespose;
 import com.fbs.airline.proxy.FareProxy;
 import com.fbs.airline.repository.AirlineRepository;
 import com.fbs.airline.repository.AirportRepository;
@@ -38,7 +39,7 @@ public class AirlineService implements IAirlineService {
 	FareProxy fareProxy;
 
 		
-	Logger logger = LoggerFactory.getLogger(AirlineService.class);
+	Logger logger = LoggerFactory.getLogger(LoggerRespose.class);
 	
 	@Override
 	public List<Airline> getAllAirlines() throws AirlineException {
@@ -94,4 +95,16 @@ public class AirlineService implements IAirlineService {
 			return true;
 		}
 	}
+
+	@Override
+	public Airline getbyId(String id) throws AirlineException {
+		if(airlineRepository.existsById(id)) {
+			return airlineRepository.findById(id).orElse(null);
+		}
+		else {
+			throw new AirlineException(id + "not found");
+		}
+	}
+	
+	
 }

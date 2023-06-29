@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,8 +18,9 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fbs.airline.exception.AirlineException;
 import com.fbs.airline.model.Airline;
-import com.fbs.airline.service.AirlineService;
+import com.fbs.airline.model.Passenger;
 import com.fbs.airline.service.AuthService;
+import com.fbs.airline.service.IAirlineService;
 
 @RestController
 @RequestMapping("/api/airline")
@@ -27,7 +29,7 @@ public class AirlineController {
 	private static final String YOU_ARE_UNAUTHORIZED = "You are Unauthorized!...";
 
 	@Autowired
-	AirlineService airlineService;
+	IAirlineService airlineService;
 
 	@Autowired
 	AuthService authService;
@@ -101,6 +103,11 @@ public class AirlineController {
 			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		}
 
+	}
+	
+	@GetMapping("/getById/{id}")
+	public ResponseEntity<Airline>  getById(@PathVariable String id) throws AirlineException{
+		return ResponseEntity.ok(airlineService.getbyId(id));
 	}
 
 }

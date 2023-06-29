@@ -24,7 +24,7 @@ const NavBar = () => {
             </NavLink>
 
             <NavLink
-              to="/bookings"
+              to="/payment"
               className="nav-link float-end"
               activeClassName="active"
             >
@@ -32,12 +32,13 @@ const NavBar = () => {
             </NavLink>
 
             <NavLink
-              to="/signin"
+              to="/sign"
               className="nav-link float-end"
               activeClassName="active"
             >
-              <span>signin/register</span>
+              <span>login/register</span>
             </NavLink>
+
           </Nav>
         </Navbar.Collapse>
       </Container>

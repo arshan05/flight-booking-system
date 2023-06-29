@@ -40,8 +40,7 @@ const Home = () => {
           className="rounded d-block"
         ></img>
       </div>
-      <div className="m-2 rounded" style={{backgroundImage:
-        "url()",
+      <div className="m-2 rounded" style={{backgroundImage:"url(https://images.pexels.com/photos/1465904/pexels-photo-1465904.jpeg?auto=compress&cs=tinysrgb&w=1600)",
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",}}>

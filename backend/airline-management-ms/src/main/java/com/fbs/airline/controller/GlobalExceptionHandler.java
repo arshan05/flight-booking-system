@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.fbs.airline.exception.AirlineException;
 import com.fbs.airline.exception.AirportException;
@@ -14,7 +15,7 @@ import com.fbs.airline.exception.FlightException;
 import com.fbs.airline.exception.ScheduleException;
 import com.fbs.airline.model.MyErrorResponse;
 
-@ControllerAdvice
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 	
 	@Autowired

@@ -45,7 +45,7 @@ public class FlightBookingService implements IFlightBookingService {
 	}
 
 	@Override
-	public void bookFlight(Schedule schedule, Passenger passenger, String seatNumber) {
+	public BookingDetails bookFlight(Schedule schedule, Passenger passenger, String seatNumber) {
 		// TODO Auto-generated method stub
 		BookingDetails bookingDetails = new BookingDetails();
 
@@ -83,7 +83,9 @@ public class FlightBookingService implements IFlightBookingService {
 		String messageBody = "Dear " + passenger.getName() + " /n You have booked seat from " + startLocation.getPlace()
 				+ " to " + endLocation.getPlace() + " is successful/n PNR number: " + PNR;
 		EmailRequest emailRequest = new EmailRequest(passenger.getEmail(), "Booking Successful", messageBody);
-//		emailProxy.sendEmail(emailRequest);
+		System.out.println(emailRequest);
+		emailProxy.sendEmail(emailRequest);
+		return bookingDetails;
 	}
 
 	public String generatePNR(Flight flight, Schedule schedule) {
@@ -119,6 +121,12 @@ public class FlightBookingService implements IFlightBookingService {
 	public void cancelTicket(BookingDetails bookingDetails) {
 		// TODO Auto-generated method stub
 		bookingDetails.getSeatNumber();
+		
+	}
+
+	public Passenger addPassenger(Passenger passenger) {
+		// TODO Auto-generated method stub
+		return passengerRepository.save(passenger);
 		
 	}
 
