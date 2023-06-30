@@ -19,14 +19,14 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto d-flex justify-content-around">
-            <NavLink exact to="/" className="nav-link" activeClassName="active">
+            <NavLink to="/" className="nav-link">
               <span>home</span>
             </NavLink>
 
             <NavLink
               to="/payment"
               className="nav-link float-end"
-              activeClassName="active"
+              
             >
               <span>my bookings</span>
             </NavLink>
@@ -34,7 +34,7 @@ const NavBar = () => {
             <NavLink
               to="/sign"
               className="nav-link float-end"
-              activeClassName="active"
+              
             >
               <span>login/register</span>
             </NavLink>

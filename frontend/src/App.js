@@ -14,12 +14,12 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route exact path="/" Component={Home}></Route>
-        <Route exact path="/flight" Component={Schedule}></Route>
-        <Route exact path="/payment" Component={Payment}></Route>
-        <Route exact path="/sign" Component={AuthForm}></Route>
-        <Route exact path="/register" Component={Register}></Route>
-        <Route exact path="/login" Component={Login}></Route>
+        <Route path="/" Component={Home}></Route>
+        <Route  path="/flight" Component={Schedule}></Route>
+        <Route path="/payment" Component={Payment}></Route>
+        <Route path="/sign" Component={AuthForm}></Route>
+        <Route path="/register" Component={Register}></Route>
+        <Route path="/login" Component={Login}></Route>
         
         
       </Routes>

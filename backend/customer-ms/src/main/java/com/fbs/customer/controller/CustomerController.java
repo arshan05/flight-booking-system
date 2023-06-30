@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,7 +27,7 @@ import com.fbs.customer.service.FlightBookingService;
 
 @RestController
 @RequestMapping("/api/consumer")
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CustomerController {
 
 	@Autowired
@@ -42,7 +43,20 @@ public class CustomerController {
 //		String destination = detailsRequest.getDestination();
 //		Date date = detailsRequest.getDate();
 //		System.out.println(detailsRequest);
-		return flightBookingService.getFlightDetails(start, destination, date);
+//		return flightBookingService.getFlightDetails(start, destination, date);
+		
+		try {
+			if (authService.isSessionValid(cookie)) {
+				return flightBookingService.getFlightDetails(start, destination, date);
+
+			}
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		} catch (
+
+		Exception e) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
+		}
+
 
 	}
 

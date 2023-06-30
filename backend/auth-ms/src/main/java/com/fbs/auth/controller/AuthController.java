@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fbs.auth.jwt.AuthTokenUtility;
@@ -34,6 +35,7 @@ import com.fbs.auth.response.UserInfoResponse;
 import com.fbs.auth.service.UserDetailsImpl;
 import com.fbs.auth.service.UserDetailsServiceImpl;
 
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 @RestController
@@ -62,6 +64,16 @@ public class AuthController {
 
 	@Autowired
 	UsersRepository usersRepository;
+	
+	@RequestMapping(method = RequestMethod.OPTIONS)
+    public ResponseEntity<?> options(HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000"); // Replace with the origin of your React app
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        return ResponseEntity.ok().build();
+    }
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
@@ -76,7 +88,7 @@ public class AuthController {
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.add(HttpHeaders.SET_COOKIE, jwtCookie.toString());
-		return ResponseEntity.ok().headers(headers).body(new UserInfoResponse(userDetails.getUsername(), roles));
+		return ResponseEntity.ok().headers(headers).body(new UserInfoResponse(userDetails.getUsername(), roles, jwtCookie.getValue().toString()));
 	}
 
 	@PostMapping("/signup")
