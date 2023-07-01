@@ -18,9 +18,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fbs.airline.exception.AirlineException;
 import com.fbs.airline.model.Airline;
-import com.fbs.airline.model.Passenger;
 import com.fbs.airline.service.AuthService;
 import com.fbs.airline.service.IAirlineService;
+
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/api/airline")
@@ -39,16 +41,15 @@ public class AirlineController {
 	@PostMapping("/addAirline")
 	public ResponseEntity<Airline> addAirline(@RequestHeader("cookie") String cookie, @RequestBody Airline airline)
 			throws AirlineException {
-		
+
 		try {
-			
+
 			if (authService.isSessionValid(cookie)) {
 				System.out.println("o=========k");
 				Airline newlyAddedAirline = airlineService.addAirline(airline);
 				return ResponseEntity.ok(newlyAddedAirline);
-			}
-			else {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
+			} else {
+				throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 			}
 		} catch (
 
@@ -59,9 +60,9 @@ public class AirlineController {
 	}
 
 	@GetMapping("/getAllAirlines")
-	public ResponseEntity<List<Airline>> getAllAirlines(@RequestHeader("cookie") String cookie)
-			throws AirlineException {
+	public ResponseEntity<List<Airline>> getAllAirlines(@RequestHeader("cookie") String cookie) throws AirlineException {
 		try {
+
 			if (authService.isSessionValid(cookie)) {
 				return ResponseEntity.ok(airlineService.getAllAirlines());
 			}
@@ -104,9 +105,9 @@ public class AirlineController {
 		}
 
 	}
-	
+
 	@GetMapping("/getById/{id}")
-	public ResponseEntity<Airline>  getById(@PathVariable String id) throws AirlineException{
+	public ResponseEntity<Airline> getById(@PathVariable String id) throws AirlineException {
 		return ResponseEntity.ok(airlineService.getbyId(id));
 	}
 
