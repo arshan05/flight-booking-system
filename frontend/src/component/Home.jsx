@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ScheduleService from "../service/ScheduleService";
 import ConsumerService from "../service/ConsumerService.js";
 import "../style/style.css";
+import LocationService, { getLocations } from "../service/LocationService";
+import { useDispatch, useSelector } from "react-redux";
+import { locationActions } from "../store/location-slice";
+import { Autocomplete, TextField } from "@mui/material";
 
 const myStyle = {
   backgroundColor: "#f5f5f5",
@@ -15,10 +19,17 @@ const myStyle = {
 
 const Home = () => {
   // ScheduleService.getAllSchedules();
+  const dispatch = useDispatch();
+  const locations = useSelector((state) => state.location.locations);
 
   const [fromField, setFromField] = useState("");
   const [toField, setToField] = useState("");
   const [dateField, setDateField] = useState("");
+
+  useEffect(() => {
+    dispatch(getLocations());
+    console.log(locations);
+  }, [dispatch]);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -40,10 +51,16 @@ const Home = () => {
           className="rounded d-block"
         ></img>
       </div>
-      <div className="m-2 rounded" style={{backgroundImage:"url(https://images.pexels.com/photos/1465904/pexels-photo-1465904.jpeg?auto=compress&cs=tinysrgb&w=1600)",
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",}}>
+      <div
+        className="m-2 rounded"
+        style={{
+          backgroundImage:
+            "url(https://images.pexels.com/photos/1465904/pexels-photo-1465904.jpeg?auto=compress&cs=tinysrgb&w=1600)",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="d-flex justify-content-center align-items-end">
           <div
             className="card m-5 p-3 col-lg-6 col-sm-10 bg-opacity-50"
@@ -54,7 +71,7 @@ const Home = () => {
               <form onSubmit={submitHandler}>
                 <div className="mb-3 d-flex flex-row justify-content-around">
                   <div>
-                    <label htmlFor="fromAddress" className="form-label">
+                    {/* <label htmlFor="fromAddress" className="form-label">
                       From
                     </label>
                     <input
@@ -66,6 +83,24 @@ const Home = () => {
                       }}
                       placeholder="Enter from address"
                       required
+                    /> */}
+                    <Autocomplete
+                      id="dropdown"
+                      options={locations}
+                      getOptionLabel={(option) => option.place}
+                      // onChange={(event, value) => setSelectedOption(value)}
+                      onChange={(event,value) => {
+                        console.log(value.place);
+                        const place = value.place;
+                        setFromField(place);
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          label="From"
+                          variant="outlined"
+                        />
+                      )}
                     />
                   </div>
                   <div>

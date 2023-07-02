@@ -39,12 +39,6 @@ public class CustomerController {
 	@GetMapping("/getFlights")
 	public List<Schedule> getFlightDetails(@RequestHeader("cookie") String cookie, @RequestParam String start, @RequestParam String destination, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
 
-//		String start = detailsRequest.getStart();
-//		String destination = detailsRequest.getDestination();
-//		Date date = detailsRequest.getDate();
-//		System.out.println(detailsRequest);
-//		return flightBookingService.getFlightDetails(start, destination, date);
-//		return flightBookingService.getFlightDetails(start, destination, date);
 		System.out.println(cookie);
 		
 		try {

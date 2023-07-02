@@ -1,7 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-const store = configureStore({
-    reducer: {schedule: scheduleSlice.reducer}
+const scheduleSlice = createSlice({
+  name: "schedule",
+  initialState: {
+    schedules: [],
+  },
+  reducers: {
+    addSchedule(state, action) {
+      // const newSchedule = action.payload;
+      // const existingSchedule = state.items.find((item) => item.id === newItem.id)
+    },
+  },
 });
-
-export default store;
+export const scheduleActions = scheduleSlice.actions;
+export default scheduleSlice;

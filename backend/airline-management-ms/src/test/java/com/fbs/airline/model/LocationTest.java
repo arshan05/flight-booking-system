@@ -2,7 +2,6 @@ package com.fbs.airline.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +9,7 @@ class LocationTest {
 
     @Test
     void testConstructorAndGetters() {
-        Location location = new Location("Bengaluru", "Karnataka", "India");
+        Location location = new Location("1","Bengaluru", "Karnataka", "India");
 
         assertEquals("Bengaluru", location.getPlace());
         assertEquals("Karnataka", location.getState());
@@ -32,15 +31,15 @@ class LocationTest {
 
     @Test
     void testToString() {
-    	Location location = new Location("Bengaluru", "Karnataka", "India");
+    	Location location = new Location("1","Bengaluru", "Karnataka", "India");
     	
-        String expectedString = "Location(place=Bengaluru, state=Karnataka, country=India)";
+        String expectedString = "Location(id=1, place=Bengaluru, state=Karnataka, country=India)";
         assertEquals(expectedString, location.toString());
     }
 
     @Test
     void testAllArgsConstructor() {
-    	Location location = new Location("Bengaluru", "Karnataka", "India");
+    	Location location = new Location("1","Bengaluru", "Karnataka", "India");
     	
     	assertEquals("Bengaluru", location.getPlace());
         assertEquals("Karnataka", location.getState());

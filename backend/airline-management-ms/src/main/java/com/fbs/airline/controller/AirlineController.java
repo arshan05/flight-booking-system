@@ -21,9 +21,6 @@ import com.fbs.airline.model.Airline;
 import com.fbs.airline.service.AuthService;
 import com.fbs.airline.service.IAirlineService;
 
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
-
 @RestController
 @RequestMapping("/api/airline")
 public class AirlineController {

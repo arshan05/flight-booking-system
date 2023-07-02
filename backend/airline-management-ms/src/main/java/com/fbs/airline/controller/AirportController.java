@@ -17,8 +17,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fbs.airline.exception.AirportException;
 import com.fbs.airline.model.Airport;
-import com.fbs.airline.service.AirportService;
 import com.fbs.airline.service.AuthService;
+import com.fbs.airline.service.IAirportService;
 
 @RestController
 @RequestMapping("/api/airport")
@@ -27,7 +27,7 @@ public class AirportController {
 	private static final String YOU_ARE_UNAUTHORIZED = "You are Unauthorized!...";
 
 	@Autowired
-	AirportService airportService;
+	IAirportService airportService;
 
 	@Autowired
 	AuthService authService;

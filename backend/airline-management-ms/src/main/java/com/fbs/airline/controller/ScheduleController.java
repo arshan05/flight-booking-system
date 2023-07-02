@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fbs.airline.exception.ScheduleException;
 import com.fbs.airline.model.Schedule;
 import com.fbs.airline.service.AuthService;
-import com.fbs.airline.service.ScheduleService;
+import com.fbs.airline.service.IScheduleService;
 
 @RestController
 @RequestMapping("/api/schedule")
@@ -29,7 +28,7 @@ public class ScheduleController {
 	private static final String YOU_ARE_UNAUTHORIZED = "You are Unauthorized!...";
 
 	@Autowired
-	ScheduleService scheduleService;
+	IScheduleService scheduleService;
 
 	@Autowired
 	AuthService authService;

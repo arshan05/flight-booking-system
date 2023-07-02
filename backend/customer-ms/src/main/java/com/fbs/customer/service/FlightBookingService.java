@@ -41,6 +41,7 @@ public class FlightBookingService implements IFlightBookingService {
 
 	@Override
 	public List<Schedule> getFlightDetails(String start, String destination, Date date) {
+		System.out.println(start);
 		return customScheduleRepository.findFlightSchedules(start, destination, date);
 	}
 

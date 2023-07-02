@@ -37,11 +37,12 @@ public class CustomScheduleRepository {
                 .as("destinationAirport");
         
         Criteria criteria = new Criteria().andOperator(
-        		Criteria.where("boardingAirport.location.place").is(boardingLocation),
-        		Criteria.where("destinationAirport.location.place").is(destinationLocation),
+//        		Criteria.where("boardingAirport.location.place").is(boardingLocation),
+//        		Criteria.where("destinationAirport.location.place").is(destinationLocation),
         		Criteria.where("startTime").gte(startTime)
         		
         		);
+        System.out.println(criteria);
         MatchOperation matchOperation = Aggregation.match(criteria);
 
         Aggregation aggregation = Aggregation.newAggregation(
