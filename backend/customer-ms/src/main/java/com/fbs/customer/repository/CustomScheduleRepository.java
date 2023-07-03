@@ -17,43 +17,55 @@ import com.fbs.customer.model.Schedule;
 @Repository
 public class CustomScheduleRepository {
 
-	@Autowired
+    @Autowired
     private MongoTemplate mongoTemplate;
 
-
-    public List<Schedule> findFlightSchedules(String boardingLocation, String destinationLocation,Date startTime) {
+    public List<Schedule> findFlightSchedules(String boardingLocation, String destinationLocation, Date startTime) {
     	
-    	System.out.println(boardingLocation);
-        LookupOperation boardingLookupOperation = LookupOperation.newLookup()
-        		.from("airports")
+    	LookupOperation boardingLookupOperation = LookupOperation.newLookup()
+                .from("airports")
                 .localField("boarding.$id")
                 .foreignField("_id")
                 .as("boardingAirport");
+    	
+    	LookupOperation boardingLocationLookupOperation = LookupOperation.newLookup()
+                .from("locations")
+                .localField("boardingAirport.location.$id")
+                .foreignField("_id")
+                .as("boardingLocation");
         
+
+
         LookupOperation destinationLookupOperation = LookupOperation.newLookup()
-        		.from("airports")
+                .from("airports")
                 .localField("destination.$id")
                 .foreignField("_id")
                 .as("destinationAirport");
         
+        LookupOperation destinationLocationLookupOperation = LookupOperation.newLookup()
+                .from("locations")
+                .localField("destinationAirport.location.$id")
+                .foreignField("_id")
+                .as("destinationLocation");
+        
+
         Criteria criteria = new Criteria().andOperator(
-//        		Criteria.where("boardingAirport.location.place").is(boardingLocation),
-//        		Criteria.where("destinationAirport.location.place").is(destinationLocation),
-        		Criteria.where("startTime").gte(startTime)
-        		
-        		);
-        System.out.println(criteria);
+                Criteria.where("boardingLocation.place").is(boardingLocation),
+                Criteria.where("destinationLocation.place").is(destinationLocation),
+                Criteria.where("startTime").gte(startTime)
+        );
+
         MatchOperation matchOperation = Aggregation.match(criteria);
 
         Aggregation aggregation = Aggregation.newAggregation(
-        		boardingLookupOperation,
-        		destinationLookupOperation,
+                boardingLookupOperation,
+                boardingLocationLookupOperation,
+                destinationLookupOperation,
+                destinationLocationLookupOperation,
                 matchOperation
         );
 
         AggregationResults<Schedule> aggregate = mongoTemplate.aggregate(aggregation, "schedules", Schedule.class);
-		return aggregate
-                .getMappedResults();
+        return aggregate.getMappedResults();
     }
-
 }

@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -87,6 +88,14 @@ public class AuthController {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		usersRepository.save(user);
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+	}
+	
+	@GetMapping("/logout")
+	public ResponseEntity<?> logoutUser() {
+		ResponseCookie jwtCookie = jwtTokenUtil.getCleanJwtCookie();
+		HttpHeaders headers = new HttpHeaders();
+		headers.add(HttpHeaders.SET_COOKIE, jwtCookie.toString());
+		return ResponseEntity.ok().headers(headers).body(null);
 	}
 
 	@GetMapping("/validate")

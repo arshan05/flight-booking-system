@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Payment from "./component/Payment";
 import Schedule from "./component/Schedule";
@@ -8,6 +7,8 @@ import NavBar from "./component/NavBar";
 import Register from "./component/Register";
 import Login from "./component/Login";
 import AuthForm from "./component/Sign";
+import Logout from "./component/Logout";
+import SchedulesResult from "./component/SchedulesResult";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path="/sign" Component={AuthForm}></Route>
         <Route path="/register" Component={Register}></Route>
         <Route path="/login" Component={Login}></Route>
+        <Route path="/logout" Component={Logout}></Route>
+        <Route path="/schedulesResult" Component={SchedulesResult}></Route>
         
         
       </Routes>

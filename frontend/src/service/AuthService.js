@@ -1,72 +1,64 @@
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../store/auth-slice";
 
 const API_BASE_URL = "http://localhost:9098/api/auth";
 
-const axiosInstance = axios.create({
-  withCredentials: true,
-});
-const AuthService = {
-  // login: async (loginRequest) => {
-  //   const response = await axios.post(
-  //     "http://localhost:9098/api/auth/signin",
-  //     loginRequest,
-  //     {withCredentials:true}
-  //   );
-  //   const jwtCookie = response.headers;
-
-  //   console.log(jwtCookie);
-
-  //   // return {
-  //   //   username: response.data.username,
-  //   //   roles: response.data.roles,
-  //   //   jwtToken: jwtCookie.value,
-  //   // };
-  // },
-
-  // login: async (loginRequest) => {
-  //   fetch(`${API_BASE_URL}/signin`, {
-  //         method: "post",
-  //         headers: {
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json",
-  //         },
-  //         body:JSON.stringify(loginRequest),
-  //         credentials:'include'
-  //       }).then((response) => {
-  //         console.log(response.headers);
-  //       });
-  // }
-
-  login : async (loginRequest) => {
+export const login = (loginRequest) => {
+  return async (dispatch) => {
     try {
-      const response = await axios.post('http://localhost:9098/api/auth/signin', loginRequest, { withCredentials: true } );
-      console.log('Response Data:', response.data);
+      const response = await axios.post(
+        `${API_BASE_URL}/signin`,
+        loginRequest,
+        { withCredentials: true }
+      );
+      // console.log("Response Data:", response.data);
 
-      const cookies = document.cookie.split(';');
-    let jwtToken = null;
+      const cookies = document.cookie.split(";");
+      let jwtToken = null;
 
-    cookies.forEach((cookie) => {
-      const cookieParts = cookie.trim().split('=');
-      const cookieName = cookieParts[0];
-      const cookieValue = cookieParts[1];
+      cookies.forEach((cookie) => {
+        const cookieParts = cookie.trim().split("=");
+        const cookieName = cookieParts[0];
+        const cookieValue = cookieParts[1];
 
-      if (cookieName === 'login') {
-        jwtToken = cookieValue;
-      }
-    });
-
-    console.log('JWT Token:', jwtToken);
-
-      // Log the cookies
-      // const cookies = response.headers['set-cookie'][0];
-      // console.log('Cookies:', response.headers);
-      // console.log('Cookies:', cookies);
+        if (cookieName === "login") {
+          jwtToken = cookieValue;
+        }
+      });
+      const authResponse = {
+        isAuthenticated: true,
+        email: loginRequest.username,
+        role: response.data.roles,
+        token: response.data.jwtToken
+      };
+      // console.log(authResponse);
+      dispatch(authActions.authenticate(authResponse));
     } catch (error) {
       console.error(error);
     }
-  },
-
-  //
+  };
 };
 
-export default AuthService;
+
+export const logout = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `${API_BASE_URL}/logout`,
+        { withCredentials: true }
+      );
+
+      const authResponse = {
+        isAuthenticated: false,
+        email: '',
+        role: '',
+        token: ''
+      };
+      // console.log(authResponse);
+      dispatch(authActions.authenticate(authResponse));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};

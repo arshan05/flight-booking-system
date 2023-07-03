@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import paymentService from "../service/PaymentService";
 
-const Schedule = () => {
+const Schedule = (props) => {
   return (
     <div className="card m-5 p-2 d-flex flex-row justify-content-around">
       {/* flight name & number */}
       <div>
         <div>
-          <p className="fs-4 fw-bold">Air One</p>
+          <p className="fs-4 fw-bold">{props.flight.airlineCompany.airlineName}</p>
         </div>
         <div>
           <p className="fs-6">Fl01</p>

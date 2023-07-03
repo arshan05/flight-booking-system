@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import { useState } from "react";

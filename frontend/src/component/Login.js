@@ -1,20 +1,24 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import AuthService from "../service/AuthService";
+import AuthService, { login } from "../service/AuthService";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
+
   const LoginHandler = (event) => {
     event.preventDefault();
     const loginRequest = {
-        'username':email,
-        'password':password
+      username: email,
+      password: password,
     };
-    console.log(loginRequest);
-    AuthService.login(loginRequest);
+    dispatch(login(loginRequest));
+    console.log(auth);
   };
 
   return (

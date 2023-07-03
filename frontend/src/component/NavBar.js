@@ -5,13 +5,12 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "../style/navbar.css";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
+  const auth = useSelector((state) => state.auth);
   return (
-    <Navbar
-      expand="lg"
-      className="bg-body-tertiary"
-    >
+    <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Link to="/" className="navbar-brand">
           <span className="title-font">Escapes</span>
@@ -23,22 +22,21 @@ const NavBar = () => {
               <span>home</span>
             </NavLink>
 
-            <NavLink
-              to="/payment"
-              className="nav-link float-end"
-              
-            >
+            <NavLink to="/payment" className="nav-link float-end">
               <span>my bookings</span>
             </NavLink>
 
-            <NavLink
-              to="/sign"
-              className="nav-link float-end"
-              
-            >
-              <span>login/register</span>
-            </NavLink>
+            {!auth.isAuthenticated && (
+              <NavLink to="/sign" className="nav-link float-end">
+                <span>login/register</span>
+              </NavLink>
+            )}
 
+            {auth.isAuthenticated && (
+              <NavLink to="/logout" className="nav-link float-end">
+                <span>logout</span>
+              </NavLink>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
