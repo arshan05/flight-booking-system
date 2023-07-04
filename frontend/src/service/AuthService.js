@@ -30,7 +30,7 @@ export const login = (loginRequest) => {
         isAuthenticated: true,
         email: loginRequest.username,
         role: response.data.roles,
-        token: response.data.jwtToken
+        token: response.data.jwtToken,
       };
       // console.log(authResponse);
       dispatch(authActions.authenticate(authResponse));
@@ -40,25 +40,48 @@ export const login = (loginRequest) => {
   };
 };
 
-
 export const logout = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        `${API_BASE_URL}/logout`,
-        { withCredentials: true }
-      );
+      const response = await axios.get(`${API_BASE_URL}/logout`, {
+        withCredentials: true,
+      });
 
       const authResponse = {
         isAuthenticated: false,
-        email: '',
-        role: '',
-        token: ''
+        email: "",
+        role: "",
+        token: "",
       };
       // console.log(authResponse);
       dispatch(authActions.authenticate(authResponse));
     } catch (error) {
       console.error(error);
+    }
+  };
+};
+
+export const validate = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `${API_BASE_URL}/validate`,
+        { withCredentials: true }
+      );
+      if(response.status === 200){
+        const authResponse = {
+          isAuthenticated: true,
+          email: response.data.name,
+          role: response.data.role,
+          token: response.data.jwtToken
+        };
+        dispatch(authActions.authenticate(authResponse));
+      }
+      else{
+        console.log('cookie not found');
+      }
+    } catch (error) {
+      console.log('cookie not found');
     }
   };
 };

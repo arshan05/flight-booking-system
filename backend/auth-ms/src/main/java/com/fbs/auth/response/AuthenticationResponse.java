@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class AuthenticationResponse {
 	private String name;
 	private List<String> role;
+	private String jwtToken;
 	private boolean isValid;
 
 }

@@ -128,6 +128,7 @@ public class AuthController {
 					response.setName(username);
 					response.setRole(roles);
 					response.setValid(true);
+					response.setJwtToken(token);
 					
 				} else {
 					response.setValid(false);

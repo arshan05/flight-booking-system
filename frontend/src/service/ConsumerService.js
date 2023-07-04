@@ -31,8 +31,10 @@ export const getFlights = (flightDetails) => {
     };
 
     const schedulesData = await fetchData();
-    console.log(schedulesData);
-    dispatch(resultActions.replaceScheduleResult(schedulesData));
+    if (schedulesData === undefined) {
+      console.log("Results not found");
+    } else {
+      dispatch(resultActions.replaceScheduleResult(schedulesData));
+    }
   };
 };
-

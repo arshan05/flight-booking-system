@@ -37,34 +37,20 @@ public class CustomerController {
 	AuthService authService;
 
 	@GetMapping("/getFlights")
-	public List<Schedule> getFlightDetails(@RequestHeader("cookie") String cookie, @RequestParam String start, @RequestParam String destination, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
+	public List<Schedule> getFlightDetails(@RequestParam String start, @RequestParam String destination,
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
 
-		System.out.println(cookie);
-		
-		try {
-			if (authService.isSessionValid(cookie)) {
-				return flightBookingService.getFlightDetails(start, destination, date);
-
-			}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
-		} catch (
-
-		Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
-		}
-
+		return flightBookingService.getFlightDetails(start, destination, date);
 
 	}
 
 //	@GetMapping("/getFlights")
-//	public List<Schedule> getFlightDetails(@RequestHeader("cookie") String cookie, @RequestBody FlightDetailsRequest detailsRequest) {
+//	public List<Schedule> getFlightDetails(@RequestHeader("cookie") String cookie, @RequestParam String start, @RequestParam String destination, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
 //
+//		System.out.println(cookie);
+//		
 //		try {
 //			if (authService.isSessionValid(cookie)) {
-//				String start = detailsRequest.getStart();
-//				String destination = detailsRequest.getDestination();
-//				Date date = detailsRequest.getDate();
-//				System.out.println(detailsRequest);
 //				return flightBookingService.getFlightDetails(start, destination, date);
 //
 //			}
@@ -75,7 +61,10 @@ public class CustomerController {
 //			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
 //		}
 //
+//
 //	}
+
+//	
 
 	@GetMapping("/getAvailableSeats")
 	public List<FlightSeat> getAvailableSeats(@RequestHeader("cookie") String cookie, @RequestBody Schedule schedule) {
@@ -93,13 +82,14 @@ public class CustomerController {
 	}
 
 	@PostMapping("/bookFlight")
-	public ResponseEntity<BookingDetails> bookFlight(@RequestHeader("cookie") String cookie, @RequestBody BookFlightRequest bookFlightRequest) {
+	public ResponseEntity<BookingDetails> bookFlight(@RequestHeader("cookie") String cookie,
+			@RequestBody BookFlightRequest bookFlightRequest) {
 		try {
 			if (authService.isSessionValid(cookie)) {
 				Schedule schedule = bookFlightRequest.getSchedule();
 				Passenger passenger = bookFlightRequest.getPassenger();
 				String seatNumber = bookFlightRequest.getSeatNumber();
-				BookingDetails bookingDetails =flightBookingService.bookFlight(schedule, passenger, seatNumber);
+				BookingDetails bookingDetails = flightBookingService.bookFlight(schedule, passenger, seatNumber);
 				return ResponseEntity.ok(bookingDetails);
 			}
 			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
@@ -110,20 +100,19 @@ public class CustomerController {
 		}
 
 	}
-	
+
 	@PostMapping("/addPassenger")
-	public ResponseEntity<Passenger> addPassenger(@RequestHeader("cookie") String cookie, @RequestBody Passenger passenger)
-			{
-		
+	public ResponseEntity<Passenger> addPassenger(@RequestHeader("cookie") String cookie,
+			@RequestBody Passenger passenger) {
+
 		try {
-			
+
 			if (authService.isSessionValid(cookie)) {
 				System.out.println("o=========k");
 				Passenger newlyAddedPassenger = flightBookingService.addPassenger(passenger);
 				return ResponseEntity.ok(newlyAddedPassenger);
-			}
-			else {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "YOU_ARE_UNAUTHORIZED");
+			} else {
+				throw new ResponseStatusException(HttpStatus.FORBIDDEN, "YOU_ARE_UNAUTHORIZED");
 			}
 		} catch (
 
@@ -132,7 +121,7 @@ public class CustomerController {
 		}
 
 	}
-	
+
 	@GetMapping("/hello")
 	public String hello() {
 		return "hello";

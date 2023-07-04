@@ -9,6 +9,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { getFlights } from "../service/ConsumerService";
 import { format } from "date-fns";
 import { Link, useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
 
 const myStyle = {
   backgroundColor: "#f5f5f5",
@@ -24,12 +25,15 @@ const Home = () => {
   // ScheduleService.getAllSchedules();
   const dispatch = useDispatch();
   const locations = useSelector((state) => state.location.locations);
-  const schedulesResult = useSelector((state) => state.schedulesResult.schedulesResult);
+  const schedulesResult = useSelector(
+    (state) => state.schedulesResult.schedulesResult
+  );
+  const today = dayjs();
   const navigate = useNavigate();
 
   const [fromField, setFromField] = useState("");
   const [toField, setToField] = useState("");
-  const [dateField, setDateField] = useState("");
+  const [dateField, setDateField] = useState(today);
 
   useEffect(() => {
     dispatch(getLocations());
@@ -47,9 +51,9 @@ const Home = () => {
     // console.log(flightDetails);
     // ConsumerService.getFlights(flightDetails);
     console.log(schedulesResult);
-    dispatch(getFlights(flightDetails));
-    navigate('/schedulesResult')
-    console.log(schedulesResult);
+    // dispatch(getFlights(flightDetails));
+    navigate("/schedulesResult", {state:flightDetails});
+    // console.log(schedulesResult);
   };
 
   return (
@@ -81,7 +85,7 @@ const Home = () => {
                 <div className="mb-3 d-flex flex-row justify-content-around">
                   <div className="col-3">
                     <Autocomplete
-                      id="dropdown"
+                      id="fromDropdown"
                       options={locations}
                       getOptionLabel={(option) => option.place}
                       onChange={(event, value) => {
@@ -95,6 +99,7 @@ const Home = () => {
                           {...params}
                           label="From"
                           variant="outlined"
+                          required
                         />
                       )}
                     />
@@ -112,7 +117,12 @@ const Home = () => {
                       }}
                       disableClearable
                       renderInput={(params) => (
-                        <TextField {...params} label="To" variant="outlined" />
+                        <TextField
+                          {...params}
+                          label="To"
+                          variant="outlined"
+                          required
+                        />
                       )}
                     />
                   </div>
@@ -124,6 +134,7 @@ const Home = () => {
                       <DatePicker
                         label="Date"
                         format="DD/MM/YYYY"
+                        defaultValue={dateField}
                         onChange={(date) => {
                           console.log(date);
                           setDateField(`${date.$y}-${date.$M}-${date.$D}`);

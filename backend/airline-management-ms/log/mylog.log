@@ -1,410 +1,73 @@
-2023-07-03 08:00:10,539 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Starting AirlineManagementMsApplication using Java 17.0.7 with PID 9208 (D:\Project\Projects-23\flight booking system\backend\airline-management-ms\target\classes started by hp in D:\Project\Projects-23\flight booking system\backend\airline-management-ms)
-2023-07-03 08:00:10,543 [DEBUG] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
-2023-07-03 08:00:10,545 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-07-03 08:00:10,626 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-07-03 08:00:10,635 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-07-03 08:00:12,039 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2023-07-03 08:00:12,104 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 59 ms. Found 7 MongoDB repository interfaces.
-2023-07-03 08:00:12,271 [INFO] org.springframework.cloud.context.scope.GenericScope [restartedMain] BeanFactory id=0208c61d-8e85-3166-af5e-570a88a6c28d
-2023-07-03 08:00:12,301 [INFO] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'com.fbs.airline.proxy.AuthProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-07-03 08:00:12,303 [INFO] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'com.fbs.airline.proxy.FareProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-07-03 08:00:12,969 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9091 (http)
-2023-07-03 08:00:12,982 [INFO] org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
-2023-07-03 08:00:12,982 [INFO] org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-07-03 08:00:13,064 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-07-03 08:00:13,064 [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2429 ms
-2023-07-03 08:00:13,249 [INFO] org.mongodb.driver.client [restartedMain] MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.9.1"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Eclipse Adoptium/17.0.7+7"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@69d29909, com.mongodb.Jep395RecordCodecProvider@63fc7f26]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
-2023-07-03 08:00:13,265 [INFO] org.mongodb.driver.cluster [cluster-ClusterId{value='64a232b59ce6387c1cc2fb6c', description='null'}-localhost:27017] Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=17, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=26333500}
-2023-07-03 08:00:13,406 [WARN] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] Unable to start LiveReload server
-2023-07-03 08:00:15,014 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9091 (http) with context path ''
-2023-07-03 08:00:15,161 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Started AirlineManagementMsApplication in 5.44 seconds (process running for 6.883)
-2023-07-03 08:00:19,775 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-9091-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-07-03 08:00:19,775 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-9091-exec-1] Initializing Servlet 'dispatcherServlet'
-2023-07-03 08:00:19,777 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-9091-exec-1] Completed initialization in 2 ms
-2023-07-03 08:00:20,027 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 08:00:35,022 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 08:08:21,400 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 08:18:20,754 [INFO] org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(26)-127.0.0.1] Application shutdown requested.
-2023-07-03 08:18:21,070 [INFO] org.apache.catalina.core.StandardService [RMI TCP Connection(26)-127.0.0.1] Stopping service [Tomcat]
-2023-07-03 08:18:21,082 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [RMI TCP Connection(26)-127.0.0.1] Destroying Spring FrameworkServlet 'dispatcherServlet'
-2023-07-03 10:50:37,785 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Starting AirlineManagementMsApplication using Java 17.0.7 with PID 10788 (D:\Project\Projects-23\flight booking system\backend\airline-management-ms\target\classes started by hp in D:\Project\Projects-23\flight booking system\backend\airline-management-ms)
-2023-07-03 10:50:37,824 [DEBUG] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
-2023-07-03 10:50:37,827 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-07-03 10:50:37,925 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-07-03 10:50:37,925 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-07-03 10:50:40,708 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2023-07-03 10:50:40,878 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 157 ms. Found 7 MongoDB repository interfaces.
-2023-07-03 10:50:41,231 [INFO] org.springframework.cloud.context.scope.GenericScope [restartedMain] BeanFactory id=0208c61d-8e85-3166-af5e-570a88a6c28d
-2023-07-03 10:50:41,291 [INFO] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'com.fbs.airline.proxy.AuthProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-07-03 10:50:41,294 [INFO] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'com.fbs.airline.proxy.FareProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-07-03 10:50:42,436 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9091 (http)
-2023-07-03 10:50:42,457 [INFO] org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
-2023-07-03 10:50:42,458 [INFO] org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-07-03 10:50:42,605 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-07-03 10:50:42,606 [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 4679 ms
-2023-07-03 10:50:42,990 [INFO] org.mongodb.driver.client [restartedMain] MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.9.1"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Eclipse Adoptium/17.0.7+7"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@1fe66f7e, com.mongodb.Jep395RecordCodecProvider@6f354fce]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
-2023-07-03 10:50:43,015 [INFO] org.mongodb.driver.cluster [cluster-ClusterId{value='64a25aaa696b8b35a6d6cf92', description='null'}-localhost:27017] Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=17, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=36753500}
-2023-07-03 10:50:43,367 [INFO] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2023-07-03 10:50:48,713 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9091 (http) with context path ''
-2023-07-03 10:50:49,258 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Started AirlineManagementMsApplication in 12.607 seconds (process running for 15.446)
-2023-07-03 10:52:22,204 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-9091-exec-3] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-07-03 10:52:22,204 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-9091-exec-3] Initializing Servlet 'dispatcherServlet'
-2023-07-03 10:52:22,206 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-9091-exec-3] Completed initialization in 2 ms
-2023-07-03 10:52:22,527 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 10:58:01,371 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 10:58:09,472 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 11:13:42,829 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 11:18:28,886 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 11:18:28,928 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 11:18:28,988 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 11:19:05,812 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 11:19:11,189 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 11:19:33,890 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 11:19:45,864 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 11:19:50,775 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 11:19:53,373 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 11:20:02,614 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 11:20:09,046 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 11:22:58,300 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 11:23:35,509 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 11:23:36,597 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 11:23:58,813 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 11:24:24,316 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 11:24:45,784 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 11:24:47,279 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 11:25:09,718 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 11:25:10,794 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 11:25:54,376 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 11:26:02,715 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 11:26:05,718 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 11:26:19,618 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 11:26:20,385 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 11:26:45,764 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 11:26:49,204 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 11:26:58,095 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 11:27:02,046 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 11:27:07,621 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 11:27:09,094 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 11:27:10,692 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 11:27:15,425 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 11:27:29,183 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 11:27:36,515 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 11:27:42,136 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 11:27:44,167 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 11:27:48,451 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 11:28:29,939 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 11:29:55,841 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 11:30:05,092 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 11:59:04,593 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 11:59:24,564 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 11:59:26,871 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 11:59:34,454 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 11:59:45,450 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 12:01:10,066 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 12:02:09,770 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 12:03:27,596 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 12:03:27,999 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 12:04:14,523 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 12:04:15,011 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 12:04:20,733 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 12:04:21,515 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 12:04:38,492 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 12:04:39,479 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 12:04:41,779 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 12:04:42,496 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 12:04:47,338 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 12:04:47,436 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 12:04:51,452 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 12:04:52,498 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 12:05:07,143 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 12:05:19,711 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 12:05:20,472 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 12:05:21,877 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 12:05:22,483 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 12:05:31,009 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 12:05:31,461 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 12:05:41,308 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 12:05:42,471 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 12:05:46,231 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 12:05:46,466 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 12:06:04,258 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 12:06:05,493 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 12:06:15,639 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 12:06:17,335 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 12:06:17,438 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 12:06:20,470 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 12:06:21,465 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 12:06:29,629 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 12:06:30,480 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 12:06:31,033 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 12:06:31,443 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 12:06:35,341 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 12:06:35,452 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 12:06:51,355 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 12:06:52,419 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 12:07:00,581 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 12:07:01,449 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 12:07:41,878 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 12:07:42,471 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 12:07:58,908 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 12:07:59,547 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 12:08:28,900 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 12:08:29,506 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 12:08:31,606 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 12:08:32,444 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 12:08:42,435 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 12:08:43,478 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 12:08:44,270 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 12:08:44,502 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 12:08:52,684 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 12:08:53,493 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 12:09:08,649 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 12:09:08,904 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 12:09:09,489 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 12:09:19,862 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 12:09:20,445 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 12:09:21,385 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 12:09:22,448 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 12:09:28,582 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 12:09:29,455 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 12:09:38,955 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 12:09:39,452 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 13:20:44,209 [INFO] org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(159)-127.0.0.1] Application shutdown requested.
-2023-07-03 15:44:48,002 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Starting AirlineManagementMsApplication using Java 17.0.7 with PID 8932 (D:\Project\Projects-23\flight booking system\backend\airline-management-ms\target\classes started by hp in D:\Project\Projects-23\flight booking system\backend\airline-management-ms)
-2023-07-03 15:44:48,028 [DEBUG] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
-2023-07-03 15:44:48,030 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-07-03 15:44:48,212 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-07-03 15:44:48,213 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-07-03 15:44:53,465 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2023-07-03 15:44:53,692 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 209 ms. Found 7 MongoDB repository interfaces.
-2023-07-03 15:44:54,917 [INFO] org.springframework.cloud.context.scope.GenericScope [restartedMain] BeanFactory id=0208c61d-8e85-3166-af5e-570a88a6c28d
-2023-07-03 15:44:55,184 [INFO] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'com.fbs.airline.proxy.AuthProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-07-03 15:44:55,194 [INFO] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'com.fbs.airline.proxy.FareProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-07-03 15:44:59,233 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9091 (http)
-2023-07-03 15:44:59,360 [INFO] org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
-2023-07-03 15:44:59,361 [INFO] org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-07-03 15:45:00,480 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-07-03 15:45:00,481 [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 12267 ms
-2023-07-03 15:45:03,026 [INFO] org.mongodb.driver.cluster [cluster-ClusterId{value='64a29fa63eb4a13ba067ac4f', description='null'}-localhost:27017] Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=17, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=174839001}
-2023-07-03 15:45:03,175 [INFO] org.mongodb.driver.client [restartedMain] MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.9.1"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Eclipse Adoptium/17.0.7+7"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@19891492, com.mongodb.Jep395RecordCodecProvider@5d69928a]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
-2023-07-03 15:45:04,909 [WARN] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] Unable to start LiveReload server
-2023-07-03 15:45:20,996 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9091 (http) with context path ''
-2023-07-03 15:45:22,353 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Started AirlineManagementMsApplication in 37.135 seconds (process running for 41.021)
-2023-07-03 15:48:52,748 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-9091-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-07-03 15:48:52,749 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-9091-exec-1] Initializing Servlet 'dispatcherServlet'
-2023-07-03 15:48:52,753 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-9091-exec-1] Completed initialization in 3 ms
-2023-07-03 15:48:53,196 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 16:54:42,352 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 16:55:05,823 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 16:55:53,811 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 16:56:18,332 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 16:57:49,191 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 16:59:35,657 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 17:19:23,852 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 17:36:24,176 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 17:38:27,739 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 17:38:46,096 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 17:38:48,284 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 17:39:04,191 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 17:39:07,693 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 17:39:17,263 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 17:39:18,802 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 17:40:01,320 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 17:40:02,303 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 17:40:19,840 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 17:40:20,896 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 17:40:22,524 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 17:40:28,544 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 17:40:35,550 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 17:40:39,605 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 17:41:23,447 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 17:41:48,775 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 17:41:51,813 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 17:41:59,762 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 17:42:13,890 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 17:42:59,299 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 17:43:01,347 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 17:44:28,334 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 17:44:33,462 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 17:46:00,823 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 17:46:05,102 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 17:46:09,351 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 17:47:05,477 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 17:47:14,827 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 17:48:06,037 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 17:48:53,714 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 17:49:15,533 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 17:49:30,967 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 17:49:36,652 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 17:49:46,391 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 17:49:48,953 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 17:50:01,937 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 17:50:02,634 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 17:51:33,673 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 17:51:37,536 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 17:51:41,621 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 17:51:45,324 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 17:51:49,877 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 17:52:37,111 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 17:52:51,519 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 17:52:56,013 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 17:53:05,546 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 17:53:07,689 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 17:53:15,356 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 17:53:32,744 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 17:53:38,578 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 17:53:58,613 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 17:54:05,753 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 17:54:08,117 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 17:54:16,016 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 17:54:52,862 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 17:54:55,346 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 17:55:10,007 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 17:55:14,524 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 17:55:19,557 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 17:55:33,026 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 17:55:39,788 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 17:55:42,990 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 17:55:51,630 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 17:55:56,145 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 21:04:34,718 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Starting AirlineManagementMsApplication using Java 17.0.7 with PID 15220 (D:\Project\Projects-23\flight booking system\backend\airline-management-ms\target\classes started by hp in D:\Project\Projects-23\flight booking system\backend\airline-management-ms)
-2023-07-03 21:04:34,739 [DEBUG] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
-2023-07-03 21:04:34,742 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-07-03 21:04:34,831 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-07-03 21:04:34,831 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-07-03 21:04:36,177 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2023-07-03 21:04:36,288 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 102 ms. Found 7 MongoDB repository interfaces.
-2023-07-03 21:04:36,601 [INFO] org.springframework.cloud.context.scope.GenericScope [restartedMain] BeanFactory id=0208c61d-8e85-3166-af5e-570a88a6c28d
-2023-07-03 21:04:36,658 [INFO] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'com.fbs.airline.proxy.AuthProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-07-03 21:04:36,662 [INFO] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'com.fbs.airline.proxy.FareProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2023-07-03 21:04:37,690 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9091 (http)
-2023-07-03 21:04:37,704 [INFO] org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
-2023-07-03 21:04:37,705 [INFO] org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-07-03 21:04:37,839 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-07-03 21:04:37,840 [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 3008 ms
-2023-07-03 21:04:38,194 [INFO] org.mongodb.driver.client [restartedMain] MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.9.1"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Eclipse Adoptium/17.0.7+7"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@5be8473e, com.mongodb.Jep395RecordCodecProvider@208c62e]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
-2023-07-03 21:04:38,215 [INFO] org.mongodb.driver.cluster [cluster-ClusterId{value='64a2ea8e00c3db0f2317dbd3', description='null'}-localhost:27017] Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=17, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=40602600}
-2023-07-03 21:04:38,493 [WARN] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] Unable to start LiveReload server
-2023-07-03 21:04:40,932 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9091 (http) with context path ''
-2023-07-03 21:04:41,201 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Started AirlineManagementMsApplication in 7.633 seconds (process running for 11.18)
-2023-07-03 21:05:24,489 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-9091-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-07-03 21:05:24,490 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-9091-exec-1] Initializing Servlet 'dispatcherServlet'
-2023-07-03 21:05:24,493 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-9091-exec-1] Completed initialization in 3 ms
-2023-07-03 21:05:24,885 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 21:07:36,260 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 21:08:24,163 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 21:08:26,394 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 21:08:50,198 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 21:08:56,679 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 21:09:07,025 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 21:09:47,070 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 21:10:18,859 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 21:10:22,594 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 21:11:10,130 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 21:11:13,204 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 21:11:48,572 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 21:17:06,879 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 21:17:48,651 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 21:18:45,772 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 21:18:46,840 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 21:19:59,205 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 21:35:15,330 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 21:38:33,940 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 21:44:51,254 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 21:44:55,460 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 21:46:35,162 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 21:46:35,354 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 21:46:45,515 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 21:46:46,897 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 21:46:52,068 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 21:46:52,274 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 21:47:08,901 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 21:47:21,244 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 21:47:21,718 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 21:47:23,330 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 21:47:25,388 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 21:48:19,688 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 21:48:24,409 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 21:48:28,712 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 21:50:29,263 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 21:50:37,628 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 21:50:42,879 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 21:51:43,603 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 21:51:45,748 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 21:51:52,036 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 21:52:00,252 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 21:52:10,365 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 21:52:12,659 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 21:52:13,683 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 21:52:17,644 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 21:52:40,522 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 21:53:06,395 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 21:53:10,630 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 21:54:42,133 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 21:54:45,091 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 21:54:50,553 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 21:54:52,927 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 21:57:02,117 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 21:57:58,765 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 21:58:33,485 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 21:58:48,626 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 21:58:48,910 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 21:58:50,599 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 21:59:04,698 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 21:59:11,016 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 21:59:15,352 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 21:59:18,799 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 21:59:32,027 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 21:59:35,584 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 21:59:38,888 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 22:00:13,595 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 22:00:15,570 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 22:00:31,367 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 22:00:44,364 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 22:00:44,915 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 22:00:45,214 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 22:01:27,739 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 22:01:54,609 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 22:01:58,220 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 22:02:11,628 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 22:02:16,748 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 22:02:33,973 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 22:02:57,778 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 22:02:58,908 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 22:03:00,987 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 22:03:02,551 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 22:07:56,338 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 22:08:18,437 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 22:08:46,388 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 22:08:49,108 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 22:11:06,723 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 22:11:54,687 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 22:15:11,112 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 22:16:35,356 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 22:17:26,428 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 22:18:55,791 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 22:19:22,049 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
-2023-07-03 22:20:30,945 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 22:21:36,892 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 22:21:41,575 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 22:23:55,660 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 22:23:59,664 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 22:24:16,074 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 22:26:40,647 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 22:26:56,157 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 22:38:56,848 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 22:39:14,679 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 22:41:32,941 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 22:42:45,994 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 22:43:50,997 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
-2023-07-03 22:44:06,215 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
-2023-07-03 22:44:12,284 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
-2023-07-03 22:44:26,725 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
-2023-07-03 22:44:55,653 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
-2023-07-03 22:44:55,836 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
-2023-07-03 22:45:00,453 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
-2023-07-03 22:45:00,540 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
-2023-07-03 22:45:23,008 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
-2023-07-03 22:46:45,581 [INFO] org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(110)-127.0.0.1] Application shutdown requested.
-2023-07-03 22:46:45,763 [INFO] org.apache.catalina.core.StandardService [RMI TCP Connection(110)-127.0.0.1] Stopping service [Tomcat]
-2023-07-03 22:46:45,781 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [RMI TCP Connection(110)-127.0.0.1] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-07-04 12:21:33,202 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Starting AirlineManagementMsApplication using Java 17.0.7 with PID 1428 (D:\Project\Projects-23\flight booking system\backend\airline-management-ms\target\classes started by hp in D:\Project\Projects-23\flight booking system\backend\airline-management-ms)
+2023-07-04 12:21:33,218 [DEBUG] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-04 12:21:33,221 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-07-04 12:21:33,897 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-04 12:21:33,901 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-04 12:21:43,640 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2023-07-04 12:21:44,680 [INFO] org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 950 ms. Found 7 MongoDB repository interfaces.
+2023-07-04 12:21:47,476 [INFO] org.springframework.cloud.context.scope.GenericScope [restartedMain] BeanFactory id=0208c61d-8e85-3166-af5e-570a88a6c28d
+2023-07-04 12:21:47,624 [INFO] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'com.fbs.airline.proxy.AuthProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-07-04 12:21:47,632 [INFO] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'com.fbs.airline.proxy.FareProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-07-04 12:21:52,082 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9091 (http)
+2023-07-04 12:21:52,214 [INFO] org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2023-07-04 12:21:52,220 [INFO] org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-04 12:21:52,885 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-07-04 12:21:52,886 [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 18982 ms
+2023-07-04 12:21:56,019 [INFO] org.mongodb.driver.client [restartedMain] MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.9.1"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Eclipse Adoptium/17.0.7+7"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@37b6519d, com.mongodb.Jep395RecordCodecProvider@3157037e]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
+2023-07-04 12:21:56,196 [INFO] org.mongodb.driver.cluster [cluster-ClusterId{value='64a3c18ac8c2ee3cfba54dad', description='null'}-localhost:27017] Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=17, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=676830000}
+2023-07-04 12:21:57,767 [WARN] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] Unable to start LiveReload server
+2023-07-04 12:22:13,002 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9091 (http) with context path ''
+2023-07-04 12:22:13,433 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Started AirlineManagementMsApplication in 44.669 seconds (process running for 49.392)
+2023-07-04 12:24:43,020 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-9091-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-04 12:24:43,020 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-9091-exec-1] Initializing Servlet 'dispatcherServlet'
+2023-07-04 12:24:43,023 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-9091-exec-1] Completed initialization in 3 ms
+2023-07-04 12:24:43,336 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
+2023-07-04 12:25:28,047 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
+2023-07-04 12:25:37,877 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
+2023-07-04 12:26:15,583 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
+2023-07-04 12:26:26,431 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
+2023-07-04 12:26:50,421 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
+2023-07-04 12:26:54,404 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
+2023-07-04 12:26:56,454 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
+2023-07-04 12:27:10,398 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
+2023-07-04 12:27:12,405 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
+2023-07-04 12:27:14,413 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
+2023-07-04 12:27:19,412 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
+2023-07-04 12:27:24,385 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
+2023-07-04 12:27:26,388 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
+2023-07-04 12:27:27,390 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
+2023-07-04 12:27:56,403 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
+2023-07-04 12:32:18,566 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
+2023-07-04 12:32:31,463 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
+2023-07-04 12:34:05,629 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
+2023-07-04 12:36:03,280 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
+2023-07-04 12:37:51,100 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
+2023-07-04 12:56:18,180 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
+2023-07-04 13:09:57,322 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
+2023-07-04 13:14:48,489 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
+2023-07-04 13:16:23,953 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
+2023-07-04 13:18:25,117 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
+2023-07-04 13:18:29,659 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
+2023-07-04 13:18:33,204 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
+2023-07-04 13:20:45,194 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
+2023-07-04 13:34:55,199 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
+2023-07-04 13:38:39,429 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-5] Locations retrieved successfully. 3 items found
+2023-07-04 13:48:12,840 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-9] Locations retrieved successfully. 3 items found
+2023-07-04 13:48:57,051 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
+2023-07-04 13:48:57,458 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-3] Locations retrieved successfully. 3 items found
+2023-07-04 13:49:02,537 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
+2023-07-04 13:49:05,957 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-7] Locations retrieved successfully. 3 items found
+2023-07-04 13:49:42,391 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
+2023-07-04 13:49:58,719 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-1] Locations retrieved successfully. 3 items found
+2023-07-04 13:50:05,806 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
+2023-07-04 13:51:29,280 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-6] Locations retrieved successfully. 3 items found
+2023-07-04 14:04:08,478 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-10] Locations retrieved successfully. 3 items found
+2023-07-04 14:12:47,063 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-4] Locations retrieved successfully. 3 items found
+2023-07-04 14:16:42,554 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-8] Locations retrieved successfully. 3 items found
+2023-07-04 14:33:11,722 [INFO] com.fbs.airline.service.LocationService [http-nio-9091-exec-2] Locations retrieved successfully. 3 items found
+2023-07-04 15:00:51,011 [INFO] org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-04 15:00:51,365 [INFO] org.apache.catalina.core.StandardService [Thread-1] Stopping service [Tomcat]
+2023-07-04 15:00:51,397 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [Thread-1] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-07-04 15:00:53,082 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Starting AirlineManagementMsApplication using Java 17.0.7 with PID 1428 (D:\Project\Projects-23\flight booking system\backend\airline-management-ms\target\classes started by hp in D:\Project\Projects-23\flight booking system\backend\airline-management-ms)
+2023-07-04 15:00:53,082 [DEBUG] com.fbs.airline.AirlineManagementMsApplication [restartedMain] Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-04 15:00:53,083 [INFO] com.fbs.airline.AirlineManagementMsApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
