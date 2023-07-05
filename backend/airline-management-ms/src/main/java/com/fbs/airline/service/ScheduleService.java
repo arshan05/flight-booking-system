@@ -120,6 +120,9 @@ public class ScheduleService implements IScheduleService {
 		for (Schedule schedule : flight.getSchedules()) {
 			Date scheduleStartTime = schedule.getStartTime();
 			Date scheduleEndTime = schedule.getEndTime();
+			System.out.println("old: "+ scheduleStartTime);
+			System.out.println("new: "+ startTime);
+			System.out.println("-------------------------");
 
 			if (scheduleStartTime.equals(startTime) || scheduleEndTime.equals(endTime)) {
 				return true;

@@ -12,14 +12,12 @@ public class MyErrorResponseTest {
     public void testConstructorAndGetters() {
         LocalDateTime timestamp = LocalDateTime.now();
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-        String reason = "Internal Server Error";
         String message = "Something went wrong.";
 
-        MyErrorResponse errorResponse = new MyErrorResponse(timestamp, status, reason, message);
+        MyErrorResponse errorResponse = new MyErrorResponse(timestamp, status, message);
 
         Assertions.assertEquals(timestamp, errorResponse.getTimestamp());
         Assertions.assertEquals(status, errorResponse.getStatus());
-        Assertions.assertEquals(reason, errorResponse.getReason());
         Assertions.assertEquals(message, errorResponse.getMessage());
     }
 
@@ -27,18 +25,15 @@ public class MyErrorResponseTest {
     public void testSetters() {
         LocalDateTime timestamp = LocalDateTime.now();
         HttpStatus status = HttpStatus.NOT_FOUND;
-        String reason = "Not Found";
         String message = "Resource not found.";
 
         MyErrorResponse errorResponse = new MyErrorResponse();
         errorResponse.setTimestamp(timestamp);
         errorResponse.setStatus(status);
-        errorResponse.setReason(reason);
         errorResponse.setMessage(message);
 
         Assertions.assertEquals(timestamp, errorResponse.getTimestamp());
         Assertions.assertEquals(status, errorResponse.getStatus());
-        Assertions.assertEquals(reason, errorResponse.getReason());
         Assertions.assertEquals(message, errorResponse.getMessage());
     }
 
@@ -46,13 +41,12 @@ public class MyErrorResponseTest {
     public void testToString() {
         LocalDateTime timestamp = LocalDateTime.now();
         HttpStatus status = HttpStatus.BAD_REQUEST;
-        String reason = "Bad Request";
         String message = "Invalid input.";
 
-        MyErrorResponse errorResponse = new MyErrorResponse(timestamp, status, reason, message);
+        MyErrorResponse errorResponse = new MyErrorResponse(timestamp, status, message);
 
         String expectedString = "MyErrorResponse(timestamp=" + timestamp + ", status=" + status +
-                ", reason=" + reason + ", message=" + message + ")";
+                 ", message=" + message + ")";
         Assertions.assertEquals(expectedString, errorResponse.toString());
     }
 }

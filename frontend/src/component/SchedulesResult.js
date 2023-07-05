@@ -19,7 +19,7 @@ const SchedulesResult = () => {
   }, [dispatch]);
   return (
     <div>
-      <ul>
+      <ul style={{listStyleType:"none"}}>
         
         {schedulesResult !== undefined && schedulesResult.map((schedule) => (
           <Schedule schedule={schedule} />

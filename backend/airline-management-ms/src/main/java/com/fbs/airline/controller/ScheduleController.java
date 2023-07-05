@@ -42,11 +42,14 @@ public class ScheduleController {
 			if (authService.isSessionValid(cookie)) {
 				Schedule newlyAddedSchedule = scheduleService.addSchedule(schedule);
 				return ResponseEntity.ok(newlyAddedSchedule);
-			}
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
-		} catch (
+			} else {
+				throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 
-		Exception e) {
+			}
+
+		} catch (ScheduleException e) {
+			throw new ScheduleException(e.getMessage());
+		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
 		}
 
@@ -65,7 +68,7 @@ public class ScheduleController {
 		}
 
 	}
-	
+
 //	@GetMapping("/getAllSchedules")
 //	public ResponseEntity<List<Schedule>> getAllSchedules()
 //			throws ScheduleException {
@@ -91,8 +94,8 @@ public class ScheduleController {
 	}
 
 	@PutMapping("/updateSchedule")
-	public ResponseEntity<Schedule> updateSchedule(@RequestHeader("cookie") String cookie, @RequestBody Schedule schedule)
-			throws ScheduleException {
+	public ResponseEntity<Schedule> updateSchedule(@RequestHeader("cookie") String cookie,
+			@RequestBody Schedule schedule) throws ScheduleException {
 		try {
 			if (authService.isSessionValid(cookie)) {
 				return ResponseEntity.ok(scheduleService.updateSchedule(schedule));
@@ -105,12 +108,10 @@ public class ScheduleController {
 		}
 
 	}
-	
+
 	@GetMapping("/hello")
 	public String hello() {
 		return "hello";
 	}
-	
-	
-	
+
 }

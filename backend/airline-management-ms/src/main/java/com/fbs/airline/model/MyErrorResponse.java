@@ -21,6 +21,5 @@ public class MyErrorResponse {
 
 	private LocalDateTime timestamp;
 	private HttpStatus status;
-	private String reason;
 	private String message;
 }

@@ -57,7 +57,8 @@ public class AirlineController {
 	}
 
 	@GetMapping("/getAllAirlines")
-	public ResponseEntity<List<Airline>> getAllAirlines(@RequestHeader("cookie") String cookie) throws AirlineException {
+	public ResponseEntity<List<Airline>> getAllAirlines(@RequestHeader("cookie") String cookie)
+			throws AirlineException {
 		try {
 
 			if (authService.isSessionValid(cookie)) {
@@ -104,8 +105,21 @@ public class AirlineController {
 	}
 
 	@GetMapping("/getById/{id}")
-	public ResponseEntity<Airline> getById(@PathVariable String id) throws AirlineException {
-		return ResponseEntity.ok(airlineService.getbyId(id));
+	public ResponseEntity<Airline> getById(@RequestHeader("cookie") String cookie, @PathVariable String id)
+			throws AirlineException {
+
+		try {
+			if (authService.isSessionValid(cookie)) {
+				return ResponseEntity.ok(airlineService.getbyId(id));
+			} else {
+				throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
+			}
+		} catch (
+
+		Exception e) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
+		}
+
 	}
 
 }

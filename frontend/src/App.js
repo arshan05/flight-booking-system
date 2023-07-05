@@ -11,6 +11,7 @@ import Logout from "./component/Logout";
 import SchedulesResult from "./component/SchedulesResult";
 import { validate } from "./service/AuthService";
 import { useDispatch } from "react-redux";
+import Booking from "./component/Booking";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function App() {
         <Route path="/register" Component={Register}></Route>
         <Route path="/login" Component={Login}></Route>
         <Route path="/logout" Component={Logout}></Route>
-        <Route path="/schedulesResult" Component={SchedulesResult}></Route>
+        <Route path="/schedulesResult" Component={SchedulesResult}></Route><Route path="/booking" Component={Booking}></Route>
       </Routes>
     </BrowserRouter>
   );

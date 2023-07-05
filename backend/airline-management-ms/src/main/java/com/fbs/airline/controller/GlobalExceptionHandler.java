@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.fbs.airline.exception.AirlineException;
 import com.fbs.airline.exception.AirportException;
@@ -26,35 +27,40 @@ public class GlobalExceptionHandler {
 		error.setTimestamp(LocalDateTime.now());
 		error.setStatus(HttpStatus.NOT_FOUND);
 		error.setMessage(ex.getMessage());
-		error.setReason("Airline might not exist...");
 		return new ResponseEntity<MyErrorResponse>(error, HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler({ AirportException.class })
-	public ResponseEntity<MyErrorResponse> handleAirportNotFound(AirlineException ex) {
+	public ResponseEntity<MyErrorResponse> handleAirportNotFound(AirportException ex) {
 		error.setTimestamp(LocalDateTime.now());
 		error.setStatus(HttpStatus.NOT_FOUND);
 		error.setMessage(ex.getMessage());
-		error.setReason("Airport might not exist...");
 		return new ResponseEntity<MyErrorResponse>(error, HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler({ FlightException.class })
-	public ResponseEntity<MyErrorResponse> handleFlightNotFound(AirlineException ex) {
+	public ResponseEntity<MyErrorResponse> handleFlightNotFound(FlightException ex) {
 		error.setTimestamp(LocalDateTime.now());
 		error.setStatus(HttpStatus.NOT_FOUND);
 		error.setMessage(ex.getMessage());
-		error.setReason("Flight might not exist...");
 		return new ResponseEntity<MyErrorResponse>(error, HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler({ ScheduleException.class })
-	public ResponseEntity<MyErrorResponse> handleScheduleNotFound(AirlineException ex) {
+	public ResponseEntity<MyErrorResponse> handleScheduleNotFound(ScheduleException ex) {
 		error.setTimestamp(LocalDateTime.now());
 		error.setStatus(HttpStatus.NOT_FOUND);
 		error.setMessage(ex.getMessage());
-		error.setReason("Schedule might not exist...");
 		return new ResponseEntity<MyErrorResponse>(error, HttpStatus.NOT_FOUND);
 	}
+	
+	@ExceptionHandler(ResponseStatusException.class)
+	public ResponseEntity<MyErrorResponse> handleUnAuthorizedException(ResponseStatusException ex) {
+		error.setTimestamp(LocalDateTime.now());
+		error.setStatus(HttpStatus.UNAUTHORIZED);
+		error.setMessage(ex.getMessage());
+		return new ResponseEntity<MyErrorResponse>(error, HttpStatus.UNAUTHORIZED);
+	}
 
+	
 }
