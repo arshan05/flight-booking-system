@@ -7,6 +7,8 @@ import {
 import dayjs from "dayjs";
 
 const ScheduleDetail = (props) => {
+  const sharedSeatFare = props.sharedSeatFare;
+
   const airlineName = props.schedule?.flight.airlineCompany.airlineName;
   const flightNumber = props.schedule?.flight.flightNumber;
   const startTime = dayjs(props.schedule?.startTime);
@@ -92,8 +94,8 @@ const ScheduleDetail = (props) => {
                   </tr>
                 </table>
 
-                <hr>
-                </hr>
+                <hr></hr>
+                <p>{sharedSeatFare}</p>
               </div>
             </div>
           </div>
