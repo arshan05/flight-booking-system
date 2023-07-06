@@ -1,6 +1,8 @@
 package com.fbs.airline.controller;
 
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -98,6 +100,15 @@ public class ScheduleController {
 			@RequestBody Schedule schedule) throws ScheduleException {
 		try {
 			if (authService.isSessionValid(cookie)) {
+				Date istDateStart = schedule.getStartTime();
+				Date utcDateStart = new Date(istDateStart.getTime() + TimeZone.getTimeZone("UTC").getOffset(istDateStart.getTime()));
+				
+				Date istDateEnd = schedule.getEndTime();
+				Date utcDateEnd = new Date(istDateEnd.getTime() + TimeZone.getTimeZone("UTC").getOffset(istDateEnd.getTime()));
+				
+				System.out.println("start: " + istDateStart + " " + utcDateStart);
+				System.out.println("end: " + istDateEnd + " " + utcDateEnd);
+				
 				return ResponseEntity.ok(scheduleService.updateSchedule(schedule));
 			}
 			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);

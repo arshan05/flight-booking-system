@@ -1,9 +1,13 @@
 import { TextField } from "@mui/material";
 import { MuiTelInput } from "mui-tel-input";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { passengerActions } from "../store/passenger-slice";
 
 const AddPassenger = () => {
   const [value, setValue] = useState("");
+  const dispatch = useDispatch();
+  const passenger = useSelector((state) => state.passenger);
 
   const handleChange = (value) => {
     setValue(value);
@@ -23,6 +27,12 @@ const AddPassenger = () => {
                     label="Passenger Name"
                     id="passangerName"
                     type="text"
+                    required
+                    onChange={(event) => {
+                      dispatch(passengerActions.setName({ name: event.target.value }));
+;
+                    }}
+                    
                   />
                 </div>
 
@@ -32,8 +42,14 @@ const AddPassenger = () => {
                     fullWidth
                     label="Contact Number"
                     defaultCountry="IN"
-                    onChange={handleChange}
                     value={value}
+                    onChange={(value) => {
+                      setValue(value);
+                      dispatch(passengerActions.setPhoneNumber({ phoneNumber: value }));
+
+                    }}
+                    
+                    required
                   />
                 </div>
               </div>

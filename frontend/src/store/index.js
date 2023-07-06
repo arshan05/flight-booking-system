@@ -3,6 +3,7 @@ import locationSlice from "./location-slice";
 import scheduleSlice from "./schedules-slice";
 import authSlice from "./auth-slice";
 import resultSlice from "./result-slice";
+import passengerSlice from "./passenger-slice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     location: locationSlice.reducer,
     auth:authSlice.reducer,
     schedulesResult: resultSlice.reducer,
+    passenger:passengerSlice.reducer,
   },
 });
 
