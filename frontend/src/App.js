@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import Booking from "./component/Booking";
 import Cancel from "./component/Cancel";
 import Success from "./component/Success";
+import AllBooking from "./component/AllBookings";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,7 +30,9 @@ function App() {
         <Route path="/register" Component={Register}></Route>
         <Route path="/login" Component={Login}></Route>
         <Route path="/logout" Component={Logout}></Route>
-        <Route path="/schedulesResult" Component={SchedulesResult}></Route><Route path="/booking" Component={Booking}></Route>
+        <Route path="/schedulesResult" Component={SchedulesResult}></Route>
+        <Route path="/booking" Component={Booking}></Route>
+        <Route path="/allBooking" Component={AllBooking}></Route>
 
         <Route path="/cancel" Component={Cancel}></Route>
         <Route path="/success" Component={Success}></Route>
