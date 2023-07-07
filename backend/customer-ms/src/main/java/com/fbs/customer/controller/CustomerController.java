@@ -27,7 +27,7 @@ import com.fbs.customer.service.FlightBookingService;
 
 @RestController
 @RequestMapping("/api/consumer")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000",allowCredentials = "true")
 public class CustomerController {
 
 	@Autowired
@@ -122,8 +122,8 @@ public class CustomerController {
 
 	}
 
-	@GetMapping("/hello")
-	public String hello() {
-		return "hello";
+	@PostMapping("/hello")
+	public String hello(@RequestBody String name) {
+		return "hello "+ name;
 	}
 }

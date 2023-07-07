@@ -15,7 +15,7 @@ const Seat = (props) => {
   const sharedState = props.sharedState;
   // console.log(schedule.fare);
   let options = [];
-  if (schedule.fare !== null) {
+  if (schedule.fare !== null || schedule != null) {
     options = Array.from(getSeatClass(schedule.fare));
   }
   const sides = ["WINDOW", "MIDDLE", "AISLE"];

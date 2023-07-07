@@ -137,7 +137,7 @@ const ScheduleDetail = (props) => {
                 </div>
 
                 <div>
-                  <Payment sharedState={sharedState}/>
+                  <Payment sharedState={sharedState} schedule={props.schedule}/>
                 </div>
               </div>
             </div>

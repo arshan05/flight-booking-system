@@ -1,7 +1,5 @@
 package com.fbs.checkin.model;
 
-import java.util.Date;
-
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,15 +12,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Document(collection = "bookingDetails")
 public class BookingDetails {
-	
-	@DBRef
-	private Flight flight;
-	
+
 	@DBRef
 	private Passenger passenger;
-	private Location startLocation;
-	private Location endLocation;
-	private Date boardingDate;
+
+	@DBRef
+	private Schedule schedule;
+	
 	private boolean isCheckedIn;
 	private String PNR;
 }

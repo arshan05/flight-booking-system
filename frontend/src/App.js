@@ -15,10 +15,15 @@ import Booking from "./component/Booking";
 import Cancel from "./component/Cancel";
 import Success from "./component/Success";
 import AllBooking from "./component/AllBookings";
+import { createMuiTheme } from "@mui/material";
+
+
 
 function App() {
   const dispatch = useDispatch();
   dispatch(validate());
+
+  
 
   return (
     <BrowserRouter>

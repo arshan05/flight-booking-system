@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Caprasimo&display=swap');
+
+  @import url('https://fonts.googleapis.com/css2?family=Belanosima&display=swap');
+
+
+
+div {
+  /* font-family: "Cookie", cursive; */
+
+  /* font-family: "Roboto", cursive; */
+  /* font-family: 'Caprasimo', cursive;
+   */
+   font-family: 'Belanosima', sans-serif;
+}
+
 .App {
   text-align: center;
 }

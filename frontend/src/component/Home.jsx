@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../style/style.css";
 import { getLocations } from "../service/LocationService";
 import { useDispatch, useSelector } from "react-redux";
-import { Autocomplete, TextField } from "@mui/material";
+import { Autocomplete, Button, TextField } from "@mui/material";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -10,6 +10,7 @@ import { getFlights } from "../service/ConsumerService";
 import { format } from "date-fns";
 import { Link, useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
+import "../style/schedule.css";
 
 const myStyle = {
   backgroundColor: "#f5f5f5",
@@ -52,7 +53,7 @@ const Home = () => {
     // ConsumerService.getFlights(flightDetails);
     console.log(schedulesResult);
     // dispatch(getFlights(flightDetails));
-    navigate("/schedulesResult", {state:flightDetails});
+    navigate("/schedulesResult", { state: flightDetails });
     // console.log(schedulesResult);
   };
 
@@ -144,14 +145,15 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="d-flex flex-row justify-content-center">
-                  <button
+                  <Button
                     type="submit"
-                    className="btn"
-                    style={{ backgroundColor: "#142c54", color: "white" }}
+                    className="item"
+                    variant="contained"
+                    style={{ backgroundColor: "#142c54" }}
                   >
                     search
                     {/* <Link to="/schedulesResult">Search Flights</Link> */}
-                  </button>
+                  </Button>
                 </div>
               </form>
             </div>

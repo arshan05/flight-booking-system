@@ -3,22 +3,32 @@ import paymentService from "../service/PaymentService";
 import { Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import PassengerService, { addPassenger } from "../service/PassengerService";
+import { bookedScheduleSliceActions } from "../store/booked-schedule-slice";
 
 const Payment = (props) => {
   const dispatch = useDispatch();
   const passenger = useSelector((state) => state.passenger);
   const auth = useSelector((state) => state.auth);
 
+const navigate = useNavigate();
+
+  const bookedSchedule = useSelector((state) => state.bookedSchedule);
+
   const email = auth.email;
   const passengerName = passenger.name;
-  const phoneNumber = passenger.phoneNumber;
+  const phoneNumber = String(passenger.phoneNumber)
+    .replace(/\D/g, "")
+    .slice(-10);
+
+  const schedule = props.schedule;
 
   const [filled, setFilled] = useState(false);
 
   useEffect(() => {
-    if (passengerName !== '' && phoneNumber !== '') {
+    if (passengerName !== "" && phoneNumber !== "") {
       setFilled(true);
     } else {
       setFilled(false);
@@ -26,15 +36,45 @@ const Payment = (props) => {
   }, [passengerName, phoneNumber]);
 
   const amount = props.sharedState.sharedSeat.price;
-  const paymentHandler = () => {
-    const order = {
-      price: Number(amount), // Set the price based on your requirements
-      currency: "USD", // Set the currency based on your requirements
-      method: "paypal", // Set the payment method based on your requirements
-      intent: "sale", // Set the payment intent based on your requirements
-      description: "Payment for order", // Set the payment description based on your requirements
-    };
-    paymentService.makePayment(order);
+
+  const paymentHandler = async () => {
+    try {
+      const order = {
+        price: Number(amount),
+        currency: "USD",
+        method: "paypal",
+        intent: "sale",
+        description: "Payment for order",
+      };
+
+      const passengerData = {
+        name: passengerName,
+        email: email,
+        phoneNumber: phoneNumber,
+      };
+
+      console.log("passenger before: " + passenger.name);
+
+      const dispatchPassengerResponse = await dispatch(PassengerService.addPassenger(passengerData));
+
+      const dispatchResponse = await dispatch(
+        bookedScheduleSliceActions.setDetails({
+          bookedSchedule: schedule,
+          seatNumber: props.sharedState.sharedSeat.seatNumber,
+          passenger: passenger, 
+        })
+      );
+      // console.log(passenger);
+        // console.log(dispatchResponse.payload.passenger.id);
+      await paymentService.makePayment(order, dispatchResponse);
+
+      // navigate('/success');
+
+      // Code to execute after all dispatch actions and payment complete
+    } catch (error) {
+      // Handle any errors
+      console.log("Error occurred during payment:", error);
+    }
   };
 
   return (
@@ -59,7 +99,7 @@ const Payment = (props) => {
             fullWidth
             className="item"
             variant="contained"
-            style={{ backgroundColor: "#142c54" }}
+            style={{ backgroundColor: "lightGray", color: "gray" }}
           >
             <span style={{ marginRight: 10 }}>
               <FontAwesomeIcon icon={faPaperPlane} />

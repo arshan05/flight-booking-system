@@ -8,6 +8,7 @@ const passengerSlice = createSlice({
     name: "",
     email: "",
     phoneNumber: "",
+    bookingDetails:"",
   },
   reducers: {
     setPassenger(state, action) {
@@ -15,6 +16,7 @@ const passengerSlice = createSlice({
         state.name = action.payload.name;
         state.email = action.payload.email;
         state.phoneNumber = action.payload.phoneNumber;
+        state.bookingDetails = action.payload.bookingDetails;
       },
       
     setName(state,action){

@@ -27,7 +27,7 @@ public class PaymentController {
 	
 	
 	@PostMapping(value="/makePayment/{registartionId}",produces = "application/json")
-	public String makePayment(@RequestBody Order order,@PathVariable int registartionId) throws IOException {
+	public String makePayment(@RequestBody Order order,@PathVariable String registartionId) throws IOException {
 		try {
 			Payment payment = paypalService.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
 					order.getIntent(), order.getDescription(), CANCEL,

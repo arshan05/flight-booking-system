@@ -1,7 +1,5 @@
 package com.fbs.customer.model;
 
-import java.util.Date;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -22,14 +20,13 @@ public class BookingDetails {
 	
 	@Id
 	private String id;
-	@DBRef
-	private Flight flight;
 	
 	@DBRef
 	private Passenger passenger;
-	private Location startLocation;
-	private Location endLocation;
-	private Date boardingDate;
+	
+	@DBRef
+	private Schedule schedule;
+	
 	private String seatNumber;
 	private String PNR;
 	private boolean isCheckedIn;

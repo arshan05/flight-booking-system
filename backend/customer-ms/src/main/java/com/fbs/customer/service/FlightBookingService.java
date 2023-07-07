@@ -68,11 +68,8 @@ public class FlightBookingService implements IFlightBookingService {
 		Location endLocation = schedule.getDestination().getLocation();
 		Date startTime = schedule.getStartTime();
 
-		bookingDetails.setFlight(flight);
+		bookingDetails.setSchedule(schedule);
 		bookingDetails.setPassenger(passenger);
-		bookingDetails.setStartLocation(startLocation);
-		bookingDetails.setEndLocation(endLocation);
-		bookingDetails.setBoardingDate(startTime);
 		String PNR = generatePNR(flight, schedule);
 		bookingDetails.setPNR(PNR);
 		bookingDetails.setSeatNumber(seatNumber);
