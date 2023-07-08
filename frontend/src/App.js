@@ -16,6 +16,7 @@ import Cancel from "./component/Cancel";
 import Success from "./component/Success";
 import AllBooking from "./component/AllBookings";
 import { createMuiTheme } from "@mui/material";
+import BoardingPass from "./component/BoardingPass";
 
 
 
@@ -41,6 +42,7 @@ function App() {
 
         <Route path="/cancel" Component={Cancel}></Route>
         <Route path="/success" Component={Success}></Route>
+        <Route path="/boardingpass" Component={BoardingPass}></Route>
       </Routes>
     </BrowserRouter>
   );

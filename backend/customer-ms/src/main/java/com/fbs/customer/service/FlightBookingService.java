@@ -2,6 +2,7 @@ package com.fbs.customer.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import com.fbs.customer.model.Schedule;
 import com.fbs.customer.model.SeatStatus;
 import com.fbs.customer.proxy.EmailProxy;
 import com.fbs.customer.repository.BookingDetailsRepository;
+import com.fbs.customer.repository.CustomBookingDetailsRepository;
 import com.fbs.customer.repository.CustomScheduleRepository;
 import com.fbs.customer.repository.PassengerRepository;
 import com.fbs.customer.repository.ScheduleRepository;
@@ -29,6 +31,9 @@ public class FlightBookingService implements IFlightBookingService {
 
 	@Autowired
 	CustomScheduleRepository customScheduleRepository;
+
+	@Autowired
+	CustomBookingDetailsRepository customBookingDetailsRepository;
 
 	@Autowired
 	BookingDetailsRepository bookingDetailsRepository;
@@ -77,9 +82,10 @@ public class FlightBookingService implements IFlightBookingService {
 
 		System.out.println(bookingDetails);
 
-//		bookingDetailsRepository.save(bookingDetails);
-		String messageBody = "Dear " + passenger.getName() + " /n You have booked seat from " + startLocation.getPlace()
-				+ " to " + endLocation.getPlace() + " is successful/n PNR number: " + PNR;
+		bookingDetailsRepository.save(bookingDetails);
+		String messageBody = "Dear " + passenger.getName() + "\n You have successfully booked a seat from "
+				+ startLocation.getPlace() + " to " + endLocation.getPlace() + ". Happy Journey🎉🎉 \n PNR number: " + PNR;
+
 		EmailRequest emailRequest = new EmailRequest(passenger.getEmail(), "Booking Successful", messageBody);
 		System.out.println(emailRequest);
 		emailProxy.sendEmail(emailRequest);
@@ -87,22 +93,32 @@ public class FlightBookingService implements IFlightBookingService {
 	}
 
 	public String generatePNR(Flight flight, Schedule schedule) {
-		// TODO Auto-generated method stub
-		StringBuilder sb = new StringBuilder();
-		sb.append(flight.getAirlineCompany().getCode());
-		sb.append(schedule.getBoarding().getCode());
-		sb.append(schedule.getDestination().getCode());
+		String allowedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
-		// TODO get seats booked count and append it sb
-		sb.append(001);
+		int pnrLength = 8;
 
-		return sb.toString();
+		Random random = new Random();
+
+		StringBuilder pnrBuilder = new StringBuilder();
+
+		for (int i = 0; i < pnrLength; i++) {
+			int randomIndex = random.nextInt(allowedChars.length());
+			char randomChar = allowedChars.charAt(randomIndex);
+			pnrBuilder.append(randomChar);
+		}
+
+		return pnrBuilder.toString();
+
 	}
 
 	@Override
-	public BookingDetails getBookingDetails(String pnr, String email) {
-		// TODO Auto-generated method stub
-		return bookingDetailsRepository.findByPNRAndPassenger_Email(pnr, email);
+	public List<BookingDetails> getBookingDetailsByPnrAndEmail(String pnr, String email) {
+		return customBookingDetailsRepository.findAllBookingsByPnrAndEmail(pnr, email);
+	}
+
+	@Override
+	public List<BookingDetails> getBookingDetailsByEmail(String email) {
+		return customBookingDetailsRepository.findAllBookingsByEmail(email);
 	}
 
 	public List<FlightSeat> getAvailableSeats(Schedule schedule) {
@@ -119,13 +135,45 @@ public class FlightBookingService implements IFlightBookingService {
 	public void cancelTicket(BookingDetails bookingDetails) {
 		// TODO Auto-generated method stub
 		bookingDetails.getSeatNumber();
+		Schedule schedule = bookingDetails.getSchedule();
+		List<FlightSeat> fare = schedule.getFare();
+
+		for (FlightSeat flightSeat : fare) {
+			if (flightSeat.getSeatNumber().equals(flightSeat.getSeatNumber())) {
+				flightSeat.setSeatStatus(SeatStatus.OPEN);
+			}
+		}
+		schedule.setFare(fare);
+		scheduleRepository.save(schedule);
+		bookingDetailsRepository.delete(bookingDetails);
 		
+		Passenger passenger = bookingDetails.getPassenger();
+		Flight flight = schedule.getFlight();
+		
+		
+		String messageBody = "Dear "+passenger.getName() + ",\r\n"
+				+ "\r\n"
+				+ "We have successfully canceled your flight ticket as per your request. Here are the details of your canceled booking:\r\n"
+				+ "\r\n"
+				+ "PNR number: " +bookingDetails.getPNR() + "\r\n"
+				+ "Flight Number: "+ flight.getFlightNumber()+", "+flight.getAirlineCompany() +"\r\n"
+				+ "Departure: "+ schedule.getBoarding().getLocation().getPlace() +"\r\n"
+				+ "Destination: "+ schedule.getDestination().getLocation().getPlace() +"\r\n"
+				+ "Cancellation Date: "+ new Date() +"\r\n"
+				+ "\r\n"
+				+ "Thank you for choosing our services.\r\n"
+				+ "\r\n"
+				+ "Best regards,\r\n"
+				+ "Escapes";
+		EmailRequest emailRequest = new EmailRequest(passenger.getEmail(), "Booking Successful", messageBody);
+		System.out.println(emailRequest);
+		emailProxy.sendEmail(emailRequest);
 	}
 
 	public Passenger addPassenger(Passenger passenger) {
 		// TODO Auto-generated method stub
 		return passengerRepository.save(passenger);
-		
+
 	}
 
 }

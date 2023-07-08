@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Barcode+39&display=swap");
+
 .image-container {
   height: 50vh;
   /* display: flex;
@@ -9,4 +11,16 @@
   height: 100%;
   object-fit: cover;
   color: wheat;
+}
+
+.barcode-font{
+  font-family: 'Libre Barcode 39', cursive;
+  color:"whitesmoke";
+               
+}
+
+.modal-full-width .modal-dialog {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
 }

@@ -6,14 +6,46 @@ import {
   DialogContent,
   DialogTitle,
   Tooltip,
-  Typography
+  Typography,
 } from "@mui/material";
 import React, { useState } from "react";
 import "../style/schedule.css";
-const BookingItem = () => {
-  const isCheckedin = false;
+import { useDispatch, useSelector } from "react-redux";
+import { allBookingsActions } from "../store/all-bookings-slice";
+import { cancelTicket, checkinPassenger } from "../service/AllBookingsService";
+import dayjs from "dayjs";
+import { useNavigate } from "react-router-dom";
+import BoardingPass from "./BoardingPass";
+import { Modal } from "react-bootstrap";
+const BookingItem = (props) => {
+  const isCheckedin = props.booking.checkedIn;
   const [isOpen, setOpen] = useState(false);
   const [isOpenWebCheckin, setOpenWebCheckin] = useState(false);
+  const [isOpenPass, setOpenPass] = useState(false);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const booking = props.booking;
+  // console.log(booking);
+
+  const boardingLocationCode = booking.schedule.boarding.code;
+  const boardingAirportName = props.booking.schedule.boarding.airportName;
+  const boardingPlace = booking.schedule.boarding.location.place;
+
+  const destinationLocationCode = booking.schedule.destination.code;
+  const destinationAirportName = booking.schedule.destination.airportName;
+  const destinationPlace = booking.schedule.destination.location.place;
+
+  const boardingDate = dayjs(booking.schedule.startTime);
+  const landingDate = dayjs(booking.schedule.endTime);
+
+  console.log(boardingDate);
+
+  const airline = booking.schedule.flight.airlineCompany.airlineName;
+  const flightNumber = booking.schedule.flight.flightNumber;
+  const seatNumber = booking.seatNumber;
+
   return (
     <li className="d-flex justify-content-center">
       <Dialog
@@ -36,7 +68,15 @@ const BookingItem = () => {
           >
             Dismiss
           </Button>
-          <Button onClick={() => {}} className="bg-danger text-white" autoFocus>
+          <Button
+            onClick={() => {
+              console.log(booking);
+              dispatch(cancelTicket(booking));
+              setOpen(false);
+            }}
+            className="bg-danger text-white"
+            autoFocus
+          >
             Cancel Ticket
           </Button>
         </DialogActions>
@@ -62,7 +102,6 @@ const BookingItem = () => {
           >
             okay
           </Button>
-          
         </DialogActions>
       </Dialog>
 
@@ -73,18 +112,20 @@ const BookingItem = () => {
         <div className="d-flex flex-row justify-content-around">
           <div className="col-4">
             <div className="d-flex justify-content-center">
-              <p className="fs-3">BLR</p>
+              <p className="fs-3">{boardingLocationCode}</p>
             </div>
-            <div className="d-flex justify-content-center">
-              <p className="fs-6 text-muted">Kempegowda Intl. Airport</p>
+            <div className="d-flex flex-column align-items-center text-center justify-content-center">
+              <p className="fs-6 text-muted">{boardingAirportName}</p>
+              <p className="fs-6 text-muted">{boardingPlace}</p>
             </div>
           </div>
           <div className="col-4 ">
             <div className="d-flex justify-content-center">
-              <p className="fs-3">DEL</p>
+              <p className="fs-3">{destinationLocationCode}</p>
             </div>
-            <div className="d-flex justify-content-center">
-              <p className="fs-6 text-muted">Indra Intl. Airport</p>
+            <div className="d-flex flex-column align-items-center text-center justify-content-center">
+              <p className="fs-6 text-muted">{destinationAirportName}</p>
+              <p className="fs-6 text-muted">{destinationPlace}</p>
             </div>
           </div>
         </div>
@@ -95,31 +136,39 @@ const BookingItem = () => {
             aria-label="Breadcrumb"
           >
             <Tooltip title="Boarding Date" placement="top">
-              <Typography variant="body1">July 12, 2023</Typography>
+              <Typography variant="body1">
+                {boardingDate.format("MMMM D, YYYY")}
+              </Typography>
             </Tooltip>
 
             <Tooltip title="Boarding Time" placement="top">
-              <Typography variant="body1">10:30</Typography>
+              <Typography variant="body1">
+                {boardingDate.$H}:{boardingDate.$m}
+              </Typography>
             </Tooltip>
 
             <Tooltip title="Airline" placement="top">
-              <Typography variant="body1">Air One</Typography>
+              <Typography variant="body1">{airline}</Typography>
             </Tooltip>
 
             <Tooltip title="Flight Number" placement="top">
-              <Typography variant="body1">FL001</Typography>
+              <Typography variant="body1">{flightNumber}</Typography>
             </Tooltip>
 
             <Tooltip title="Seat Number" placement="top">
-              <Typography variant="body1">15A</Typography>
+              <Typography variant="body1">{seatNumber}</Typography>
             </Tooltip>
 
             <Tooltip title="Landing Time" placement="top">
-              <Typography variant="body1">12:40</Typography>
+              <Typography variant="body1">
+                {landingDate.$H}:{landingDate.$m}
+              </Typography>
             </Tooltip>
 
             <Tooltip title="Landing Date" placement="top">
-              <Typography variant="body1">July 12, 2023</Typography>
+              <Typography variant="body1">
+                {landingDate.format("MMMM D, YYYY")}
+              </Typography>
             </Tooltip>
           </Breadcrumbs>
         </div>
@@ -127,9 +176,14 @@ const BookingItem = () => {
         <div className="m-3 d-flex flex-row justify-content-around">
           {!isCheckedin && (
             <div className="">
-              <Button variant="contained" className="item" onClick={() => {
+              <Button
+                variant="contained"
+                className="item"
+                onClick={() => {
+                  dispatch(checkinPassenger(booking.pnr));
                   setOpenWebCheckin(true);
-                }}>
+                }}
+              >
                 web-checkin
               </Button>
             </div>
@@ -137,9 +191,32 @@ const BookingItem = () => {
 
           {isCheckedin && (
             <div className="">
-              <Button variant="contained" className="item">
+              <Button
+                variant="contained"
+                className="item"
+                onClick={() => {
+                  setOpenPass(true);
+                }}
+              >
                 boarding pass
               </Button>
+              <Modal
+              size="xl"
+              container={document.body}
+              className="modal-xl"
+                show={isOpenPass}
+                onHide={() => {setOpenPass(false)}}
+                dialogClassName="modal-full-width"
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>Boarding Pass</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <div className="">
+                  <BoardingPass booking={booking} />
+                  </div>
+                </Modal.Body>
+              </Modal>
             </div>
           )}
 
