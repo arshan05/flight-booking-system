@@ -161,7 +161,7 @@ public class CustomerController {
 	
 	
 	@PostMapping("/hello")
-	public String hello(@RequestBody Passenger name) {
+	public String hello(@RequestBody String name) {
 		return "hello "+ name;
 	}
 }

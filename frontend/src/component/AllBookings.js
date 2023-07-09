@@ -71,7 +71,9 @@ const AllBooking = () => {
       {auth.isAuthenticated && (
         <ul style={{ listStyleType: "none" }}>
           {
-            allBookings.map((booking) => <BookingItem booking={booking} />)}
+           allBookings.filter((booking) => booking !== null).map((booking) => <BookingItem booking={booking} />)
+
+          }
 
           {allBookings === undefined && <NoResultsFound />}
         </ul>

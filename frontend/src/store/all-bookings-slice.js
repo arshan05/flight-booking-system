@@ -9,8 +9,9 @@ const allBookingsSlice = createSlice({
     replaceBookings(state, action) {
       state.bookings = action.payload;
     },
+
     addToBookings(state, action) {
-      state.push(action.payload);
+      state.bookings.push(action.payload);
     },
 
     deleteBooking(state, action) {
@@ -25,10 +26,12 @@ const allBookingsSlice = createSlice({
         if (booking.id === action.payload.id) {
           return { ...booking, checkedIn: true };
         }
+        return booking;
       });
       state.bookings = updatedBookings;
     },
   },
 });
+
 export const allBookingsActions = allBookingsSlice.actions;
 export default allBookingsSlice;

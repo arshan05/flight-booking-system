@@ -13,7 +13,7 @@ const Payment = (props) => {
   const passenger = useSelector((state) => state.passenger);
   const auth = useSelector((state) => state.auth);
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const bookedSchedule = useSelector((state) => state.bookedSchedule);
 
@@ -50,25 +50,40 @@ const navigate = useNavigate();
       const passengerData = {
         name: passengerName,
         email: email,
-        phoneNumber: phoneNumber,
+        phoneNumber: Number(phoneNumber),
       };
 
       console.log("passenger before: " + passenger.name);
 
-      const dispatchPassengerResponse = await dispatch(PassengerService.addPassenger(passengerData));
+      const dispatchPassengerResponse = dispatch(
+        PassengerService.addPassenger(passengerData)
+      );
+
+      const passengerResponseAction = await dispatchPassengerResponse;
 
       const dispatchResponse = await dispatch(
         bookedScheduleSliceActions.setDetails({
           bookedSchedule: schedule,
           seatNumber: props.sharedState.sharedSeat.seatNumber,
-          passenger: passenger, 
+          passenger: passenger, // Access the passenger data from the action payload
         })
       );
-      // console.log(passenger);
-        // console.log(dispatchResponse.payload.passenger.id);
-      await paymentService.makePayment(order, dispatchResponse);
 
-      // navigate('/success');
+      console.log(dispatchResponse);
+      // const dispatchPassengerResponse = await dispatch(PassengerService.addPassenger(passengerData));
+
+      // const dispatchResponse = await dispatch(
+      //   bookedScheduleSliceActions.setDetails({
+      //     bookedSchedule: schedule,
+      //     seatNumber: props.sharedState.sharedSeat.seatNumber,
+      //     passenger: dispatchPassengerResponse.payload,
+      //   })
+      // );
+      // console.log(passenger);
+      // console.log(dispatchResponse.payload.passenger.id);
+      await paymentService.makePayment(order, dispatchResponse,passenger);
+
+      // navigate("/success");
 
       // Code to execute after all dispatch actions and payment complete
     } catch (error) {

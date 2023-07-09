@@ -1,6 +1,7 @@
 import {
   Breadcrumbs,
   Button,
+  ButtonBase,
   Dialog,
   DialogActions,
   DialogContent,
@@ -16,9 +17,10 @@ import { cancelTicket, checkinPassenger } from "../service/AllBookingsService";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 import BoardingPass from "./BoardingPass";
-import { Modal } from "react-bootstrap";
+import { CloseButton, Modal } from "react-bootstrap";
 const BookingItem = (props) => {
-  const isCheckedin = props.booking.checkedIn;
+  // console.log(props.booking.schedule);
+  const isCheckedin = props.booking?.checkedIn;
   const [isOpen, setOpen] = useState(false);
   const [isOpenWebCheckin, setOpenWebCheckin] = useState(false);
   const [isOpenPass, setOpenPass] = useState(false);
@@ -26,16 +28,19 @@ const BookingItem = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const booking = props.booking;
+  const [booking, setBooking] = useState(props.booking);
   // console.log(booking);
 
-  const boardingLocationCode = booking.schedule.boarding.code;
-  const boardingAirportName = props.booking.schedule.boarding.airportName;
-  const boardingPlace = booking.schedule.boarding.location.place;
+  if(booking.schedule != null){
+    console.log("schedule is not null");
+  }
+  const boardingLocationCode = booking?.schedule?.boarding.code;
+  const boardingAirportName = booking?.schedule?.boarding?.airportName;
+  const boardingPlace = booking?.schedule?.boarding?.location?.place;
 
-  const destinationLocationCode = booking.schedule.destination.code;
-  const destinationAirportName = booking.schedule.destination.airportName;
-  const destinationPlace = booking.schedule.destination.location.place;
+  const destinationLocationCode = booking?.schedule?.destination?.code;
+  const destinationAirportName = booking?.schedule?.destination?.airportName;
+  const destinationPlace = booking?.schedule?.destination?.location?.place;
 
   const boardingDate = dayjs(booking.schedule.startTime);
   const landingDate = dayjs(booking.schedule.endTime);
@@ -48,6 +53,43 @@ const BookingItem = (props) => {
 
   return (
     <li className="d-flex justify-content-center">
+      <Modal
+        centered
+        fullscreen="lg-down"
+        size="xl"
+        // container={document.body}
+        className="modal-xl"
+        show={isOpenPass}
+        onHide={() => {
+          setOpenPass(false);
+        }}
+        dialogClassName="modal-full-width"
+      >
+        <div
+          className="model-header"
+          style={{ backgroundColor: "#142c54", color: "whitesmoke" }}
+        >
+          <div className="d-flex justify-content-between align-items-center m-3">
+            <h3>Boarding Pass</h3>
+            <CloseButton
+            className="item"
+              style={{ backgroundColor: "whitesmoke" }}
+              onClick={() => {
+                setOpenPass(false);
+              }}
+             
+            ></CloseButton>
+          </div>
+        </div>
+        <div className="m-4 h-50">
+          <section
+            className="shadow-lg rounded"
+            style={{ margin: 0, padding: 0 }}
+          >
+            <BoardingPass booking={booking} />
+          </section>
+        </div>
+      </Modal>
       <Dialog
         // TransitionComponent={Transition}
         open={isOpen}
@@ -200,23 +242,6 @@ const BookingItem = (props) => {
               >
                 boarding pass
               </Button>
-              <Modal
-              size="xl"
-              container={document.body}
-              className="modal-xl"
-                show={isOpenPass}
-                onHide={() => {setOpenPass(false)}}
-                dialogClassName="modal-full-width"
-              >
-                <Modal.Header closeButton>
-                  <Modal.Title>Boarding Pass</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <div className="">
-                  <BoardingPass booking={booking} />
-                  </div>
-                </Modal.Body>
-              </Modal>
             </div>
           )}
 

@@ -34,6 +34,7 @@ export const login = (loginRequest) => {
       };
       // console.log(authResponse);
       dispatch(authActions.authenticate(authResponse));
+      return authResponse;
     } catch (error) {
       console.error(error);
     }

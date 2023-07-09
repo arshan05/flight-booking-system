@@ -15,16 +15,19 @@ const NavBar = () => {
         <Link to="/" className="navbar-brand">
           <span className="title-font">Escapes</span>
         </Link>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto d-flex justify-content-around">
-            <NavLink to="/" className="nav-link">
-              <span>home</span>
-            </NavLink>
+              <NavLink to="/" className="nav-link">
+                <span>home</span>
+              </NavLink>
 
-            <NavLink to="/allBooking" className="nav-link float-end">
-              <span>my bookings</span>
-            </NavLink>
+            {!auth.role.includes("admin") && (
+              <NavLink to="/allBooking" className="nav-link float-end">
+                <span>my bookings</span>
+              </NavLink>
+            )}
 
             {!auth.isAuthenticated && (
               <NavLink to="/sign" className="nav-link float-end">

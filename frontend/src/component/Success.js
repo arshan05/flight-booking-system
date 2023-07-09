@@ -8,27 +8,31 @@ const API_BASE_URL = "http://localhost:9092/api/consumer";
 
 const Success = () => {
   const navigate = useNavigate();
-  
+
   const bookedSchedule = useSelector((state) => state.bookedSchedule);
+  const passenger = useSelector((state) => state.passenger);
 
   console.log(bookedSchedule);
+  console.log(passenger);
   const bookFlightRequest = {
     schedule: bookedSchedule.bookedSchedule,
-    passenger: bookedSchedule.passenger,
+    passenger: passenger,
     seatNumber: bookedSchedule.seatNumber,
   };
-  console.log(bookFlightRequest);
 
   //   const handler = async () => {
   useEffect(() => {
     const bookFlight = async () => {
       try {
+        console.log(bookFlightRequest);
+
         const response = await axios.post(
-          `${API_BASE_URL}/hello`,
+          `http://localhost:9092/api/consumer/bookFlight`,
           bookFlightRequest,
           {
-            withCredentials: true,
+            withCredentials:true
           }
+
         );
 
         const data = response.data;
@@ -55,7 +59,9 @@ const Success = () => {
       <Button
         variant="contained"
         color="primary"
-        onClick={()=>{navigate('/')}}
+        onClick={() => {
+          navigate("/");
+        }}
       >
         Go to Home
       </Button>

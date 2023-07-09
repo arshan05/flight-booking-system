@@ -17,6 +17,10 @@ const PassengerService = {
         );
 
         const data = response.data;
+
+          console.log("passenger: "+ passengerData.name);
+          console.log("passenger response: "+ data.id + " " + data.name);
+
         dispatch(passengerActions.setPassenger(data));
       } catch (error) {
         console.log(error);

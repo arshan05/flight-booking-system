@@ -29,10 +29,10 @@ const AddPassenger = () => {
                     type="text"
                     required
                     onChange={(event) => {
-                      dispatch(passengerActions.setName({ name: event.target.value }));
-;
+                      dispatch(
+                        passengerActions.setName({ name: event.target.value })
+                      );
                     }}
-                    
                   />
                 </div>
 
@@ -45,10 +45,14 @@ const AddPassenger = () => {
                     value={value}
                     onChange={(value) => {
                       setValue(value);
-                      dispatch(passengerActions.setPhoneNumber({ phoneNumber: value }));
-
+                      dispatch(
+                        passengerActions.setPhoneNumber({
+                          phoneNumber: String(value)
+                            .replace(/\D/g, "")
+                            .slice(-10),
+                        })
+                      );
                     }}
-                    
                     required
                   />
                 </div>

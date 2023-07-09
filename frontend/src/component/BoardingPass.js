@@ -15,6 +15,7 @@ const booking = props.booking;
 
   console.log(booking);
 
+
   const boardingLocationCode = booking.schedule.boarding.code;
   const boardingAirportName = booking.schedule.boarding.airportName;
   const boardingPlace = booking.schedule.boarding.location.place;
@@ -46,7 +47,7 @@ const booking = props.booking;
   return (
     <div className=" d-flex justify-content-center">
       <div
-        className="card m-5 col-12 col-md-11 col-lg-6"
+        className="card shadow-lg rounded col-12 col-md-11 col-lg-6 w-100"
         style={{ backgroundColor: "ghostwhite" }}
       >
         <div className="d-flex flex-row align-items-center">
@@ -181,12 +182,12 @@ const booking = props.booking;
                     className="fs-4"
                     style={{ color: "whitesmoke", margin: "0px" }}
                   >
-                    {boardingDate.$H}:{boardingDate.$m}
+                    {boardingDate.$H - 1}:{boardingDate.$m}
                   </FormLabel>
                 </div>
 
                 <div className="col p-4">
-                  <p style={{ color: "lightsteelblue", margin: "0px" }}>Seat</p>
+                  <p style={{ color: "lightsteelblue", margin: "0px" }}>SEAT</p>
                   <FormLabel
                     className="fs-4"
                     style={{ color: "whitesmoke", margin: "0px" }}

@@ -81,6 +81,7 @@ public class FlightBookingService implements IFlightBookingService {
 		bookingDetails.setCheckedIn(false);
 
 		System.out.println(bookingDetails);
+		scheduleRepository.save(schedule);
 
 		bookingDetailsRepository.save(bookingDetails);
 		String messageBody = "Dear " + passenger.getName() + "\n You have successfully booked a seat from "
