@@ -7,6 +7,7 @@ import java.util.TimeZone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,7 @@ import com.fbs.airline.service.IScheduleService;
 
 @RestController
 @RequestMapping("/api/schedule")
-//@CrossOrigin("http://localhost:3000/")
+@CrossOrigin(origins = "http://localhost:3000",allowCredentials = "true")
 public class ScheduleController {
 
 	private static final String YOU_ARE_UNAUTHORIZED = "You are Unauthorized!...";

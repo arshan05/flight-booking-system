@@ -23,7 +23,7 @@ import com.fbs.airline.service.ILocationService;
 
 @RestController
 @RequestMapping("/api/location")
-@CrossOrigin("http://localhost:3000/")
+@CrossOrigin(origins = "http://localhost:3000",allowCredentials = "true")
 public class LocationController {
 
 	private static final String YOU_ARE_UNAUTHORIZED = "You are Unauthorized!...";

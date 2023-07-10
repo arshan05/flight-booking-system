@@ -11,7 +11,25 @@ const locationSlice = createSlice({
         state.locations = action.payload;
       },
     addLocation(state, action) {
-      state.push(action.payload);
+      console.log(action.payload);
+      state.locations.push(action.payload);
+      console.log(state.locations);
+    },
+    deleteLocation(state, action) {
+      const filteredLocations = state.locations.filter(
+        (location) => location.id !== action.payload.id
+      );
+      state.locations = filteredLocations;
+    },
+
+    updateLocation(state, action) {
+      const updatedLocations = state.locations.map((loc) => {
+        if (loc.id === action.payload.id) {
+          return action.payload;
+        }
+        return loc;
+      });
+      state.locations = updatedLocations;
     },
   },
 });

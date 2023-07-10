@@ -11,6 +11,8 @@ import { format } from "date-fns";
 import { Link, useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import "../style/schedule.css";
+import { getAirlines } from "../service/AirlineService";
+import { getAirports } from "../service/AirportService";
 
 const myStyle = {
   backgroundColor: "#f5f5f5",
@@ -35,6 +37,8 @@ const Home = () => {
   const [fromField, setFromField] = useState("");
   const [toField, setToField] = useState("");
   const [dateField, setDateField] = useState(today);
+
+  const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(getLocations());

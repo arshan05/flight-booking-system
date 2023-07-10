@@ -1,12 +1,12 @@
 import axios from "axios";
-import { scheduleActions } from "../store/schedule-slice";
+import { airlineActions } from "../store/airline-slice";
 
-const API_BASE_URL = "http://localhost:9091/api/schedule";
-export const getSchedules = () => {
+const API_BASE_URL = "http://localhost:9091/api/airline";
+export const getAirlines = () => {
   return async (dispatch) => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/getAllSchedules`, {
+        const response = await axios.get(`${API_BASE_URL}/getAllAirlines`, {
           withCredentials:true,
           headers: {
             "Content-Type": "application/json",
@@ -14,7 +14,7 @@ export const getSchedules = () => {
         });
 
         if (response.status != 200) {
-          throw new Error("Could not fetch schedule data");
+          throw new Error("Could not fetch airline data");
         }
 
         const data = response.data;
@@ -25,19 +25,19 @@ export const getSchedules = () => {
       }
     };
 
-    const scheduleData = await fetchData();
-    dispatch(scheduleActions.replaceSchedules(scheduleData));
+    const airlineData = await fetchData();
+    dispatch(airlineActions.replaceAirlines(airlineData));
   };
 };
 
-export const addSchedule = (schedule) => {
+export const addAirline = (airline) => {
   return async (dispatch) => {
-    const addData = async (schedule) => {
+    const addData = async (airline) => {
       try {
-        console.log(schedule);
+        console.log(airline);
         const response = await axios.post(
-          `${API_BASE_URL}/addSchedule`,
-          schedule,
+          `${API_BASE_URL}/addAirline`,
+          airline,
           {
             withCredentials: true,
             headers: {
@@ -47,7 +47,7 @@ export const addSchedule = (schedule) => {
         );
 
         if (response.status != 200) {
-          throw new Error("Could not add schedule data");
+          throw new Error("Could not add airline data");
         }
 
         const data = response.data;
@@ -58,16 +58,16 @@ export const addSchedule = (schedule) => {
       }
     };
 
-    const scheduleData = await addData(schedule);
-    dispatch(scheduleActions.addSchedule(scheduleData));
+    const airlineData = await addData(airline);
+    dispatch(airlineActions.addAirline(airlineData));
   };
 };
 
-export const deleteSchedule = (loc) => {
+export const deleteAirline = (loc) => {
   return async (dispatch) => {
     const deleteData = async (loc) => {
       try {
-        const response = await axios.delete(`${API_BASE_URL}/deleteSchedule`, {
+        const response = await axios.delete(`${API_BASE_URL}/deleteAirline`, {
           data: loc,
           withCredentials: true,
           headers: {
@@ -76,7 +76,7 @@ export const deleteSchedule = (loc) => {
         });
 
         if (response.status != 200) {
-          throw new Error("Could not delete schedule data");
+          throw new Error("Could not delete airline data");
         }
 
         const data = response.data;
@@ -87,18 +87,18 @@ export const deleteSchedule = (loc) => {
       }
     };
 
-    const scheduleData = await deleteData(loc);
-    if (scheduleData === "Successfully Deleted") {
-      dispatch(scheduleActions.deleteSchedule(loc));
+    const airlineData = await deleteData(loc);
+    if (airlineData === "Successfully Deleted") {
+      dispatch(airlineActions.deleteAirline(loc));
     }
   };
 };
-export const updateSchedule = (loc) => {
+export const updateAirline = (loc) => {
   return async (dispatch) => {
     const updateData = async (loc) => {
       try {
         const response = await axios.put(
-          `${API_BASE_URL}/updateSchedule`,
+          `${API_BASE_URL}/updateAirline`,
           loc,
           {
             withCredentials: true,
@@ -109,7 +109,7 @@ export const updateSchedule = (loc) => {
         );
 
         if (response.status !== 200) {
-          throw new Error("Could not update schedule data");
+          throw new Error("Could not update airline data");
         }
 
         const data = response.data;
@@ -121,9 +121,9 @@ export const updateSchedule = (loc) => {
     };
 
     try {
-      const scheduleData = await updateData(loc);
+      const airlineData = await updateData(loc);
       // Dispatch the appropriate action
-      console.log(scheduleData);
+      console.log(airlineData);
     } catch (error) {
       console.error(error);
     }

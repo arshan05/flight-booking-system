@@ -10,6 +10,9 @@ import passengerSlice from "./passenger-slice";
 import bookedScheduleSlice from "./booked-schedule-slice";
 import sessionStorage from "redux-persist/es/storage/session";
 import allBookingsSlice from "./all-bookings-slice";
+import airlineSlice from "./airline-slice";
+import airportSlice, { airportActions } from "./airport-slice";
+import flightSlice from "./flight-slice";
 
 const persistConfig = {
   key: 'root', // Key for the root of your state object
@@ -27,6 +30,10 @@ const persistedReducer = persistReducer(
     passenger: passengerSlice.reducer,
     bookedSchedule: bookedScheduleSlice.reducer,
     allBookings:allBookingsSlice.reducer,
+    airline:airlineSlice.reducer,
+    airport:airportSlice.reducer,
+    flight:flightSlice.reducer,
+    schedule:scheduleSlice.reducer,
   })
 );
 

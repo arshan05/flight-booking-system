@@ -16,13 +16,14 @@ public class AuthService {
 	public boolean isSessionValid(String cookie) {
 		System.out.println("isValid");
 		ResponseEntity<AuthenticationResponse> authenticationResponse = authProxy.validate(cookie);
+		System.out.println("inside session Valid:"+ authenticationResponse);
 		if (authenticationResponse == null) {
 			throw new AuthenticationResponseNullException("Auth reponse returned as  NULL");
 		}
 		else {
 			for (String role : authenticationResponse.getBody().getRole()) {
-				System.out.println(role);
-				if (role.equalsIgnoreCase("ADMIN"))
+				System.out.println("inside session Valid: " + role);
+				if (role.equalsIgnoreCase("admin"))
 					return true;
 			}
 		}

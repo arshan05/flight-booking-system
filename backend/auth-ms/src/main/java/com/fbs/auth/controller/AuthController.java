@@ -139,7 +139,7 @@ public class AuthController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(response);
+		System.out.println("inside validate: " + response);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 
 	}

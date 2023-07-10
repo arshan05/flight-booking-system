@@ -30,12 +30,16 @@ import AdminSchedules from "./Admin/AdminSchedules";
 import AdminLocations from "./Admin/AdminLocation";
 import AdminPassengers from "./Admin/AdminPassenger";
 import AdminAirlines from "./Admin/AdminAirlines";
+import { useEffect } from "react";
 
 function App() {
   const dispatch = useDispatch();
-  dispatch(validate());
+  
 
   const auth = useSelector((state) => state.auth);
+  useEffect(() => {
+    dispatch(validate());
+  },[dispatch],auth);
 
   return (
     <BrowserRouter>

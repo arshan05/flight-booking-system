@@ -13,9 +13,24 @@ import { Container, FormLabel, Grid, Paper } from "@mui/material";
 
 import "../style/AdminHome.css";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getLocations } from "../service/LocationService";
+import { getAirlines } from "../service/AirlineService";
+import { getAirports } from "../service/AirportService";
+import { getFlights } from "../service/FlightService";
+import { getSchedules } from "../service/ScheduleService";
 
 const AdminHome = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getLocations())
+    dispatch(getAirlines());
+    dispatch(getAirports());
+    dispatch(getFlights());
+    dispatch(getSchedules())
+  }, [dispatch]);
 
   const cardData = [
     { title: "Flights", icon: faPlane },
