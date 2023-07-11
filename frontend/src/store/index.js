@@ -3,7 +3,6 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; 
 
 import locationSlice from "./location-slice";
-import scheduleSlice from "./schedules-slice";
 import authSlice from "./auth-slice";
 import resultSlice from "./result-slice";
 import passengerSlice from "./passenger-slice";
@@ -13,6 +12,7 @@ import allBookingsSlice from "./all-bookings-slice";
 import airlineSlice from "./airline-slice";
 import airportSlice, { airportActions } from "./airport-slice";
 import flightSlice from "./flight-slice";
+import scheduleSlice from "./schedule-slice";
 
 const persistConfig = {
   key: 'root', // Key for the root of your state object
@@ -33,7 +33,6 @@ const persistedReducer = persistReducer(
     airline:airlineSlice.reducer,
     airport:airportSlice.reducer,
     flight:flightSlice.reducer,
-    schedule:scheduleSlice.reducer,
   })
 );
 

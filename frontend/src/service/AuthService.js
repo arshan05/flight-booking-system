@@ -86,3 +86,17 @@ export const validate = () => {
     }
   };
 };
+
+export const register = (registerRequest) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        `${API_BASE_URL}/signup`,
+        registerRequest
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};

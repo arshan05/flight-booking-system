@@ -8,6 +8,7 @@ const scheduleSlice = createSlice({
   reducers: {
     replaceSchedules(state, action) {
         state.schedules = action.payload;
+        console.log(state.schedules);
       },
     addSchedule(state, action) {
       console.log(action.payload);

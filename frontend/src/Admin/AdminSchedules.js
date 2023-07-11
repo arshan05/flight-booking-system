@@ -24,12 +24,9 @@ import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { addSchedule } from "../service/ScheduleService";
 import { Form } from "react-bootstrap";
 import dayjs from "dayjs";
-import {
-  DatePicker,
-  DateTimePicker,
-  LocalizationProvider,
-} from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DateTimePicker } from "@mui/x-date-pickers";
 
 const AdminSchedules = () => {
   // scheduleNumber
@@ -50,8 +47,10 @@ const AdminSchedules = () => {
   const [destination, setDestination] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
-  const [status, setStatus] = useState("");
+  const [scheduleStatus, setScheduleStatus] = useState("");
   const [baseFare, setBaseFare] = useState("");
+
+  const scheduleStatusOptions = ["DELAY", "ONTIME", "CANCELLED"];
 
   const handleAddSchedule = (event) => {
     event.preventDefault();
@@ -61,14 +60,13 @@ const AdminSchedules = () => {
       destination: destination,
       startTime: startTime,
       endTime: endTime,
-      status,
-      status,
+      scheduleStatus: scheduleStatus,
       baseFare: baseFare,
     };
     console.log(scheduleData);
-    // dispatch(addSchedule(scheduleData));
+    dispatch(addSchedule(scheduleData));
   };
-
+  console.log(useSelector((state) => state.schedule));
   return (
     <div>
       <Card className="m-3">
@@ -107,7 +105,7 @@ const AdminSchedules = () => {
                     setFlight(event.target.value);
                   }}
                 >
-                  <MenuItem value="">Select a airline</MenuItem>
+                  <MenuItem value="">Select a flight</MenuItem>
                   {flights.map((fly) => (
                     <MenuItem key={fly.id} value={fly}>
                       <Box className="d-flex flex-row justify-content around align-items-center">
@@ -172,58 +170,64 @@ const AdminSchedules = () => {
                 </Select>
               </FormControl>
 
-              <div>
-                <LocalizationProvider
-                  className="col-3"
-                  dateAdapter={AdapterDayjs}
-                >
+              <FormControl fullWidth margin="normal">
+                <FormLabel>Start Time</FormLabel>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DateTimePicker
-                    value={dayjs("2022-04-17T15:30")}
+                    value={startTime}
                     onChange={(value) => {
-                      setStartTime(value.format("YYYY-MM-DDTHH:mm:ssZ"));
+                      setStartTime(
+                        String(value.format("YYYY-MM-DDTHH:mm:ssZ"))
+                      );
                     }}
-                  />
-                  <DateTimePicker
-                    value={dayjs("2022-04-17T15:30")}
-                    onChange={(value) => {
-                      setEndTime(value.format("YYYY-MM-DDTHH:mm:ssZ"));
-                    }}
+                    renderInput={(props) => (
+                      <TextField {...props} variant="standard" fullWidth />
+                    )}
+                    minDateTime={dayjs().startOf("minute")}
                   />
                 </LocalizationProvider>
-              </div>
+              </FormControl>
 
-              <div>
-                <LocalizationProvider
-                  className="col-3"
-                  dateAdapter={AdapterDayjs}
-                >
+              <FormControl fullWidth margin="normal">
+                <FormLabel>End Time</FormLabel>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DateTimePicker
-                    value={dayjs("2022-04-17T15:30")}
+                    views={["day", "year", "hours", "minutes", "seconds"]}
+                    value={endTime}
                     onChange={(value) => {
-                      setStartTime(value.format("YYYY-MM-DDTHH:mm:ssZ"));
+                      setEndTime(String(value.format("YYYY-MM-DDTHH:mm:ssZ")));
                     }}
-                  />
-                  <DateTimePicker
-                    value={dayjs("2022-04-17T15:30")}
-                    onChange={(value) => {
-                      setEndTime(value.format("YYYY-MM-DDTHH:mm:ssZ"));
-                    }}
+                    renderInput={(props) => (
+                      <TextField {...props} variant="standard" fullWidth />
+                    )}
+                    minDateTime={dayjs(startTime).startOf("minute")}
                   />
                 </LocalizationProvider>
-              </div>
-              
-              <TextField
-                label="Status"
-                margin="normal"
-                fullWidth
-                id="status"
-                type="text"
-                required
-                variant="standard"
-                onChange={(event) => {
-                  setStatus(event.target.value);
-                }}
-              />
+              </FormControl>
+
+              <FormControl fullWidth variant="standard" margin="normal">
+                <InputLabel id="select-label">Status</InputLabel>
+
+                <Select
+                  labelId="select-label"
+                  margin="normal"
+                  fullWidth
+                  label="Status"
+                  value={scheduleStatus}
+                  onChange={(event) => {
+                    setScheduleStatus(event.target.value);
+                  }}
+                >
+                  <MenuItem value="">Select Schedule Status</MenuItem>
+                  {scheduleStatusOptions.map((option) => (
+                    <MenuItem value={option}>
+                      <Box className="d-flex flex-row justify-content around align-items-center">
+                        <Typography variant="subtitle1">{option}</Typography>
+                      </Box>
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
 
               <TextField
                 label="Base fare"
@@ -248,9 +252,9 @@ const AdminSchedules = () => {
       </Card>
 
       <Grid container spacing={4}>
-        {schedules.map((air) => (
-          <Grid item sm={6} lg={3} key={air.id}>
-            <AdminScheduleItem schedule={air} />
+        {schedules.map((item) => (
+          <Grid item sm={6} lg={3} key={item.id}>
+            <AdminScheduleItem schedule={item} />
           </Grid>
         ))}
       </Grid>

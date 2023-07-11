@@ -32,24 +32,36 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteSchedule, updateSchedule } from "../service/ScheduleService";
 import { updateLocation } from "../service/LocationService";
+import dayjs from "dayjs";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DateTimePicker } from "@mui/x-date-pickers";
 
 function AdminScheduleItem(props) {
   const dispatch = useDispatch();
   const [editMode, setEditMode] = useState(false);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
 
-  const scheduleNumber = props.schedule.scheduleNumber;
-  const airline = props.schedule.airlineCompany;
-  const seatCapacity = props.schedule.seatCapacity;
-  const numberOfColumns = props.schedule.numberOfColumns;
+  const flight = props.schedule.flight;
+  const boarding = props.schedule.boarding;
+  const destination = props.schedule.destination;
+  const startTime = props.schedule.startTime;
+  const endTime = props.schedule.endTime;
+  const status = props.schedule.status;
+  const baseFare = props.schedule.baseFare;
 
-  const [updatedScheduleNumber, setUpdatedScheduleNumber] = useState(scheduleNumber);
-  const [updatedAirline, setUpdatedAirline] = useState(airline);
-  const [updatedSeatCapacity, setUpdatedSeatCapacity] = useState(seatCapacity);
-  const [updatedNumberOfColumns, setUpdatedNumberOfColumns] =
-    useState(numberOfColumns);
+  const [updatedFlight, setUpdatedFlight] = useState(flight);
+  const [updatedBoarding, setUpdatedBoarding] = useState(boarding);
+  const [updatedDestination, setUpdatedDestination] = useState(destination);
+  const [updatedStartTime, setUpdatedStartTime] = useState(dayjs(startTime));
+  const [updatedEndTime, setUpdatedEndTime] = useState(dayjs(endTime));
+  const [updatedStatus, setUpdatedStatus] = useState(status);
+  const [updatedBaseFare, setUpdatedBaseFare] = useState(baseFare);
 
-  const airlines = useSelector((state) => state.airline.airlines);
+  const airports = useSelector((state) => state.airport.airports);
+  const flights = useSelector((state) => state.flight.flights);
+
+  const scheduleStatusOptions = ["DELAY", "ONTIME", "CANCELLED"];
 
   const handleDelete = () => {
     setOpenDeleteDialog(false);
@@ -59,89 +71,238 @@ function AdminScheduleItem(props) {
   const handleUpdate = () => {
     const updatedSchedule = {
       id: props.schedule.id,
-      scheduleNumber: updatedScheduleNumber,
-      airlineCompany: updatedAirline,
-      seatCapacity: updatedSeatCapacity,
-      numberOfColumns: updatedNumberOfColumns,
-      seat: props.schedule.seat,
-      schedule: props.schedule.schedule,
+      flight: flight,
+      boarding: boarding,
+      destination: destination,
+      startTime: startTime,
+      endTime: endTime,
+      status: status,
+      baseFare: baseFare,
     };
+    console.log(updatedSchedule);
     dispatch(updateSchedule(updatedSchedule));
     setEditMode(false);
   };
 
-  console.log(airline);
-  console.log(updatedAirline);
   return (
     <div>
       <Card className="m-3">
         <CardContent className="card-body">
           {editMode && (
             <div className="m-3">
-              <div className="my-1">
-                <FormLabel>Schedule Number:</FormLabel>
-                <TextField
-                  margin="none"
-                  fullWidth
-                  id="scheduleName"
-                  type="text"
-                  value={updatedScheduleNumber}
-                  required
-                  variant="standard"
-                  onChange={(event) => {
-                    setUpdatedScheduleNumber(event.target.value);
-                  }}
-                />
-              </div>
-
               <FormControl fullWidth variant="standard" margin="normal">
-                <InputLabel id="select-label">Airline Company</InputLabel>
+                <InputLabel id="select-label">Flight: </InputLabel>
 
                 <Select
                   labelId="select-label"
                   margin="normal"
                   fullWidth
-                  label="Airline"
-                  value={updatedAirline}
+                  label="Flight"
+                  value={updatedFlight.id}
                   onChange={(event) => {
-                    setUpdatedAirline(event.target.value);
+                    const selectedFlight = flights.find(
+                      (fly) => fly.id === event.target.value
+                    );
+                    setUpdatedFlight(selectedFlight);
                   }}
                 >
-                  <MenuItem value="">Select a airline</MenuItem>
-                  {airlines.map((air) => (
-                    <MenuItem key={air.id} value={air}>
+                  <MenuItem value="">Select an airline</MenuItem>
+                  {flights.map((fly) => (
+                    <MenuItem key={fly.id} value={fly.id}>
+                      {" "}
+                      {/* Use the id as the value */}
                       <Box className="d-flex flex-row justify-content around align-items-center">
                         <Typography variant="subtitle1">
-                          {air.airlineName} ({air.code})
+                          {fly.flightNumber} ({fly.airlineCompany.airlineName})
                         </Typography>
                       </Box>
                     </MenuItem>
                   ))}
                 </Select>
               </FormControl>
+
+              <FormControl fullWidth variant="standard" margin="normal">
+                <InputLabel id="select-label">Boarding: </InputLabel>
+
+                <Select
+                  labelId="select-label"
+                  margin="normal"
+                  fullWidth
+                  label="Flight"
+                  value={updatedBoarding.id}
+                  onChange={(event) => {
+                    const selectedBoarding = airports.find(
+                      (air) => air.id === event.target.value
+                    );
+                    setUpdatedBoarding(selectedBoarding);
+                  }}
+                >
+                  <MenuItem value="">Select an airline</MenuItem>
+                  {airports.map((air) => (
+                    <MenuItem key={air.id} value={air.id}>
+                      {" "}
+                      <Box className="d-flex flex-row justify-content around align-items-center">
+                        <Typography variant="subtitle1">
+                          {air.airportName} ({air.code})
+                        </Typography>
+                      </Box>
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+
+              <FormControl fullWidth variant="standard" margin="normal">
+                <InputLabel id="select-label">Destination: </InputLabel>
+
+                <Select
+                  labelId="select-label"
+                  margin="normal"
+                  fullWidth
+                  label="Destination"
+                  value={updatedDestination.id}
+                  onChange={(event) => {
+                    const selectedDestination = airports.find(
+                      (air) => air.id === event.target.value
+                    );
+                    setUpdatedBoarding(selectedDestination);
+                  }}
+                >
+                  <MenuItem value="">Select an airline</MenuItem>
+                  {airports.map((air) => (
+                    <MenuItem key={air.id} value={air.id}>
+                      {" "}
+                      <Box className="d-flex flex-row justify-content around align-items-center">
+                        <Typography variant="subtitle1">
+                          {air.airportName} ({air.code})
+                        </Typography>
+                      </Box>
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+
+              <FormControl fullWidth margin="normal">
+                <FormLabel>Start Time</FormLabel>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DateTimePicker
+                    value={updatedStartTime}
+                    onChange={(value) => {
+                      setUpdatedStartTime(
+                        String(value.format("YYYY-MM-DDTHH:mm:ssZ"))
+                      );
+                    }}
+                    renderInput={(props) => (
+                      <TextField {...props} variant="standard" fullWidth />
+                    )}
+                    minDateTime={dayjs().startOf("minute")}
+                  />
+                </LocalizationProvider>
+              </FormControl>
+
+              <FormControl fullWidth margin="normal">
+                <FormLabel>End Time</FormLabel>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DateTimePicker
+                    views={["day", "year", "hours", "minutes", "seconds"]}
+                    value={updatedEndTime}
+                    onChange={(value) => {
+                      setUpdatedEndTime(
+                        String(value.format("YYYY-MM-DDTHH:mm:ssZ"))
+                      );
+                    }}
+                    renderInput={(props) => (
+                      <TextField {...props} variant="standard" fullWidth />
+                    )}
+                    minDateTime={dayjs(startTime).startOf("minute")}
+                  />
+                </LocalizationProvider>
+              </FormControl>
+
+              <FormControl fullWidth variant="standard" margin="normal">
+                <InputLabel id="select-label">Status: </InputLabel>
+
+                <Select
+                  labelId="select-label"
+                  margin="normal"
+                  fullWidth
+                  label="Status"
+                  value={updatedStatus}
+                  onChange={(event) => {
+                    setUpdatedStatus(event.target.value);
+                  }}
+                >
+                  <MenuItem value="">Select an airline</MenuItem>
+                  {scheduleStatusOptions.map((stat) => (
+                    <MenuItem key={stat} value={stat}>
+                      {" "}
+                      <Box className="d-flex flex-row justify-content around align-items-center">
+                        <Typography variant="subtitle1">{stat}</Typography>
+                      </Box>
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+
+              <TextField
+                label="Base fare"
+                margin="normal"
+                fullWidth
+                type="text"
+                required
+                variant="standard"
+                value={updatedBaseFare}
+                onChange={(event) => {
+                  setUpdatedBaseFare(event.target.value);
+                }}
+              />
             </div>
           )}
 
           {!editMode && (
             <div className="m-3">
-              <FormLabel>Schedule Number:</FormLabel>
-              <p className="text fs-6">{updatedScheduleNumber}</p>
+              <div className="my-2">
+                <FormLabel>Flight:</FormLabel>
+                <Box margin="normal" className="d-flex flex-column">
+                  <Typography variant="subtitle1">
+                    {updatedFlight.flightNumber}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    {updatedFlight.airlineCompany.airlineName}
+                  </Typography>
+                </Box>
+              </div>
 
-              <FormLabel>Airline:</FormLabel>
-              <Box margin="normal" className="d-flex flex-column">
-                <Typography variant="subtitle1">
-                  {updatedAirline.airlineName}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  {updatedAirline.code}
-                </Typography>
-              </Box>
+              <div className="my-2">
+                <FormLabel>Boarding:</FormLabel>
+                <Box margin="normal" className="d-flex flex-column">
+                  <Typography variant="subtitle1">
+                    {updatedBoarding.airportName} ({updatedBoarding.code})
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    {updatedBoarding.location.place},{" "}
+                    {updatedBoarding.location.country}
+                  </Typography>
+                </Box>
+              </div>
 
-              <FormLabel>Seat Capacity:</FormLabel>
-              <p className="text fs-6">{updatedSeatCapacity}</p>
+              <div className="my-2">
+                <FormLabel>Destination:</FormLabel>
+                <Box margin="normal" className="d-flex flex-column">
+                  <Typography variant="subtitle1">
+                    {updatedDestination.airportName} ({updatedDestination.code})
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    {updatedDestination.location.place},{" "}
+                    {updatedDestination.location.country}
+                  </Typography>
+                </Box>
+              </div>
 
-              <FormLabel>Number of Columns:</FormLabel>
-              <p className="text fs-6">{updatedNumberOfColumns}</p>
+              <FormLabel>Base Fare:</FormLabel>
+              <p className="text fs-6">{updatedBaseFare}</p>
+
+              <FormLabel>Status:</FormLabel>
+              <p className="text fs-6">{updatedStatus}</p>
             </div>
           )}
         </CardContent>

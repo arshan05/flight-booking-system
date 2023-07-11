@@ -3,6 +3,7 @@ import { scheduleActions } from "../store/schedule-slice";
 
 const API_BASE_URL = "http://localhost:9091/api/schedule";
 export const getSchedules = () => {
+  console.log("called");
   return async (dispatch) => {
     const fetchData = async () => {
       try {
@@ -18,7 +19,6 @@ export const getSchedules = () => {
         }
 
         const data = response.data;
-        console.log(data);
         return data;
       } catch (error) {
         throw new Error(error);
@@ -26,6 +26,7 @@ export const getSchedules = () => {
     };
 
     const scheduleData = await fetchData();
+    console.log(scheduleData);
     dispatch(scheduleActions.replaceSchedules(scheduleData));
   };
 };

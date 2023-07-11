@@ -1,7 +1,6 @@
 import {
   faBuilding,
-  faCalendarAlt,
-  faUser,
+  faCalendarAlt
 } from "@fortawesome/free-regular-svg-icons";
 import {
   faMapMarkerAlt,
@@ -11,15 +10,15 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, FormLabel, Grid, Paper } from "@mui/material";
 
-import "../style/AdminHome.css";
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getLocations } from "../service/LocationService";
+import { useNavigate } from "react-router-dom";
 import { getAirlines } from "../service/AirlineService";
 import { getAirports } from "../service/AirportService";
 import { getFlights } from "../service/FlightService";
+import { getLocations } from "../service/LocationService";
 import { getSchedules } from "../service/ScheduleService";
+import "../style/AdminHome.css";
 
 const AdminHome = () => {
   const navigate = useNavigate();
@@ -38,7 +37,6 @@ const AdminHome = () => {
     { title: "Airlines", icon: faPlaneDeparture },
     { title: "Schedules", icon: faCalendarAlt },
     { title: "Locations", icon: faMapMarkerAlt },
-    { title: "Passengers", icon: faUser },
   ];
 
   const handleClick = (title) => {
@@ -46,8 +44,6 @@ const AdminHome = () => {
       navigate("/admin/flights");
     } else if (title === "Airports") {
       navigate("/admin/airports");
-    } else if (title === "Passengers") {
-      navigate("/admin/passengers");
     } else if (title === "Schedules") {
       navigate("/admin/schedules");
     } else if (title === "Locations") {

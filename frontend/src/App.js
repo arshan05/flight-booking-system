@@ -1,36 +1,31 @@
-import "./App.css";
-import Payment from "./component/Payment";
-import Schedule from "./component/Schedule";
-import Home from "./component/Home";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   BrowserRouter,
   Route,
-  Routes,
-  Redirect,
-  useNavigate,
+  Routes
 } from "react-router-dom";
-import NavBar from "./component/NavBar";
-import Register from "./component/Register";
-import Login from "./component/Login";
-import AuthForm from "./component/Sign";
-import Logout from "./component/Logout";
-import SchedulesResult from "./component/SchedulesResult";
-import { validate } from "./service/AuthService";
-import { useDispatch, useSelector } from "react-redux";
+import AdminAirlines from "./Admin/AdminAirlines";
+import AdminAirports from "./Admin/AdminAirports";
+import AdminFlights from "./Admin/AdminFlights";
+import AdminHome from "./Admin/AdminHome";
+import AdminLocations from "./Admin/AdminLocation";
+import AdminSchedules from "./Admin/AdminSchedules";
+import "./App.css";
+import AllBooking from "./component/AllBookings";
+import BoardingPass from "./component/BoardingPass";
 import Booking from "./component/Booking";
 import Cancel from "./component/Cancel";
+import Home from "./component/Home";
+import Login from "./component/Login";
+import Logout from "./component/Logout";
+import NavBar from "./component/NavBar";
+import Register from "./component/Register";
+import Schedule from "./component/Schedule";
+import SchedulesResult from "./component/SchedulesResult";
+import AuthForm from "./component/Sign";
 import Success from "./component/Success";
-import AllBooking from "./component/AllBookings";
-import { createMuiTheme } from "@mui/material";
-import BoardingPass from "./component/BoardingPass";
-import AdminHome from "./Admin/AdminHome";
-import AdminFlights from "./Admin/AdminFlights";
-import AdminAirports from "./Admin/AdminAirports";
-import AdminSchedules from "./Admin/AdminSchedules";
-import AdminLocations from "./Admin/AdminLocation";
-import AdminPassengers from "./Admin/AdminPassenger";
-import AdminAirlines from "./Admin/AdminAirlines";
-import { useEffect } from "react";
+import { validate } from "./service/AuthService";
 
 function App() {
   const dispatch = useDispatch();
@@ -69,7 +64,6 @@ function App() {
         <Route path="/admin/flights" Component={AdminFlights}></Route>
         <Route path="/admin/airports" Component={AdminAirports}></Route>
         <Route path="/admin/airlines" Component={AdminAirlines}></Route>
-        <Route path="/admin/passengers" Component={AdminPassengers}></Route>
         <Route path="/admin/locations" Component={AdminLocations}></Route>
         <Route path="/admin/schedules" Component={AdminSchedules}></Route>
       </Routes>
