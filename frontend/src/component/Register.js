@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { register } from "../service/AuthService";
+import { Button, TextField } from "@mui/material";
+import { registerUser } from "../service/AuthService";
 
-const Register = () => {
+const RegisterComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const RegisterHandler = () => {
+  const RegisterHandler = (event) => {
+    event.preventDefault();
     const registerRequest = {
       username: email,
       password: password,
       role: "user",
     };
-
-    register(registerRequest);
+// console.log(registerRequest);
+    registerUser(registerRequest);
+    alert("yRegistration successful. Please log in")
   };
 
   return (
@@ -48,7 +51,7 @@ const Register = () => {
             type="submit"
             variant="contained"
           >
-            Login
+            Register
           </Button>
         </div>
       </form>
@@ -56,4 +59,10 @@ const Register = () => {
   );
 };
 
-export default Register;
+
+// const Register =()=>{
+//   return (
+//     <div>signup</div>
+//   )
+// }
+export default RegisterComponent;

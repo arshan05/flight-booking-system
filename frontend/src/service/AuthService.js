@@ -65,31 +65,31 @@ export const logout = () => {
 export const validate = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        `${API_BASE_URL}/validate`,
-        { withCredentials: true }
-      );
-      if(response.status === 200){
+      const response = await axios.get(`${API_BASE_URL}/validate`, {
+        withCredentials: true,
+      });
+      if (response.status === 200) {
         const authResponse = {
           isAuthenticated: true,
           email: response.data.name,
           role: response.data.role,
-          token: response.data.jwtToken
+          token: response.data.jwtToken,
         };
         dispatch(authActions.authenticate(authResponse));
-      }
-      else{
-        console.log('cookie not found');
+      } else {
+        console.log("cookie not found");
       }
     } catch (error) {
-      console.log('cookie not found');
+      console.log("cookie not found");
     }
   };
 };
 
-export const register = (registerRequest) => {
-  return async (dispatch) => {
+export const registerUser = async (registerRequest) => {
+  // return async () {
+    // console.log(registerRequest);
     try {
+      console.log(registerRequest);
       const response = await axios.post(
         `${API_BASE_URL}/signup`,
         registerRequest
@@ -98,5 +98,5 @@ export const register = (registerRequest) => {
     } catch (error) {
       console.error(error);
     }
-  };
+  // };
 };

@@ -106,22 +106,22 @@ public class AirlineController {
 
 	}
 
-	@GetMapping("/getById/{id}")
-	public ResponseEntity<Airline> getById(@RequestHeader("cookie") String cookie, @PathVariable String id)
-			throws AirlineException {
-
-		try {
-			if (authService.isSessionValid(cookie)) {
-				return ResponseEntity.ok(airlineService.getbyId(id));
-			} else {
-				throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
-			}
-		} catch (
-
-		Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
-		}
-
-	}
+//	@GetMapping("/getById/{id}")
+//	public ResponseEntity<Airline> getById(@RequestHeader("cookie") String cookie, @PathVariable String id)
+//			throws AirlineException {
+//
+//		try {
+//			if (authService.isSessionValid(cookie)) {
+//				return ResponseEntity.ok(airlineService.getbyId(id));
+//			} else {
+//				throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
+//			}
+//		} catch (
+//
+//		Exception e) {
+//			throw new ResponseStatusException(HttpStatus.FORBIDDEN, YOU_ARE_UNAUTHORIZED);
+//		}
+//
+//	}
 
 }

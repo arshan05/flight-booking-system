@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthService, { login } from "../service/AuthService";
 import { useDispatch, useSelector } from "react-redux";
 
-const Login =  () => {
+const LoginComponent =  () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -76,4 +76,4 @@ const Login =  () => {
   );
 };
 
-export default Login;
+export default LoginComponent;

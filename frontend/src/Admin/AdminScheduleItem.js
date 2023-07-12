@@ -47,7 +47,7 @@ function AdminScheduleItem(props) {
   const destination = props.schedule.destination;
   const startTime = props.schedule.startTime;
   const endTime = props.schedule.endTime;
-  const status = props.schedule.status;
+  const status = props.schedule.scheduleStatus;
   const baseFare = props.schedule.baseFare;
 
   const [updatedFlight, setUpdatedFlight] = useState(flight);
@@ -71,13 +71,13 @@ function AdminScheduleItem(props) {
   const handleUpdate = () => {
     const updatedSchedule = {
       id: props.schedule.id,
-      flight: flight,
-      boarding: boarding,
-      destination: destination,
-      startTime: startTime,
-      endTime: endTime,
-      status: status,
-      baseFare: baseFare,
+      flight: updatedFlight,
+      boarding: updatedBoarding,
+      destination: updatedDestination,
+      startTime: updatedStartTime,
+      endTime: updatedEndTime,
+      scheduleStatus: updatedStatus,
+      baseFare: updatedBaseFare,
     };
     console.log(updatedSchedule);
     dispatch(updateSchedule(updatedSchedule));
@@ -85,8 +85,70 @@ function AdminScheduleItem(props) {
   };
 
   return (
-    <div>
-      <Card className="m-3">
+    <div className="scrollable-card">
+      <Card className="m-3" style={{height:'550px', overflowY:'auto'}}>
+        <CardActions className="card-header card-header d-flex justify-content-end">
+          {!editMode && (
+            <div className="d-flex justify-content-start">
+              <IconButton
+                className="shadow-sm m-2"
+                onClick={() => {
+                  setEditMode(true);
+                }}
+              >
+                <FontAwesomeIcon icon={faPen} color="#142c54" />
+              </IconButton>
+            </div>
+          )}
+
+          {editMode && (
+            <div className="d-flex justify-content-between">
+              <Button onClick={handleUpdate}>Update</Button>
+              <div>
+                <IconButton
+                  onClick={() => setOpenDeleteDialog(true)}
+                  className="shadow-sm m-"
+                >
+                  <FontAwesomeIcon icon={faTrashCan} color="crimson" />
+                </IconButton>
+
+                <Dialog
+                  open={openDeleteDialog}
+                  onClose={() => {
+                    setOpenDeleteDialog(false);
+                  }}
+                  aria-describedby="alert-dialog-slide-description"
+                >
+                  <DialogTitle>{"Confirm Delete"}</DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-slide-description">
+                      Are you sure you want to delete?
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button
+                      onClick={() => {
+                        setOpenDeleteDialog(false);
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                    <Button onClick={handleDelete}>Delete</Button>
+                  </DialogActions>
+                </Dialog>
+
+                <IconButton
+                  className="shadow-sm m-2"
+                  onClick={() => {
+                    setEditMode(false);
+                  }}
+                >
+                  <FontAwesomeIcon icon={faChevronLeft} color="#142c54" />
+                </IconButton>
+              </div>
+            </div>
+          )}
+        </CardActions>
         <CardContent className="card-body">
           {editMode && (
             <div className="m-3">
@@ -306,69 +368,6 @@ function AdminScheduleItem(props) {
             </div>
           )}
         </CardContent>
-
-        <CardActions className="card-footer">
-          {!editMode && (
-            <div className="d-flex justify-content-end">
-              <IconButton
-                className="shadow-sm m-2"
-                onClick={() => {
-                  setEditMode(true);
-                }}
-              >
-                <FontAwesomeIcon icon={faPen} color="#142c54" />
-              </IconButton>
-            </div>
-          )}
-
-          {editMode && (
-            <div className="d-flex justify-content-between">
-              <Button onClick={handleUpdate}>Update</Button>
-              <div>
-                <IconButton
-                  onClick={() => setOpenDeleteDialog(true)}
-                  className="shadow-sm m-"
-                >
-                  <FontAwesomeIcon icon={faTrashCan} color="crimson" />
-                </IconButton>
-
-                <Dialog
-                  open={openDeleteDialog}
-                  onClose={() => {
-                    setOpenDeleteDialog(false);
-                  }}
-                  aria-describedby="alert-dialog-slide-description"
-                >
-                  <DialogTitle>{"Confirm Delete"}</DialogTitle>
-                  <DialogContent>
-                    <DialogContentText id="alert-dialog-slide-description">
-                      Are you sure you want to delete?
-                    </DialogContentText>
-                  </DialogContent>
-                  <DialogActions>
-                    <Button
-                      onClick={() => {
-                        setOpenDeleteDialog(false);
-                      }}
-                    >
-                      Cancel
-                    </Button>
-                    <Button onClick={handleDelete}>Delete</Button>
-                  </DialogActions>
-                </Dialog>
-
-                <IconButton
-                  className="shadow-sm m-2"
-                  onClick={() => {
-                    setEditMode(false);
-                  }}
-                >
-                  <FontAwesomeIcon icon={faChevronLeft} color="#142c54" />
-                </IconButton>
-              </div>
-            </div>
-          )}
-        </CardActions>
       </Card>
     </div>
   );

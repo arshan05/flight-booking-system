@@ -1,7 +1,8 @@
-import Login from "./Login";
-import Register from "./Register";
 import { useState } from "react";
-import '../style/navbar.css';
+import { Container, Grid, Paper, Tab, Tabs, Typography } from "@mui/material";
+
+import LoginComponent from "./Login";
+import RegisterComponent from "./Register";
 
 const Sign = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -9,39 +10,28 @@ const Sign = () => {
   const toggleForm = () => {
     setIsLogin(!isLogin);
   };
+
   return (
-    <div className="container">
-      <div className="row justify-content-center mt-5">
-        <div className="col-md-8">
-          <div className="card">
-            <div className="card-header">
-              <h5 className="card-title title-font">Escapes</h5>
-              <ul className="nav nav-tabs card-header-tabs">
-                <li className="nav-item">
-                  <button
-                    className={`nav-link ${isLogin ? "active" : ""}`}
-                    onClick={() => toggleForm()}
-                  >
-                    Login
-                  </button>
-                </li>
-                <li className="nav-item">
-                  <button
-                    className={`nav-link ${!isLogin ? "active" : ""}`}
-                    onClick={() => toggleForm()}
-                  >
-                    Register
-                  </button>
-                </li>
-              </ul>
-            </div>
-            <div className="card-body">
-              {isLogin ? <Login /> : <Register />}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Container maxWidth="md" sx={{ mt: 5 }}>
+      <Paper elevation={3}>
+        <Grid container>
+          <Grid item xs={12}>
+            <Typography variant="h5" component="div" sx={{ p: 2 }}>
+              Escapes
+            </Typography>
+            <Tabs value={isLogin ? 0 : 1} onChange={toggleForm} centered>
+              <Tab label="Login" />
+              <Tab label="Register" />
+            </Tabs>
+          </Grid>
+          <Grid item xs={12}>
+            <Paper elevation={0} sx={{ p: 2 }}>
+              {isLogin ? <LoginComponent/> : <RegisterComponent />}
+            </Paper>
+          </Grid>
+        </Grid>
+      </Paper>
+    </Container>
   );
 };
 
