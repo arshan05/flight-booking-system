@@ -32,5 +32,5 @@ export const getAvailableSeats=(seatClass,side,fare) => {
         seats.push(seat)
     ));
 
-    return seats;
+    return seats;   
 }

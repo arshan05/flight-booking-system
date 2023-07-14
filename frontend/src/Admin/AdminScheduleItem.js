@@ -78,6 +78,7 @@ function AdminScheduleItem(props) {
       endTime: updatedEndTime,
       scheduleStatus: updatedStatus,
       baseFare: updatedBaseFare,
+      fare:props.schedule.fare,
     };
     console.log(updatedSchedule);
     dispatch(updateSchedule(updatedSchedule));

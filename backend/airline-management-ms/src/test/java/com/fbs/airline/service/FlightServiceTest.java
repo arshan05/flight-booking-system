@@ -1,6 +1,7 @@
 package com.fbs.airline.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
@@ -8,6 +9,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -69,22 +71,27 @@ class FlightServiceTest {
 
 	@Test
 	void addFlight_WithNonExistingFlight_AddsAndReturnsFlight() throws FlightException {
-		Airline airline = new Airline("1", "ABC", "Test Airline", null);
-		Flight flight = new Flight("1", "fl01", airline, 90, 6, null, null);
-		
-		when(flightRepository.existsByFlightNumber(flight.getFlightNumber())).thenReturn(false);
+		Flight flight = new Flight();
+        flight.setFlightNumber("ABC123");
+        Airline airline = new Airline();
+        airline.setId("1");
+        airline.setFlights(new ArrayList<>());
+        flight.setAirlineCompany(airline);
+
+        when(flightRepository.existsByFlightNumber(flight.getFlightNumber())).thenReturn(false);
         when(fareProxy.setFlightSeat(flight)).thenReturn(flight);
         when(flightRepository.save(flight)).thenReturn(flight);
+        when(airlineRepository.save(airline)).thenReturn(airline);
 
-        // Act
-        Flight result = flightService.addFlight(flight);
+        when(airlineRepository.findById(flight.getAirlineCompany().getId())).thenReturn(Optional.of(airline));
 
-        // Assert
-        assertEquals(flight, result);
-        verify(flightRepository).existsByFlightNumber(flight.getFlightNumber());
-        verify(fareProxy).setFlightSeat(flight);
-        verify(flightRepository).save(flight);
-        verify(logger).info("flight added successfully");
+        Flight addedFlight = flightService.addFlight(flight);
+
+        assertNotNull(addedFlight);
+        assertEquals(flight, addedFlight);
+        assertEquals(1, airline.getFlights().size());
+        assertTrue(airline.getFlights().contains(flight));
+
 	}
 
 	@Test

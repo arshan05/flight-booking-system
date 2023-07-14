@@ -96,15 +96,15 @@ public class AirlineService implements IAirlineService {
 		}
 	}
 
-	@Override
-	public Airline getbyId(String id) throws AirlineException {
-		if(airlineRepository.existsById(id)) {
-			return airlineRepository.findById(id).orElse(null);
-		}
-		else {
-			throw new AirlineException(id + "not found");
-		}
-	}
+//	@Override
+//	public Airline getbyId(String id) throws AirlineException {
+//		if(airlineRepository.existsById(id)) {
+//			return airlineRepository.findById(id).orElse(null);
+//		}
+//		else {
+//			throw new AirlineException(id + "not found");
+//		}
+//	}
 	
 	
 }
