@@ -12,7 +12,7 @@ export const login = (loginRequest) => {
         loginRequest,
         { withCredentials: true }
       );
-      // console.log("Response Data:", response.data);
+      // console.log(response.data);
 
       const cookies = document.cookie.split(";");
       let jwtToken = null;
@@ -36,7 +36,9 @@ export const login = (loginRequest) => {
       dispatch(authActions.authenticate(authResponse));
       return authResponse;
     } catch (error) {
-      console.error(error);
+      alert("invalid email/password");
+      // throw new Error("incorrect credentials")
+      // console.error(error);
     }
   };
 };
@@ -87,16 +89,18 @@ export const validate = () => {
 
 export const registerUser = async (registerRequest) => {
   // return async () {
-    // console.log(registerRequest);
-    try {
-      console.log(registerRequest);
-      const response = await axios.post(
-        `${API_BASE_URL}/signup`,
-        registerRequest
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
+  // console.log(registerRequest);
+  try {
+    const response = await axios.post(
+      `${API_BASE_URL}/signup`,
+      registerRequest
+    );
+    if (response.status === 200) {
+      alert("Registration successful. Please log in");
     }
+    console.log(response.data);
+  } catch (error) {
+    alert("email already registered. Try with another email");
+  }
   // };
 };

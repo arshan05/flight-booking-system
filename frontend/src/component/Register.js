@@ -16,7 +16,6 @@ const RegisterComponent = () => {
     };
 // console.log(registerRequest);
     registerUser(registerRequest);
-    alert("yRegistration successful. Please log in")
   };
 
   return (

@@ -19,15 +19,22 @@ const SchedulesResult = () => {
   }, [dispatch]);
   return (
     <div>
-      <ul style={{listStyleType:"none"}}>
-        
-        {schedulesResult !== undefined && schedulesResult.map((schedule) => (
-          <Schedule schedule={schedule} />
-        ))}
-
-        {schedulesResult === undefined && <NoResultsFound/>}
-
+      <ul style={{ listStyleType: "none" }}>
+        {schedulesResult === undefined || schedulesResult === null ? (
+          <NoResultsFound />
+        ) : Array.isArray(schedulesResult) ? (
+          schedulesResult.map((schedule) => <Schedule schedule={schedule} />)
+        ) : (
+          <NoResultsFound />
+        )}
       </ul>
+
+      {/* <ul style={{ listStyleType: "none" }}>
+        {(schedulesResult === undefined || schedulesResult === null) && <NoResultsFound />}
+
+        {schedulesResult !== undefined &&
+          schedulesResult.map((schedule) => <Schedule schedule={schedule} />)}
+      </ul> */}
     </div>
   );
 };

@@ -20,6 +20,7 @@ export const getFlights = (flightDetails) => {
         }
 
         if (response.data.length === 0) {
+          dispatch(resultActions.replaceScheduleResult({}));
           throw new Error("flights are not available for this route and date");
         }
 
@@ -33,6 +34,7 @@ export const getFlights = (flightDetails) => {
     const schedulesData = await fetchData();
     if (schedulesData === undefined) {
       console.log("Results not found");
+      dispatch(resultActions.replaceScheduleResult({}));
     } else {
       dispatch(resultActions.replaceScheduleResult(schedulesData));
     }

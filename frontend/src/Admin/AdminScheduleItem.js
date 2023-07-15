@@ -87,7 +87,7 @@ function AdminScheduleItem(props) {
 
   return (
     <div className="scrollable-card">
-      <Card className="m-3" style={{height:'550px', overflowY:'auto'}}>
+      <Card className="m-3" style={{height:'76vh', overflowY:'auto'}}>
         <CardActions className="card-header card-header d-flex justify-content-end">
           {!editMode && (
             <div className="d-flex justify-content-start">
@@ -360,6 +360,12 @@ function AdminScheduleItem(props) {
                   </Typography>
                 </Box>
               </div>
+
+              <FormLabel>Start Time:</FormLabel>
+              <p className="text fs-6">{dayjs(startTime).format('HH:mm, DD-MM-YYYY')}</p>
+
+              <FormLabel>End Time:</FormLabel>
+              <p className="text fs-6">{dayjs(endTime).format(' HH:mm, DD-MM-YYYY')}</p>
 
               <FormLabel>Base Fare:</FormLabel>
               <p className="text fs-6">{updatedBaseFare}</p>

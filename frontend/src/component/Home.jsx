@@ -13,6 +13,7 @@ import dayjs from "dayjs";
 import "../style/schedule.css";
 import { getAirlines } from "../service/AirlineService";
 import { getAirports } from "../service/AirportService";
+import { resultActions } from "../store/result-slice";
 
 const myStyle = {
   backgroundColor: "#f5f5f5",
@@ -44,6 +45,8 @@ const Home = () => {
     dispatch(getLocations());
     console.log(locations);
   }, [dispatch]);
+
+  
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -140,9 +143,10 @@ const Home = () => {
                         label="Date"
                         format="DD/MM/YYYY"
                         defaultValue={dateField}
+                        disablePast
                         onChange={(date) => {
-                          console.log(date);
-                          setDateField(`${date.$y}-${date.$M}-${date.$D}`);
+                          console.log(`${date.$y}-${date.$M + 1}-${date.$D}`);
+                          setDateField(`${date.$y}-${date.$M + 1}-${date.$D}`);
                         }}
                       />
                     </LocalizationProvider>
