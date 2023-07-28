@@ -29,7 +29,7 @@ import com.fbs.customer.service.IFlightBookingService;
 
 @RestController
 @RequestMapping("/api/consumer")
-@CrossOrigin(origins = "http://localhost:3000",allowCredentials = "true")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class CustomerController {
 
 	@Autowired
@@ -45,7 +45,6 @@ public class CustomerController {
 		return flightBookingService.getFlightDetails(start, destination, date);
 
 	}
-
 
 	@GetMapping("/getAvailableSeats")
 	public List<FlightSeat> getAvailableSeats(@RequestHeader("cookie") String cookie, @RequestBody Schedule schedule) {
@@ -89,29 +88,26 @@ public class CustomerController {
 		try {
 
 			if (authService.isSessionValid(cookie)) {
-				System.out.println("o=========k");
 				Passenger newlyAddedPassenger = flightBookingService.addPassenger(passenger);
 				return ResponseEntity.ok(newlyAddedPassenger);
-			} else {
-				throw new ResponseStatusException(HttpStatus.FORBIDDEN, "YOU_ARE_UNAUTHORIZED");
 			}
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
 		} catch (
 
 		Exception e) {
-			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "YOU_ARE_UNAUTHORIZED");
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are Unauthorized!...");
 		}
 
 	}
 
-	
 	@GetMapping("/getBookingDetails")
-	public List<BookingDetails> getBookingDetails(@RequestHeader("cookie") String cookie, @RequestBody GetBookingDetailsRequest request) {
+	public List<BookingDetails> getBookingDetails(@RequestHeader("cookie") String cookie,
+			@RequestBody GetBookingDetailsRequest request) {
 		try {
 			if (authService.isSessionValid(cookie)) {
-				return flightBookingService.getBookingDetailsByPnrAndEmail(request.getPnr(),request.getEmail());
-			} else {
-				throw new ResponseStatusException(HttpStatus.FORBIDDEN, "YOU_ARE_UNAUTHORIZED");
+				return flightBookingService.getBookingDetailsByPnrAndEmail(request.getPnr(), request.getEmail());
 			}
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "YOU_ARE_UNAUTHORIZED");
 		} catch (
 
 		Exception e) {
@@ -119,15 +115,14 @@ public class CustomerController {
 		}
 
 	}
-	
+
 	@GetMapping("/getBookingDetailsByEmail/{email}")
 	public List<BookingDetails> getBookingDetails(@RequestHeader("cookie") String cookie, @PathVariable String email) {
 		try {
 			if (authService.isSessionValid(cookie)) {
 				return flightBookingService.getBookingDetailsByEmail(email);
-			} else {
-				throw new ResponseStatusException(HttpStatus.FORBIDDEN, "YOU_ARE_UNAUTHORIZED");
 			}
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "YOU_ARE_UNAUTHORIZED");
 		} catch (
 
 		Exception e) {
@@ -135,33 +130,21 @@ public class CustomerController {
 		}
 
 	}
-	
+
 	@PostMapping("/cancelTicket")
-	public ResponseEntity<String> cancelTicket(@RequestHeader("cookie") String cookie, @RequestBody BookingDetails bookingDetails) {
+	public ResponseEntity<String> cancelTicket(@RequestHeader("cookie") String cookie,
+			@RequestBody BookingDetails bookingDetails) {
 		try {
 			if (authService.isSessionValid(cookie)) {
 				flightBookingService.cancelTicket(bookingDetails);
 				return ResponseEntity.ok("Ticket canceled");
-			} else {
-				throw new ResponseStatusException(HttpStatus.FORBIDDEN, "YOU_ARE_UNAUTHORIZED");
 			}
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "YOU_ARE_UNAUTHORIZED");
 		} catch (
 
 		Exception e) {
 			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "YOU_ARE_UNAUTHORIZED");
 		}
 
-	}
-	
-	public CustomerController() {
-		// TODO Auto-generated constructor stub
-		System.out.println("hello");
-	}
-	
-	
-	
-	@PostMapping("/hello")
-	public String hello(@RequestBody String name) {
-		return "hello "+ name;
 	}
 }

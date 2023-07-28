@@ -11,12 +11,8 @@ import com.fbs.mail.service.EmailService;
 @RestController
 public class EmailController {
 
-    private final EmailService emailService;
-
-    @Autowired
-    public EmailController(EmailService emailService) {
-        this.emailService = emailService;
-    }
+	@Autowired
+    EmailService emailService;
 
     @PostMapping("/sendEmail")
     public void sendEmail(@RequestBody EmailRequest emailRequest) {

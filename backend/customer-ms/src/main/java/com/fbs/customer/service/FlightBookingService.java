@@ -157,7 +157,7 @@ public class FlightBookingService implements IFlightBookingService {
 				+ "We have successfully canceled your flight ticket as per your request. Here are the details of your canceled booking:\r\n"
 				+ "\r\n"
 				+ "PNR number: " +bookingDetails.getPNR() + "\r\n"
-				+ "Flight Number: "+ flight.getFlightNumber()+", "+flight.getAirlineCompany() +"\r\n"
+				+ "Flight Number: "+ flight.getFlightNumber()+", "+flight.getAirlineCompany().getAirlineName() + "\r\n"
 				+ "Departure: "+ schedule.getBoarding().getLocation().getPlace() +"\r\n"
 				+ "Destination: "+ schedule.getDestination().getLocation().getPlace() +"\r\n"
 				+ "Cancellation Date: "+ new Date() +"\r\n"
@@ -166,7 +166,7 @@ public class FlightBookingService implements IFlightBookingService {
 				+ "\r\n"
 				+ "Best regards,\r\n"
 				+ "Escapes";
-		EmailRequest emailRequest = new EmailRequest(passenger.getEmail(), "Booking Successful", messageBody);
+		EmailRequest emailRequest = new EmailRequest(passenger.getEmail(), "Booking Cancelled", messageBody);
 		System.out.println(emailRequest);
 		emailProxy.sendEmail(emailRequest);
 	}

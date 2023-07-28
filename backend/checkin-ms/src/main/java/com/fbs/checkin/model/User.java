@@ -1,10 +1,14 @@
 package com.fbs.checkin.model;
 
+
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
+
 
 @Document(collection = "users")
 public class User {
@@ -16,6 +20,7 @@ public class User {
 	@NotBlank
 	@Size(min = 8, max=20)
 	private String password;
+	@NotBlank
 	private String role;
 
 	public User(String username, String password, String role) {
@@ -27,7 +32,6 @@ public class User {
 
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getUsername() {

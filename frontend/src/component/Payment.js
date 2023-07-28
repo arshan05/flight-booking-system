@@ -26,9 +26,11 @@ const Payment = (props) => {
   const schedule = props.schedule;
 
   const [filled, setFilled] = useState(false);
+  const regex = /^\d{10}$/;
 
   useEffect(() => {
-    if (passengerName !== "" && phoneNumber !== "") {
+    if (passengerName !== "" && phoneNumber !== "" && regex.test(phoneNumber)) {
+      console.log(phoneNumber);
       setFilled(true);
     } else {
       setFilled(false);
