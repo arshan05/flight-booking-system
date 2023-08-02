@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 const NavBar = () => {
   const auth = useSelector((state) => state.auth);
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" style={{backgroundColor:'#E7EEF9'}} >
       <Container>
         <Link to="/" className="navbar-brand">
           <span className="title-font">Escapes</span>

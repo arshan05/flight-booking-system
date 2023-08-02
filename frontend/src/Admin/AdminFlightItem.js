@@ -74,7 +74,7 @@ function AdminFlightItem(props) {
   console.log(updatedAirline);
   return (
     <div>
-      <Card className="m-3">
+      <Card className="m-3"  style={{backgroundColor:'#F1E0CE', color:'#FF420C'}}>
         <CardContent className="card-body">
           {editMode && (
             <div className="m-3">

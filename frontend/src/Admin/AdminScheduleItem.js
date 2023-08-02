@@ -87,7 +87,7 @@ function AdminScheduleItem(props) {
 
   return (
     <div className="scrollable-card">
-      <Card className="m-3" style={{height:'76vh', overflowY:'auto'}}>
+      <Card className="m-3" style={{height:'76vh', overflowY:'auto',backgroundColor:'#EEF6FD', color:'#262626'}}>
         <CardActions className="card-header card-header d-flex justify-content-end">
           {!editMode && (
             <div className="d-flex justify-content-start">

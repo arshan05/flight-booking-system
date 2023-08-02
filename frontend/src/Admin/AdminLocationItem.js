@@ -58,7 +58,7 @@ function AdminLocationItem(props) {
 
   return (
     <div>
-      <Card className="m-3">
+      <Card className="m-3" style={{backgroundColor:'#F5D4CD', color:'#F5524C'}}>
         <CardContent className="card-body">
           {editMode && (
             <div className="m-3">

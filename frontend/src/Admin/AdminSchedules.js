@@ -69,195 +69,237 @@ const AdminSchedules = () => {
   console.log(useSelector((state) => state.schedule));
   return (
     <div>
-      <Card className="m-3">
-        <CardHeader
-          title="Add Schedule"
-          style={{ color: "#142c54" }}
-          action={
-            <IconButton
-              aria-expanded={expanded}
-              aria-label="show more"
+      <div className="row">
+        <div className="col-4 m-2">
+          <div
+            className="image-container"
+            style={{
+              height: "100vh",
+              overflow: "hidden",
+              position: "sticky",
+              top: 0,
+            }}
+          >
+            <img
+              className="img-fluid rounded d-block"
+              src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/fd972c63806641.5abcd1c426c54.png"
+              style={{
+                width: "100%",
+                height: "100%",
+                transform: "scale(0.9)",
+                objectFit: "cover",
+              }}
+              alt="My Image"
+            ></img>
+          </div>
+        </div>
+        <div className="col">
+          <Card
+            className="m-2"
+            style={{
+              color: "#F6F3F4",
+              backgroundColor: "#142c54",
+              position: "sticky",
+              top: 0,
+              zIndex: 1,
+            }}
+          >
+            <CardHeader
+              title="Add Schedule"
+              action={
+                <IconButton
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                  onClick={() => {
+                    setExpanded(!expanded);
+                  }}
+                >
+                  {!expanded && <FontAwesomeIcon color="#F6F3F4" icon={faChevronDown} />}
+                  {expanded && <FontAwesomeIcon color="#F6F3F4" icon={faChevronUp} />}
+                </IconButton>
+              }
               onClick={() => {
                 setExpanded(!expanded);
               }}
-            >
-              {!expanded && <FontAwesomeIcon icon={faChevronDown} />}
-              {expanded && <FontAwesomeIcon icon={faChevronUp} />}
-            </IconButton>
-          }
-          onClick={() => {
-            setExpanded(!expanded);
-          }}
-        />
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Form onSubmit={handleAddSchedule}>
-            <CardContent>
-              <FormControl fullWidth variant="standard" margin="normal">
-                <InputLabel id="select-label">Flight</InputLabel>
+            />
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+              <Form onSubmit={handleAddSchedule} style={{ backgroundColor: "#F6F3F4" }}>
+                <CardContent>
+                  <FormControl fullWidth variant="standard" margin="normal">
+                    <InputLabel id="select-label">Flight</InputLabel>
 
-                <Select
-                  labelId="select-label"
-                  margin="normal"
-                  fullWidth
-                  label="Flight"
-                  value={flight}
-                  onChange={(event) => {
-                    setFlight(event.target.value);
-                  }}
-                >
-                  <MenuItem value="">Select a flight</MenuItem>
-                  {flights.map((fly) => (
-                    <MenuItem key={fly.id} value={fly}>
-                      <Box className="d-flex flex-row justify-content around align-items-center">
-                        <Typography variant="subtitle1">
-                          {fly.flightNumber} ({fly.airlineCompany.airlineName})
-                        </Typography>
-                      </Box>
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
+                    <Select
+                      labelId="select-label"
+                      margin="normal"
+                      fullWidth
+                      label="Flight"
+                      value={flight}
+                      onChange={(event) => {
+                        setFlight(event.target.value);
+                      }}
+                    >
+                      <MenuItem value="">Select a flight</MenuItem>
+                      {flights.map((fly) => (
+                        <MenuItem key={fly.id} value={fly}>
+                          <Box className="d-flex flex-row justify-content around align-items-center">
+                            <Typography variant="subtitle1">
+                              {fly.flightNumber} (
+                              {fly.airlineCompany.airlineName})
+                            </Typography>
+                          </Box>
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
 
-              <FormControl fullWidth variant="standard" margin="normal">
-                <InputLabel id="select-label">Boarding Airport</InputLabel>
+                  <FormControl fullWidth variant="standard" margin="normal">
+                    <InputLabel id="select-label">Boarding Airport</InputLabel>
 
-                <Select
-                  labelId="select-label"
-                  margin="normal"
-                  fullWidth
-                  label="Board Airport"
-                  value={boarding}
-                  onChange={(event) => {
-                    setBoarding(event.target.value);
-                  }}
-                >
-                  <MenuItem value="">Select a boarding airport</MenuItem>
-                  {airports.map((air) => (
-                    <MenuItem key={air.id} value={air}>
-                      <Box className="d-flex flex-row justify-content around align-items-center">
-                        <Typography variant="subtitle1">
-                          {air.airportName} ({air.code})
-                        </Typography>
-                      </Box>
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
+                    <Select
+                      labelId="select-label"
+                      margin="normal"
+                      fullWidth
+                      label="Board Airport"
+                      value={boarding}
+                      onChange={(event) => {
+                        setBoarding(event.target.value);
+                      }}
+                    >
+                      <MenuItem value="">Select a boarding airport</MenuItem>
+                      {airports.map((air) => (
+                        <MenuItem key={air.id} value={air}>
+                          <Box className="d-flex flex-row justify-content around align-items-center">
+                            <Typography variant="subtitle1">
+                              {air.airportName} ({air.code})
+                            </Typography>
+                          </Box>
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
 
-              <FormControl fullWidth variant="standard" margin="normal">
-                <InputLabel id="select-label">Destination Airport</InputLabel>
+                  <FormControl fullWidth variant="standard" margin="normal">
+                    <InputLabel id="select-label">
+                      Destination Airport
+                    </InputLabel>
 
-                <Select
-                  labelId="select-label"
-                  margin="normal"
-                  fullWidth
-                  label="Destination Airport"
-                  value={destination}
-                  onChange={(event) => {
-                    setDestination(event.target.value);
-                  }}
-                >
-                  <MenuItem value="">Select a destinatio Airport</MenuItem>
-                  {airports.map((air) => (
-                    <MenuItem key={air.id} value={air}>
-                      <Box className="d-flex flex-row justify-content around align-items-center">
-                        <Typography variant="subtitle1">
-                          {air.airportName} ({air.code})
-                        </Typography>
-                      </Box>
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
+                    <Select
+                      labelId="select-label"
+                      margin="normal"
+                      fullWidth
+                      label="Destination Airport"
+                      value={destination}
+                      onChange={(event) => {
+                        setDestination(event.target.value);
+                      }}
+                    >
+                      <MenuItem value="">Select a destinatio Airport</MenuItem>
+                      {airports.map((air) => (
+                        <MenuItem key={air.id} value={air}>
+                          <Box className="d-flex flex-row justify-content around align-items-center">
+                            <Typography variant="subtitle1">
+                              {air.airportName} ({air.code})
+                            </Typography>
+                          </Box>
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
 
-              <FormControl fullWidth margin="normal">
-                <FormLabel>Start Time</FormLabel>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DateTimePicker
-                    value={startTime}
-                    onChange={(value) => {
-                      setStartTime(
-                        String(value.format("YYYY-MM-DDTHH:mm:ssZ"))
-                      );
+                  <FormControl fullWidth margin="normal">
+                    <FormLabel>Start Time</FormLabel>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <DateTimePicker
+                        value={startTime}
+                        onChange={(value) => {
+                          setStartTime(
+                            String(value.format("YYYY-MM-DDTHH:mm:ssZ"))
+                          );
+                        }}
+                        renderInput={(props) => (
+                          <TextField {...props} variant="standard" fullWidth />
+                        )}
+                        minDateTime={dayjs().startOf("minute")}
+                      />
+                    </LocalizationProvider>
+                  </FormControl>
+
+                  <FormControl fullWidth margin="normal">
+                    <FormLabel>End Time</FormLabel>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <DateTimePicker
+                        views={["day", "year", "hours", "minutes", "seconds"]}
+                        value={endTime}
+                        onChange={(value) => {
+                          setEndTime(
+                            String(value.format("YYYY-MM-DDTHH:mm:ssZ"))
+                          );
+                        }}
+                        renderInput={(props) => (
+                          <TextField {...props} variant="standard" fullWidth />
+                        )}
+                        minDateTime={dayjs(startTime).startOf("minute")}
+                      />
+                    </LocalizationProvider>
+                  </FormControl>
+
+                  <FormControl fullWidth variant="standard" margin="normal">
+                    <InputLabel id="select-label">Status</InputLabel>
+
+                    <Select
+                      labelId="select-label"
+                      margin="normal"
+                      fullWidth
+                      label="Status"
+                      value={scheduleStatus}
+                      onChange={(event) => {
+                        setScheduleStatus(event.target.value);
+                      }}
+                    >
+                      <MenuItem value="">Select Schedule Status</MenuItem>
+                      {scheduleStatusOptions.map((option) => (
+                        <MenuItem value={option}>
+                          <Box className="d-flex flex-row justify-content around align-items-center">
+                            <Typography variant="subtitle1">
+                              {option}
+                            </Typography>
+                          </Box>
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+
+                  <TextField
+                    label="Base fare"
+                    margin="normal"
+                    fullWidth
+                    id="state"
+                    type="text"
+                    required
+                    variant="standard"
+                    onChange={(event) => {
+                      setBaseFare(event.target.value);
                     }}
-                    renderInput={(props) => (
-                      <TextField {...props} variant="standard" fullWidth />
-                    )}
-                    minDateTime={dayjs().startOf("minute")}
                   />
-                </LocalizationProvider>
-              </FormControl>
+                </CardContent>
+                <CardActions className="d-flex justify-content-center">
+                  <Button fullWidth variant="contained" type="submit">
+                    Add
+                  </Button>
+                </CardActions>
+              </Form>
+            </Collapse>
+          </Card>
 
-              <FormControl fullWidth margin="normal">
-                <FormLabel>End Time</FormLabel>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DateTimePicker
-                    views={["day", "year", "hours", "minutes", "seconds"]}
-                    value={endTime}
-                    onChange={(value) => {
-                      setEndTime(String(value.format("YYYY-MM-DDTHH:mm:ssZ")));
-                    }}
-                    renderInput={(props) => (
-                      <TextField {...props} variant="standard" fullWidth />
-                    )}
-                    minDateTime={dayjs(startTime).startOf("minute")}
-                  />
-                </LocalizationProvider>
-              </FormControl>
-
-              <FormControl fullWidth variant="standard" margin="normal">
-                <InputLabel id="select-label">Status</InputLabel>
-
-                <Select
-                  labelId="select-label"
-                  margin="normal"
-                  fullWidth
-                  label="Status"
-                  value={scheduleStatus}
-                  onChange={(event) => {
-                    setScheduleStatus(event.target.value);
-                  }}
-                >
-                  <MenuItem value="">Select Schedule Status</MenuItem>
-                  {scheduleStatusOptions.map((option) => (
-                    <MenuItem value={option}>
-                      <Box className="d-flex flex-row justify-content around align-items-center">
-                        <Typography variant="subtitle1">{option}</Typography>
-                      </Box>
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-
-              <TextField
-                label="Base fare"
-                margin="normal"
-                fullWidth
-                id="state"
-                type="text"
-                required
-                variant="standard"
-                onChange={(event) => {
-                  setBaseFare(event.target.value);
-                }}
-              />
-            </CardContent>
-            <CardActions className="d-flex justify-content-center">
-              <Button fullWidth variant="contained" type="submit">
-                Add
-              </Button>
-            </CardActions>
-          </Form>
-        </Collapse>
-      </Card>
-
-      <Grid container spacing={4}>
-        {schedules.map((item) => (
-          <Grid item sm={6} lg={3} key={item.id}>
-            <AdminScheduleItem schedule={item} />
+          <Grid container spacing={4}>
+            {schedules.map((item) => (
+              <Grid item sm={6} lg={6} key={item.id}>
+                <AdminScheduleItem schedule={item} />
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
+        </div>
+      </div>
     </div>
   );
 };

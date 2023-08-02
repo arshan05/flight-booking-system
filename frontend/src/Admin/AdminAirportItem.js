@@ -66,7 +66,7 @@ function AdminAirportItem(props) {
 
   return (
     <div>
-      <Card className="m-3" style={{height:"360px"}}>
+      <Card className="m-3" style={{backgroundColor:'#FFC285', color:'#FF420C', height:"360px"}}>
         
         
         <CardActions className="card-header d-flex justify-content-end">

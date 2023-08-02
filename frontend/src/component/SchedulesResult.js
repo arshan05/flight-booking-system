@@ -35,6 +35,22 @@ const SchedulesResult = () => {
         {schedulesResult !== undefined &&
           schedulesResult.map((schedule) => <Schedule schedule={schedule} />)}
       </ul> */}
+
+      <div
+        className="footer d-flex align-items-end"
+        style={{ height: "50vh", width: "100%"}}
+      >
+        <img
+          className="img-fluid"
+          src="https://cdn.dribbble.com/userupload/4210795/file/original-5233c93eb5f28c04fcb308b8b70c380f.png?resize=1200x900"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+          }}
+          alt="Footer Image"
+        />
+      </div>
     </div>
   );
 };

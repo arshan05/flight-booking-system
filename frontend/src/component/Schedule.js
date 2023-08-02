@@ -34,7 +34,7 @@ const Schedule = (props) => {
 
   return (
     <li>
-      <div className="card m-5 p-2 d-flex flex-row justify-content-around">
+      <div className="card m-5 p-2 d-flex flex-row justify-content-around" style={{zIndex:1}} >
         <div className="d-flex align-items-center justify-content-center">
           <div>
             <svg
