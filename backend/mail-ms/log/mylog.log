@@ -1,35 +1,35 @@
-2023-08-02 11:43:50,063 [INFO] com.fbs.mail.MailMsApplication [restartedMain] Starting MailMsApplication using Java 17.0.7 with PID 18716 (D:\Project\Projects-23\flight booking system\backend\mail-ms\target\classes started by hp in D:\Project\Projects-23\flight booking system\backend\mail-ms)
-2023-08-02 11:43:50,080 [INFO] com.fbs.mail.MailMsApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2023-08-02 11:43:50,102 [DEBUG] org.springframework.boot.SpringApplication [restartedMain] Loading source class com.fbs.mail.MailMsApplication
-2023-08-02 11:43:50,749 [DEBUG] org.springframework.boot.devtools.restart.ChangeableUrls [restartedMain] Matching URLs for reloading : [file:/D:/Project/Projects-23/flight%20booking%20system/backend/mail-ms/target/classes/]
-2023-08-02 11:43:50,771 [DEBUG] org.springframework.boot.devtools.settings.DevToolsSettings [restartedMain] Included patterns for restart : []
-2023-08-02 11:43:50,779 [DEBUG] org.springframework.boot.devtools.settings.DevToolsSettings [restartedMain] Excluded patterns for restart : [/spring-boot-starter-[\w-]+/, /spring-boot/(bin|build|out)/, /spring-boot-starter/(bin|build|out)/, /spring-boot-devtools/(bin|build|out)/, /spring-boot-actuator/(bin|build|out)/, /spring-boot-autoconfigure/(bin|build|out)/]
-2023-08-02 11:43:50,781 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-08-02 11:43:50,782 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-08-02 11:43:51,212 [DEBUG] org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext [restartedMain] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5c42ac04
-2023-08-02 11:43:54,852 [DEBUG] org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory [restartedMain] Code archive: C:\Users\hp\.m2\repository\org\springframework\boot\spring-boot\3.1.0\spring-boot-3.1.0.jar
-2023-08-02 11:43:54,853 [DEBUG] org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory [restartedMain] Code archive: C:\Users\hp\.m2\repository\org\springframework\boot\spring-boot\3.1.0\spring-boot-3.1.0.jar
-2023-08-02 11:43:54,855 [DEBUG] org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory [restartedMain] None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
-2023-08-02 11:43:55,114 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9095 (http)
-2023-08-02 11:43:55,136 [INFO] org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
-2023-08-02 11:43:55,143 [INFO] org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-08-02 11:43:55,330 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
-2023-08-02 11:43:55,330 [DEBUG] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
-2023-08-02 11:43:55,331 [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 4119 ms
-2023-08-02 11:43:55,360 [DEBUG] org.springframework.boot.web.servlet.ServletContextInitializerBeans [restartedMain] Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
-2023-08-02 11:43:55,362 [DEBUG] org.springframework.boot.web.servlet.ServletContextInitializerBeans [restartedMain] Mapping servlets: dispatcherServlet urls=[/]
-2023-08-02 11:43:55,417 [DEBUG] org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter [restartedMain] Filter 'requestContextFilter' configured for use
-2023-08-02 11:43:55,423 [DEBUG] org.springframework.boot.web.servlet.filter.OrderedCharacterEncodingFilter [restartedMain] Filter 'characterEncodingFilter' configured for use
-2023-08-02 11:43:55,424 [DEBUG] org.springframework.boot.web.servlet.filter.OrderedFormContentFilter [restartedMain] Filter 'formContentFilter' configured for use
-2023-08-02 11:44:03,093 [DEBUG] org.springframework.boot.autoconfigure.AutoConfigurationPackages [restartedMain] @EnableAutoConfiguration was declared on a class in the package 'com.fbs.mail'. Automatic @Repository and @Entity scanning is enabled.
-2023-08-02 11:44:03,358 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter [restartedMain] ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2023-08-02 11:44:04,014 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [restartedMain] 7 mappings in 'requestMappingHandlerMapping'
-2023-08-02 11:44:06,652 [DEBUG] org.springframework.web.servlet.handler.SimpleUrlHandlerMapping [restartedMain] Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
-2023-08-02 11:44:06,678 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [restartedMain] ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
-2023-08-02 11:44:06,896 [DEBUG] org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [restartedMain] Application Admin MBean registered with name 'org.springframework.boot:type=Admin,name=SpringApplication'
-2023-08-02 11:44:07,090 [DEBUG] org.springframework.boot.devtools.livereload.LiveReloadServer [restartedMain] Starting live reload server on port 35729
-2023-08-02 11:44:07,091 [WARN] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] Unable to start LiveReload server
-2023-08-02 11:44:07,092 [DEBUG] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] Live reload start error
+2023-08-04 09:46:40,562 [INFO] com.fbs.mail.MailMsApplication [restartedMain] Starting MailMsApplication using Java 17.0.7 with PID 3304 (D:\Project\Projects-23\flight booking system\backend\mail-ms\target\classes started by hp in D:\Project\Projects-23\flight booking system\backend\mail-ms)
+2023-08-04 09:46:40,571 [INFO] com.fbs.mail.MailMsApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-08-04 09:46:40,573 [DEBUG] org.springframework.boot.SpringApplication [restartedMain] Loading source class com.fbs.mail.MailMsApplication
+2023-08-04 09:46:40,800 [DEBUG] org.springframework.boot.devtools.restart.ChangeableUrls [restartedMain] Matching URLs for reloading : [file:/D:/Project/Projects-23/flight%20booking%20system/backend/mail-ms/target/classes/]
+2023-08-04 09:46:40,802 [DEBUG] org.springframework.boot.devtools.settings.DevToolsSettings [restartedMain] Included patterns for restart : []
+2023-08-04 09:46:40,802 [DEBUG] org.springframework.boot.devtools.settings.DevToolsSettings [restartedMain] Excluded patterns for restart : [/spring-boot-starter-[\w-]+/, /spring-boot/(bin|build|out)/, /spring-boot-starter/(bin|build|out)/, /spring-boot-devtools/(bin|build|out)/, /spring-boot-actuator/(bin|build|out)/, /spring-boot-autoconfigure/(bin|build|out)/]
+2023-08-04 09:46:40,804 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-08-04 09:46:40,804 [INFO] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-08-04 09:46:40,806 [DEBUG] org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext [restartedMain] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@171bf38b
+2023-08-04 09:46:46,991 [DEBUG] org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory [restartedMain] Code archive: C:\Users\hp\.m2\repository\org\springframework\boot\spring-boot\3.1.0\spring-boot-3.1.0.jar
+2023-08-04 09:46:46,992 [DEBUG] org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory [restartedMain] Code archive: C:\Users\hp\.m2\repository\org\springframework\boot\spring-boot\3.1.0\spring-boot-3.1.0.jar
+2023-08-04 09:46:46,997 [DEBUG] org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory [restartedMain] None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2023-08-04 09:46:47,252 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9095 (http)
+2023-08-04 09:46:47,302 [INFO] org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2023-08-04 09:46:47,356 [INFO] org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-08-04 09:46:47,949 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-08-04 09:46:47,951 [DEBUG] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2023-08-04 09:46:47,952 [INFO] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 7147 ms
+2023-08-04 09:46:47,999 [DEBUG] org.springframework.boot.web.servlet.ServletContextInitializerBeans [restartedMain] Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2023-08-04 09:46:48,001 [DEBUG] org.springframework.boot.web.servlet.ServletContextInitializerBeans [restartedMain] Mapping servlets: dispatcherServlet urls=[/]
+2023-08-04 09:46:48,119 [DEBUG] org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter [restartedMain] Filter 'requestContextFilter' configured for use
+2023-08-04 09:46:48,130 [DEBUG] org.springframework.boot.web.servlet.filter.OrderedCharacterEncodingFilter [restartedMain] Filter 'characterEncodingFilter' configured for use
+2023-08-04 09:46:48,130 [DEBUG] org.springframework.boot.web.servlet.filter.OrderedFormContentFilter [restartedMain] Filter 'formContentFilter' configured for use
+2023-08-04 09:46:49,755 [DEBUG] org.springframework.boot.autoconfigure.AutoConfigurationPackages [restartedMain] @EnableAutoConfiguration was declared on a class in the package 'com.fbs.mail'. Automatic @Repository and @Entity scanning is enabled.
+2023-08-04 09:46:49,945 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter [restartedMain] ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-08-04 09:46:50,403 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [restartedMain] 7 mappings in 'requestMappingHandlerMapping'
+2023-08-04 09:46:52,341 [DEBUG] org.springframework.web.servlet.handler.SimpleUrlHandlerMapping [restartedMain] Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2023-08-04 09:46:52,358 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver [restartedMain] ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-08-04 09:46:52,727 [DEBUG] org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [restartedMain] Application Admin MBean registered with name 'org.springframework.boot:type=Admin,name=SpringApplication'
+2023-08-04 09:46:52,826 [DEBUG] org.springframework.boot.devtools.livereload.LiveReloadServer [restartedMain] Starting live reload server on port 35729
+2023-08-04 09:46:52,833 [WARN] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] Unable to start LiveReload server
+2023-08-04 09:46:52,833 [DEBUG] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] Live reload start error
 java.net.BindException: Address already in use: bind
 	at java.base/sun.nio.ch.Net.bind0(Native Method)
 	at java.base/sun.nio.ch.Net.bind(Net.java:555)
@@ -64,8 +64,8 @@ java.net.BindException: Address already in use: bind
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-2023-08-02 11:44:08,385 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9095 (http) with context path ''
-2023-08-02 11:44:08,479 [DEBUG] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger [restartedMain] 
+2023-08-04 09:46:53,155 [INFO] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9095 (http) with context path ''
+2023-08-04 09:46:53,344 [DEBUG] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger [restartedMain] 
 
 
 ============================
@@ -1219,41 +1219,24 @@ Unconditional classes:
 
 
 
-2023-08-02 11:44:15,416 [INFO] com.fbs.mail.MailMsApplication [restartedMain] Started MailMsApplication in 27.386 seconds (process running for 33.149)
-2023-08-02 11:44:15,419 [DEBUG] org.springframework.boot.availability.ApplicationAvailabilityBean [restartedMain] Application availability state LivenessState changed to CORRECT
-2023-08-02 11:44:15,422 [DEBUG] org.springframework.boot.devtools.restart.Restarter [restartedMain] Creating new Restarter for thread Thread[main,5,main]
-2023-08-02 11:44:15,423 [DEBUG] org.springframework.boot.devtools.restart.Restarter [restartedMain] Immediately restarting application
-2023-08-02 11:44:15,423 [DEBUG] org.springframework.boot.devtools.restart.Restarter [restartedMain] Starting application com.fbs.mail.MailMsApplication with URLs [file:/D:/Project/Projects-23/flight%20booking%20system/backend/mail-ms/target/classes/]
-2023-08-02 11:44:15,424 [DEBUG] org.springframework.boot.availability.ApplicationAvailabilityBean [restartedMain] Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
-2023-08-02 11:54:09,398 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-9095-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-08-02 11:54:09,508 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-2] Initializing Servlet 'dispatcherServlet'
-2023-08-02 11:54:09,515 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-2] Detected StandardServletMultipartResolver
-2023-08-02 11:54:09,515 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-2] Detected AcceptHeaderLocaleResolver
-2023-08-02 11:54:09,516 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-2] Detected FixedThemeResolver
-2023-08-02 11:54:09,567 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-2] Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@12d21fdd
-2023-08-02 11:54:09,567 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-2] Detected org.springframework.web.servlet.support.SessionFlashMapManager@3aa9e925
-2023-08-02 11:54:09,569 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-2] enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-2023-08-02 11:54:09,569 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-2] Completed initialization in 60 ms
-2023-08-02 11:54:09,607 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-2] POST "/sendEmail", parameters={}
-2023-08-02 11:54:09,647 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [http-nio-9095-exec-2] Mapped to com.fbs.mail.controller.EmailController#sendEmail(EmailRequest)
-2023-08-02 11:54:09,841 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [http-nio-9095-exec-2] Read "application/json;charset=UTF-8" to [EmailRequest(to=adarshan1223@gmail.com, subject=Booking Successful, body=Dear Darshan<EOL> You have succ (truncated)...]
-2023-08-02 11:54:14,613 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [http-nio-9095-exec-2] Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2023-08-02 11:54:14,617 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [http-nio-9095-exec-2] Nothing to write: null body
-2023-08-02 11:54:14,619 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-2] Completed 200 OK
-2023-08-02 12:06:29,232 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-6] POST "/sendEmail", parameters={}
-2023-08-02 12:06:29,261 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [http-nio-9095-exec-6] Mapped to com.fbs.mail.controller.EmailController#sendEmail(EmailRequest)
-2023-08-02 12:06:29,299 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [http-nio-9095-exec-6] Read "application/json;charset=UTF-8" to [EmailRequest(to=adarshan1223@gmail.com, subject=Booking Successful, body=Dear Darshan<EOL> You have succ (truncated)...]
-2023-08-02 12:06:33,410 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [http-nio-9095-exec-6] Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2023-08-02 12:06:33,410 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [http-nio-9095-exec-6] Nothing to write: null body
-2023-08-02 12:06:33,412 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-6] Completed 200 OK
-2023-08-02 12:07:26,203 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-7] POST "/sendEmail", parameters={}
-2023-08-02 12:07:26,208 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [http-nio-9095-exec-7] Mapped to com.fbs.mail.controller.EmailController#sendEmail(EmailRequest)
-2023-08-02 12:07:26,214 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [http-nio-9095-exec-7] Read "application/json;charset=UTF-8" to [EmailRequest(to=adarshan1223@gmail.com, subject=Booking Cancelled, body=Dear Darshan,<EOL><EOL><EOL><EOL>We have suc (truncated)...]
-2023-08-02 12:07:31,054 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [http-nio-9095-exec-7] Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2023-08-02 12:07:31,054 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [http-nio-9095-exec-7] Nothing to write: null body
-2023-08-02 12:07:31,054 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-7] Completed 200 OK
-2023-08-02 19:01:31,877 [INFO] org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(400)-127.0.0.1] Application shutdown requested.
-2023-08-02 19:01:31,948 [DEBUG] org.springframework.boot.availability.ApplicationAvailabilityBean [RMI TCP Connection(400)-127.0.0.1] Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
-2023-08-02 19:01:31,972 [DEBUG] org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext [RMI TCP Connection(400)-127.0.0.1] Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5c42ac04, started on Wed Aug 02 11:43:51 IST 2023
-2023-08-02 19:01:32,154 [INFO] org.apache.catalina.core.StandardService [RMI TCP Connection(400)-127.0.0.1] Stopping service [Tomcat]
-2023-08-02 19:01:32,173 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [RMI TCP Connection(400)-127.0.0.1] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-08-04 09:46:53,364 [INFO] com.fbs.mail.MailMsApplication [restartedMain] Started MailMsApplication in 14.733 seconds (process running for 18.718)
+2023-08-04 09:46:53,368 [DEBUG] org.springframework.boot.availability.ApplicationAvailabilityBean [restartedMain] Application availability state LivenessState changed to CORRECT
+2023-08-04 09:46:53,373 [DEBUG] org.springframework.boot.devtools.restart.Restarter [restartedMain] Creating new Restarter for thread Thread[main,5,main]
+2023-08-04 09:46:53,373 [DEBUG] org.springframework.boot.devtools.restart.Restarter [restartedMain] Immediately restarting application
+2023-08-04 09:46:53,373 [DEBUG] org.springframework.boot.devtools.restart.Restarter [restartedMain] Starting application com.fbs.mail.MailMsApplication with URLs [file:/D:/Project/Projects-23/flight%20booking%20system/backend/mail-ms/target/classes/]
+2023-08-04 09:46:53,374 [DEBUG] org.springframework.boot.availability.ApplicationAvailabilityBean [restartedMain] Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2023-08-04 11:18:08,834 [INFO] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-9095-exec-3] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-08-04 11:18:08,952 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-3] Initializing Servlet 'dispatcherServlet'
+2023-08-04 11:18:08,961 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-3] Detected StandardServletMultipartResolver
+2023-08-04 11:18:08,963 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-3] Detected AcceptHeaderLocaleResolver
+2023-08-04 11:18:08,964 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-3] Detected FixedThemeResolver
+2023-08-04 11:18:09,010 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-3] Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@4cc040b9
+2023-08-04 11:18:09,011 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-3] Detected org.springframework.web.servlet.support.SessionFlashMapManager@28d6b84b
+2023-08-04 11:18:09,012 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-3] enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2023-08-04 11:18:09,012 [INFO] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-3] Completed initialization in 60 ms
+2023-08-04 11:18:09,037 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-3] POST "/sendEmail", parameters={}
+2023-08-04 11:18:09,070 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping [http-nio-9095-exec-3] Mapped to com.fbs.mail.controller.EmailController#sendEmail(EmailRequest)
+2023-08-04 11:18:09,221 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [http-nio-9095-exec-3] Read "application/json;charset=UTF-8" to [EmailRequest(to=adarshan1223@gmail.com, subject=Booking Cancelled, body=Dear joe,<EOL><EOL><EOL><EOL>We have success (truncated)...]
+2023-08-04 11:18:14,880 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [http-nio-9095-exec-3] Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2023-08-04 11:18:14,883 [DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor [http-nio-9095-exec-3] Nothing to write: null body
+2023-08-04 11:18:14,887 [DEBUG] org.springframework.web.servlet.DispatcherServlet [http-nio-9095-exec-3] Completed 200 OK

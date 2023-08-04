@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../store/auth-slice";
+import { toast } from "react-toastify";
 
 const API_BASE_URL = "http://localhost:9098/api/auth";
 
@@ -34,9 +35,29 @@ export const login = (loginRequest) => {
       };
       // console.log(authResponse);
       dispatch(authActions.authenticate(authResponse));
+      toast.success("Login Successful!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       return authResponse;
     } catch (error) {
-      alert("invalid email/password");
+      // alert("invalid email/password");
+      toast.error("invalid email/password", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       // throw new Error("incorrect credentials")
       // console.error(error);
     }
@@ -96,11 +117,30 @@ export const registerUser = async (registerRequest) => {
       registerRequest
     );
     if (response.status === 200) {
-      alert("Registration successful. Please log in");
+      toast.success("Registration successful. Please log in", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
     console.log(response.data);
   } catch (error) {
-    alert("email already registered. Try with another email");
+    // alert("email already registered. Try with another email");
+    toast.error("email already registered. Try with another email", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   }
   // };
 };

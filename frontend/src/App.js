@@ -1,10 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  BrowserRouter,
-  Route,
-  Routes
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdminAirlines from "./Admin/AdminAirlines";
 import AdminAirports from "./Admin/AdminAirports";
 import AdminFlights from "./Admin/AdminFlights";
@@ -26,48 +22,67 @@ import SchedulesResult from "./component/SchedulesResult";
 import AuthForm from "./component/Sign";
 import Success from "./component/Success";
 import { validate } from "./service/AuthService";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const dispatch = useDispatch();
-  
 
   const auth = useSelector((state) => state.auth);
-  useEffect(() => {
-    dispatch(validate());
-  },[dispatch],auth);
+  useEffect(
+    () => {
+      dispatch(validate());
+    },
+    [dispatch],
+    auth
+  );
 
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route
-          path="/"
-          Component={auth.role.includes("admin") ? AdminHome : Home}
-        />
+    <div>
+      <BrowserRouter>
+        <NavBar />
+        <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              auth.role.includes("admin") ? <AdminHome /> : <Home />
+            }
+          />
+          <Route path="/home" element={<Home />} />
+          <Route path="/flight" element={<Schedule />} />
+          <Route path="/sign" element={<AuthForm />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/schedulesResult" element={<SchedulesResult />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/allBooking" element={<AllBooking />} />
+          <Route path="/cancel" element={<Cancel />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/boardingpass" element={<BoardingPass />} />
 
-        <Route path="/home" Component={Home}></Route>
-        <Route path="/flight" Component={Schedule}></Route>
-        <Route path="/sign" Component={AuthForm}></Route>
-        <Route path="/register" Component={Register}></Route>
-        <Route path="/login" Component={Login}></Route>
-        <Route path="/logout" Component={Logout}></Route>
-        <Route path="/schedulesResult" Component={SchedulesResult}></Route>
-        <Route path="/booking" Component={Booking}></Route>
-        <Route path="/allBooking" Component={AllBooking}></Route>
-
-        <Route path="/cancel" Component={Cancel}></Route>
-        <Route path="/success" Component={Success}></Route>
-        <Route path="/boardingpass" Component={BoardingPass}></Route>
-
-        {/* admin */}
-        <Route path="/adminHome" Component={AdminHome}></Route>
-        <Route path="/admin/flights" Component={AdminFlights}></Route>
-        <Route path="/admin/airports" Component={AdminAirports}></Route>
-        <Route path="/admin/airlines" Component={AdminAirlines}></Route>
-        <Route path="/admin/locations" Component={AdminLocations}></Route>
-        <Route path="/admin/schedules" Component={AdminSchedules}></Route>
-      </Routes>
-    </BrowserRouter>
+          {/* admin */}
+          <Route path="/adminHome" element={<AdminHome />} />
+          <Route path="/admin/flights" element={<AdminFlights />} />
+          <Route path="/admin/airports" element={<AdminAirports />} />
+          <Route path="/admin/airlines" element={<AdminAirlines />} />
+          <Route path="/admin/locations" element={<AdminLocations />} />
+          <Route path="/admin/schedules" element={<AdminSchedules />} />
+        </Routes>
+      </BrowserRouter>
+      
+    </div>
   );
 }
 

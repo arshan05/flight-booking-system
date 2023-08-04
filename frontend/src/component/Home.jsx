@@ -2,18 +2,30 @@ import { useEffect, useState } from "react";
 import "../style/style.css";
 import { getLocations } from "../service/LocationService";
 import { useDispatch, useSelector } from "react-redux";
-import { Autocomplete, Button, TextField } from "@mui/material";
+import {
+  Alert,
+  AlertTitle,
+  Autocomplete,
+  Box,
+  Button,
+  IconButton,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { getFlights } from "../service/ConsumerService";
 import { format } from "date-fns";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import "../style/schedule.css";
 import { getAirlines } from "../service/AirlineService";
 import { getAirports } from "../service/AirportService";
 import { resultActions } from "../store/result-slice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from "react-toastify";
 
 const myStyle = {
   backgroundColor: "#f5f5f5",
@@ -27,6 +39,11 @@ const myStyle = {
 
 const Home = () => {
   // ScheduleService.getAllSchedules();
+
+  const navigationOptions = {
+    headerBackVisible: false,
+  };
+
   const dispatch = useDispatch();
   const locations = useSelector((state) => state.location.locations);
   const schedulesResult = useSelector(
@@ -41,12 +58,25 @@ const Home = () => {
 
   const auth = useSelector((state) => state.auth);
 
+  const [logoutAlertOpen, setLogoutAlertOpen] = useState(true);
+  const location = useLocation();
+
   useEffect(() => {
+    const handlePopState = () => {
+      window.history.forward();
+    };
+
     dispatch(getLocations());
     console.log(locations);
+
+    window.history.pushState(null, document.title, window.location.href);
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
   }, [dispatch]);
 
-  
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -66,6 +96,9 @@ const Home = () => {
 
   return (
     <div className="d-flex flex-column justify-content-center">
+      
+     
+
       <div className="image-container m-2">
         <img
           src="https://images.pexels.com/photos/1465904/pexels-photo-1465904.jpeg?auto=compress&cs=tinysrgb&w=1600"
